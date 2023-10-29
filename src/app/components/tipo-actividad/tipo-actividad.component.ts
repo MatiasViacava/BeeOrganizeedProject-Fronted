@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  selector: 'app-tipo-actividad',
+  templateUrl: './tipo-actividad.component.html',
+  styleUrls: ['./tipo-actividad.component.css']
 })
-export class UsuariosComponent {
+export class TipoActividadComponent {
   constructor(public route: ActivatedRoute) {}
   ngOnInit(): void {}
 }
