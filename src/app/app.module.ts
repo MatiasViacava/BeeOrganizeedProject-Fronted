@@ -20,6 +20,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import{ MatIconModule} from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { TipoActividadComponent } from './components/tipo-actividad/tipo-actividad.component';
+import { TipoActividadListarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-listar.component';
+import { TipoActividadCreaeditaComponent } from './components/tipo-actividad/tipo-actividad-creaedita/tipo-actividad-creaedita.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { MatMenuModule } from '@angular/material/menu';
     AppComponent,
     UsuariosComponent,
     UsuariosCreaeditaComponent,
-    UsuariosListarComponent
+    UsuariosListarComponent,
+    TipoActividadComponent,
+    TipoActividadListarComponent,
+    TipoActividadCreaeditaComponent
   ],
   imports: [
     BrowserModule,

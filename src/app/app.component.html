@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-icon>menu</mat-icon>
-  <button mat-button [matMenuTriggerFor]="menuPostres">Inventario</button>
+  <button mat-button [matMenuTriggerFor]="menuPostres">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuTipoActividad">Tipo Actividad</button>
 </mat-toolbar>
 
 <mat-menu #menuPostres="matMenu">
@@ -11,7 +12,16 @@
   <button mat-menu-item routerLink="/usuarios/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
+</mat-menu>
 
+<mat-menu #menuTipoActividad="matMenu">
+  <button mat-menu-item routerLink="/tipoactividad/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/tipoactividad/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
 </mat-menu>
 
 <router-outlet></router-outlet>

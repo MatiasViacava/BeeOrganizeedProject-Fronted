@@ -17,3 +17,7 @@
       .menu a:hover {
         background-color: #ddd;
       }
+
+      mat-form-field {
+        width: 45%;
+    }
