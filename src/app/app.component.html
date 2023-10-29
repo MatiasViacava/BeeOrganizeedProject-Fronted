@@ -2,6 +2,7 @@
   <mat-icon>menu</mat-icon>
   <button mat-button [matMenuTriggerFor]="menuPostres">Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuTipoActividad">Tipo Actividad</button>
+  <button mat-button [matMenuTriggerFor]="menuCursos">Cursos</button>
 </mat-toolbar>
 
 <mat-menu #menuPostres="matMenu">
@@ -20,6 +21,16 @@
     Registrar</button>
  
   <button mat-menu-item routerLink="/tipoactividad/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuCursos="matMenu">
+  <button mat-menu-item routerLink="/cursos/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/cursos/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>

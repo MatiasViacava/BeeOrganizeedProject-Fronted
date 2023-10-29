@@ -9,7 +9,7 @@
 
   <br>
   <div style=" text-align: center;"> 
-    <h2>LISTA DEL TIPO ACTIVIDAD</h2> 
+    <h2>LISTA DE CURSOS</h2> 
   </div>
 
   <div class="container">
@@ -18,12 +18,27 @@
 
       <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.iDTipoActividad}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
       </ng-container>
     
       <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Tipo Actividad </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreTipoActividad}} </td>
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreCurso}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcionCurso}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechainicio">
+        <th mat-header-cell *matHeaderCellDef> Inicio de curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaInicioCurso | date:"dd/MM/yyyy"}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechafin">
+        <th mat-header-cell *matHeaderCellDef> Fin de curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaFinCurso | date:"dd/MM/yyyy"}} </td>
       </ng-container>
 
       <!-- ACCIONES -->
@@ -33,18 +48,18 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/tipoactividad/edicion', element.iDTipoActividad]"
+            [routerLink]="['/cursos/edicion', element.iDTipoActividad]"
             ><mat-icon>update</mat-icon> Actualizar
           </button>
       </td></ng-container>
 
       <ng-container matColumnDef="eliminar">
-        <th mat-header-cell *matHeaderCellDef>eliminar</th>
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button
             mat-raised-button
             color="warn"
-            (click)="eliminar(element.iDTipoActividad)"
+            (click)="eliminar(element.idCurso)"
             ><mat-icon>delete</mat-icon> Eliminar
           </button>
       </td></ng-container>
@@ -54,7 +69,7 @@
     </table>
 
     <br>
-    <button mat-button color="primary" routerLink="/tipoactividad/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
+    <button mat-button color="primary" routerLink="/cursos/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
 
     <mat-paginator 
     [pageSizeOptions]="[3, 6, 9]" 
@@ -64,4 +79,5 @@
 </div>
 </body>
 </html>
+
 
