@@ -6,6 +6,9 @@ import { UsuariosListarComponent } from './components/usuarios/usuarios-listar/u
 import { TipoActividadComponent } from './components/tipo-actividad/tipo-actividad.component';
 import { TipoActividadCreaeditaComponent } from './components/tipo-actividad/tipo-actividad-creaedita/tipo-actividad-creaedita.component';
 import { TipoActividadListarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-listar.component';
+import { CursosComponent } from './components/cursos/cursos.component';
+import { CursosCreaeditaComponent } from './components/cursos/cursos-creaedita/cursos-creaedita.component';
+import { CursosListarComponent } from './components/cursos/cursos-listar/cursos-listar.component';
 
 const routes: Routes = [
   {
@@ -24,7 +27,13 @@ const routes: Routes = [
     ]
   },
 
-  
+  {
+    path: 'cursos', component: CursosComponent, children: [
+      { path: 'nuevo', component: CursosCreaeditaComponent },
+      { path: 'listar', component: CursosListarComponent },
+      { path: 'edicion/:idCurso', component: CursosCreaeditaComponent}
+    ]
+  },
 ];
 
 @NgModule({

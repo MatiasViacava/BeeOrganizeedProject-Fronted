@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <h2>Registro de cursos</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput placeholder="Id" formControlName="idCurso" readonly/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" />
+          <mat-error
+            *ngIf="obtenerControlCampo('nombreCurso')?.errors?.['required']"
+          >
+            Obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripción</mat-label>
+          <input
+            matInput
+            placeholder="Descripción"
+            formControlName="descripcionCurso"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('descripcionCurso')?.errors?.['required']"
+          >
+            Obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field appearance="fill" class="example-full-width">
+          <input
+            matInput
+            placeholder="Fecha de inicio de curso"
+            [matDatepicker]="picker"
+            formControlName="fechaInicioCurso"
+            [max]="maxFecha"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="obtenerControlCampo('fechaInicioCurso')?.errors?.['required']"
+          >
+           Obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field appearance="fill" class="example-full-width">
+            <input
+              matInput
+              placeholder="Fecha de fin de curso"
+              [matDatepicker]="picker2"
+              formControlName="fechaFinCurso"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error
+              *ngIf="obtenerControlCampo('fechaFinCurso')?.errors?.['required']"
+            >
+             Obligatorio.
+            </mat-error>
+          </mat-form-field>
+          
+          <br />
+
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/cursos">Cancelar</button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>
+

@@ -23,6 +23,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TipoActividadComponent } from './components/tipo-actividad/tipo-actividad.component';
 import { TipoActividadListarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-listar.component';
 import { TipoActividadCreaeditaComponent } from './components/tipo-actividad/tipo-actividad-creaedita/tipo-actividad-creaedita.component';
+import { CursosComponent } from './components/cursos/cursos.component';
+import { CursosCreaeditaComponent } from './components/cursos/cursos-creaedita/cursos-creaedita.component';
+import { CursosListarComponent } from './components/cursos/cursos-listar/cursos-listar.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { TipoActividadCreaeditaComponent } from './components/tipo-actividad/tip
     UsuariosListarComponent,
     TipoActividadComponent,
     TipoActividadListarComponent,
-    TipoActividadCreaeditaComponent
+    TipoActividadCreaeditaComponent,
+    CursosComponent,
+    CursosCreaeditaComponent,
+    CursosListarComponent
   ],
   imports: [
     BrowserModule,
