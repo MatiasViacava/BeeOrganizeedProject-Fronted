@@ -16,9 +16,9 @@ export class UsuariosCreaeditaComponent {
   mensaje: string = '';
   maxFecha: Date = moment().add(-1, 'days').toDate();
   fechanacimiento = new FormControl(new Date());
-  enabled: { value: string; viewValue: string }[] = [
-    { value: 'true', viewValue: 'true' },
-    { value: 'false', viewValue: 'false' },
+  enabled: { value: boolean; viewValue: string }[] = [
+    { value: true, viewValue: 'true' },
+    { value: false, viewValue: 'false' },
 
   ];
   idUsuario: number = 0;
@@ -49,6 +49,7 @@ export class UsuariosCreaeditaComponent {
   }
   registrar() {
     if (this.form.valid) {
+        this.usuarios.id=this.form.value.id,
         this.usuarios.username = this.form.value.username,
         this.usuarios.password = this.form.value.password,
         this.usuarios.enabled = this.form.value.enabled,
@@ -56,13 +57,20 @@ export class UsuariosCreaeditaComponent {
         this.usuarios.apellidos = this.form.value.apellidos,
         this.usuarios.fechaNacimiento = this.form.value.fechaNacimiento,
         this.usuarios.universidad=this.form.value.universidad,
-        this.usuarios.email=this.form.value.email,
-
-        this.uS.insert(this.usuarios).subscribe(data=> {
-          this.uS.list().subscribe(data=>{
-            this.uS.setList(data);
+        this.usuarios.email=this.form.value.email;
+        if(this.edicion){
+          this.uS.modificar(this.usuarios).subscribe((data) => {
+            this.uS.list().subscribe(data => {
+              this.uS.setList(data);
+            })
           })
-        })
+        } else {
+          this.uS.insert(this.usuarios).subscribe((data) => {
+            this.uS.list().subscribe(data => {
+              this.uS.setList(data)
+            })
+          })
+        }
         this.router.navigate(['usuarios']);
 
     } else {
@@ -81,7 +89,6 @@ export class UsuariosCreaeditaComponent {
     if (this.edicion) {
       this.uS.listarId(this.idUsuario).subscribe((data) => {
         this.form = new FormGroup({
-
         id: new FormControl(data.id),
         username: new FormControl(data.username),
         password: new FormControl(data.password),

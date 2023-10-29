@@ -27,4 +27,10 @@ export class UsuariosService {
   listarId(id: number) {
     return this.smvohttp.get<Usuarios>(`${this.url}/${id}`);
   }
+  eliminar(id: number) {
+    return this.smvohttp.delete(`${this.url}/${id}`);
+  }
+  modificar(de: Usuarios) {
+    return this.smvohttp.put(this.url, de);
+  }
 }
