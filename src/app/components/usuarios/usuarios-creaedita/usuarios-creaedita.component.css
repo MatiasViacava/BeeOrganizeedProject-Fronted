@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #999;
+    padding: 20px;
+    width: 400px;
+  }
+  h2 {
+    color: #007BFF;
+  }
+  .mat-form-field {
+    margin: 10px 0;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .mat-error {
+    color: #ff0000;
+  }
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  button.cancel {
+    background-color: #FF6347;
+  }
