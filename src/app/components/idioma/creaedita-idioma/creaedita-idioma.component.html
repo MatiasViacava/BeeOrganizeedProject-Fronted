@@ -7,27 +7,27 @@
   </head>
   <body>
     <div class="container" style="text-align: center">
-      <h2>Registro de tipos de actividades</h2>
+      <h2>Registro de idiomas</h2>
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         
         <mat-form-field class="example-full-width" *ngIf="edicion">
-          <mat-label>iDTipoActividad</mat-label>
-          <input matInput placeholder="iDTipoActividad" formControlName="iDTipoActividad" />
+          <mat-label>idIdioma</mat-label>
+          <input matInput placeholder="idIdioma" formControlName="idIdioma" />
         </mat-form-field>
           
         <mat-form-field class="example-full-width">
-          <mat-label>Nombre tipo acitividad</mat-label>
-          <input matInput placeholder="nombreTipoActividad" formControlName="nombreTipoActividad" />
+          <mat-label>Nombre idioma</mat-label>
+          <input matInput placeholder="nombreIdioma" formControlName="nombreIdioma" />
           
           <mat-error
-              *ngIf="obtenerControlCampo('nombreTipoActividad')?.errors?.['required']"
-            >El nombre del tipo actividad es obligatorio.
+              *ngIf="obtenerControlCampo('nombreIdioma')?.errors?.['required']"
+            >El nombre del idioma es obligatorio.
           </mat-error>
         </mat-form-field>
 
         <br />
         <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/tipoactividad"> <mat-icon>close</mat-icon> Cancelar </button>
+        <button mat-raised-button color="warn" routerLink="/idioma"> <mat-icon>close</mat-icon> Cancelar </button>
         <p>{{ mensaje }}</p>
       </form>
     </div>

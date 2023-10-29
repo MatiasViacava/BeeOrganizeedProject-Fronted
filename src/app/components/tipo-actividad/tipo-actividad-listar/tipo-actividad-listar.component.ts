@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TipoActividad } from 'src/app/models/tipoactividad';
@@ -9,7 +9,7 @@ import { TipoActividadService } from 'src/app/services/tipo-actividad.service';
   templateUrl: './tipo-actividad-listar.component.html',
   styleUrls: ['./tipo-actividad-listar.component.css']
 })
-export class TipoActividadListarComponent {
+export class TipoActividadListarComponent implements OnInit {
   dataSource: MatTableDataSource<TipoActividad> = new MatTableDataSource();
   displayedColumns: string[] =
   ['codigo', 'nombre', 'actualizar','eliminar']

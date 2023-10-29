@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TipoActividad } from 'src/app/models/tipoactividad';
@@ -9,7 +9,7 @@ import { TipoActividadService } from 'src/app/services/tipo-actividad.service';
   templateUrl: './tipo-actividad-creaedita.component.html',
   styleUrls: ['./tipo-actividad-creaedita.component.css']
 })
-export class TipoActividadCreaeditaComponent {
+export class TipoActividadCreaeditaComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   TipoActividad: TipoActividad = new TipoActividad();
   mensaje: string = '';
