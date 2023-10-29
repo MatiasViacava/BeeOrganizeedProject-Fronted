@@ -26,6 +26,16 @@ import { TipoActividadCreaeditaComponent } from './components/tipo-actividad/tip
 import { CursosComponent } from './components/cursos/cursos.component';
 import { CursosCreaeditaComponent } from './components/cursos/cursos-creaedita/cursos-creaedita.component';
 import { CursosListarComponent } from './components/cursos/cursos-listar/cursos-listar.component';
+import { IdiomaComponent } from './components/idioma/idioma.component';
+import { ListarIdiomaComponent } from './components/idioma/listar-idioma/listar-idioma.component';
+import { CreaeditaIdiomaComponent } from './components/idioma/creaedita-idioma/creaedita-idioma.component';
+import { PreguntaComponent } from './components/pregunta/pregunta.component';
+import { PreguntaListarComponent } from './components/pregunta/pregunta-listar/pregunta-listar.component';
+import { PreguntaCreaeditaComponent } from './components/pregunta/pregunta-creaedita/pregunta-creaedita.component';
+import { RespuestaComponent } from './components/respuesta/respuesta.component';
+import { RespuestaCreaeditaComponent } from './components/respuesta/respuesta-creaedita/respuesta-creaedita.component';
+import { RespuestaListarComponent } from './components/respuesta/respuesta-listar/respuesta-listar.component';
+
 
 
 @NgModule({
@@ -39,7 +49,16 @@ import { CursosListarComponent } from './components/cursos/cursos-listar/cursos-
     TipoActividadCreaeditaComponent,
     CursosComponent,
     CursosCreaeditaComponent,
-    CursosListarComponent
+    CursosListarComponent,
+    IdiomaComponent,
+    ListarIdiomaComponent,
+    CreaeditaIdiomaComponent,
+    PreguntaComponent,
+    PreguntaListarComponent,
+    PreguntaCreaeditaComponent,
+    RespuestaComponent,
+    RespuestaCreaeditaComponent,
+    RespuestaListarComponent
   ],
   imports: [
     BrowserModule,

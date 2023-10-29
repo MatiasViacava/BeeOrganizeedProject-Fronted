@@ -3,6 +3,9 @@
   <button mat-button [matMenuTriggerFor]="menuPostres">Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuTipoActividad">Tipo Actividad</button>
   <button mat-button [matMenuTriggerFor]="menuCursos">Cursos</button>
+  <button mat-button [matMenuTriggerFor]="menuIdioma">Idioma</button>
+  <button mat-button [matMenuTriggerFor]="menuPregunta">Pregunta</button>
+  <button mat-button [matMenuTriggerFor]="menuRespuesta">Respuesta</button>
 </mat-toolbar>
 
 <mat-menu #menuPostres="matMenu">
@@ -31,6 +34,36 @@
     Registrar</button>
  
   <button mat-menu-item routerLink="/cursos/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuIdioma="matMenu">
+  <button mat-menu-item routerLink="/idioma/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/idioma/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuPregunta="matMenu">
+  <button mat-menu-item routerLink="/pregunta/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/pregunta/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuRespuesta="matMenu">
+  <button mat-menu-item routerLink="/respuesta/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/respuesta/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>
