@@ -9,6 +9,7 @@ const routes: Routes = [
     path: 'usuarios', component: UsuariosComponent, children: [
       { path: 'nuevo', component: UsuariosCreaeditaComponent },
       { path:'listar', component: UsuariosListarComponent },
+      { path: 'edicion/:id', component: UsuariosCreaeditaComponent}
     ]
   }
 ];
