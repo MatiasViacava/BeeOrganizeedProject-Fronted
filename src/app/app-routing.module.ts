@@ -18,6 +18,9 @@ import { PreguntaListarComponent } from './components/pregunta/pregunta-listar/p
 import { RespuestaComponent } from './components/respuesta/respuesta.component';
 import { RespuestaCreaeditaComponent } from './components/respuesta/respuesta-creaedita/respuesta-creaedita.component';
 import { RespuestaListarComponent } from './components/respuesta/respuesta-listar/respuesta-listar.component';
+import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
+import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
+import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
 
 const routes: Routes = [
   {
@@ -65,6 +68,14 @@ const routes: Routes = [
       { path: 'nuevo', component: RespuestaCreaeditaComponent },
       { path: 'listar', component: RespuestaListarComponent },
       { path: 'edicion/:idRespuesta', component: RespuestaCreaeditaComponent}
+    ]
+  },
+  
+  {
+    path: 'tiporecurso', component: TipoRecursoComponent, children: [
+      { path: 'nuevo', component: TipoRecursoCreaeditaComponent },
+      { path: 'listar', component: TipoRecursoListarComponent },
+      { path: 'edicion/:iD', component: TipoRecursoCreaeditaComponent}
     ]
   },
 ];
