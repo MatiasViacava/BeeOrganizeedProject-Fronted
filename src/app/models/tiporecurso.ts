@@ -1,4 +1,4 @@
 export class TipoRecurso{
-    iD:number=0
-    nombreTipo:string=""
+  iD:number=0
+  nombreTipo:string=""
 }
