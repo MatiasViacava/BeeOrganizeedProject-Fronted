@@ -29,7 +29,7 @@
             <br>
             <mat-form-field>
                 <mat-label>Id del Usuario</mat-label>
-                <mat-select formControlName="usuarios" [(value)]="idUsuarioSeleccionada">
+                <mat-select formControlName="usuarios" [(value)]="idUsuarioSeleccionada" required>
                     <mat-option *ngFor="let d of listaUsuarios" [value]="d.id"> <!--Se modifico la "t"-->
                         {{d.id}}
                     </mat-option>

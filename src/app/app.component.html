@@ -8,6 +8,7 @@
   <button mat-button [matMenuTriggerFor]="menuIdioma">Idioma</button>
   <button mat-button [matMenuTriggerFor]="menuPregunta">Pregunta</button>
   <button mat-button [matMenuTriggerFor]="menuRespuesta">Respuesta</button>
+  <button mat-button [matMenuTriggerFor]="menuEncuesta">Encuesta</button>
 
 </mat-toolbar>
 
@@ -87,6 +88,16 @@
     Registrar</button>
  
   <button mat-menu-item routerLink="/respuesta/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuEncuesta="matMenu">
+  <button mat-menu-item routerLink="/encuestas/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/encuestas/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>

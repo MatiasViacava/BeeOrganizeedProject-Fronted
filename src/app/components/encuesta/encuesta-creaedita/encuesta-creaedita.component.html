@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center">
+        <h2>Registro de Encuesta</h2>
+        <form [formGroup]="form" (submit)="registrar()" class="example-form">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion" >
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" formControlName="idEncuesta" readonly/>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Valoración final</mat-label>
+                <input matInput placeholder="Valoración final" formControlName="valoracionFinal" />
+
+                <mat-error *ngIf="obtenerControlCampo('valoracionFinal')?.errors?.['required']">Obligatorio
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Comentario</mat-label>
+                <input matInput placeholder="Comentario" formControlName="comentario" />
+
+                <mat-error *ngIf="obtenerControlCampo('comentario')?.errors?.['required']">Obligatorio
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field>
+                <mat-label>Id de usuario</mat-label>
+                <mat-select formControlName="usuario" [(value)]="idUsuarioSeleccionada" required>
+                    <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+                        {{u.id}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">Obligatorio
+                </mat-error>
+            </mat-form-field>
+            <br/>
+
+
+            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
+            <button mat-raised-button color="warn" routerLink="/encuestas"> <mat-icon>close</mat-icon> Cancelar </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>
