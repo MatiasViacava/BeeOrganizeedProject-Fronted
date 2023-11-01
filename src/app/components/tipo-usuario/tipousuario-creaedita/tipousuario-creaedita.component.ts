@@ -1,8 +1,8 @@
+import { Usuarios } from './../../../models/usuarios';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TipoUsuario } from 'src/app/models/tipousuario';
-import { Usuarios } from 'src/app/models/usuarios';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -38,6 +38,7 @@ export class TipousuarioCreaeditaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.idTipoUsuario = data['idTipoUsuario']; //xd
       this.edicion = data['idTipoUsuario'] != null;
+      this.idUsuarioSeleccionada = data['idTipoUsuario'],
       this.init();
     });
 
@@ -47,25 +48,22 @@ export class TipousuarioCreaeditaComponent implements OnInit {
     if (this.form.valid) {
       this.tipousuario.idTipoUsuario = this.form.value.idTipoUsuario,
         this.tipousuario.nombreTipoUsuario = this.form.value.nombreTipoUsuario,
-
         this.tipousuario.usuarios.id = this.form.value.usuarios.id
 
-
       if (this.edicion) {
-        let d = new Usuarios();
-        d.id = this.idUsuarioSeleccionada;
-        this.tipousuario.usuarios = d;
+        let u = new Usuarios();
+        u.id = this.idUsuarioSeleccionada;
+        this.tipousuario.usuarios = u;
 
-        
         this.tuS.modificar(this.tipousuario).subscribe((data) => {
           this.tuS.list().subscribe(data => {
             this.tuS.setList(data);
           })
         })
       } else {
-        let d = new Usuarios();
-        d.id = this.idUsuarioSeleccionada;
-        this.tipousuario.usuarios = d;
+        let u = new Usuarios();
+        u.id = this.idUsuarioSeleccionada;
+        this.tipousuario.usuarios = u;
 
         this.tuS.insert(this.tipousuario).subscribe((data) => {
           this.tuS.list().subscribe(data => {
