@@ -40,6 +40,7 @@ export class RespuestaCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.idRespuesta = data['idRespuesta']; //xd
       this.edicion = data['idRespuesta'] != null;
+      this.idPreguntaSeleccionada =  data['idRespuesta']; 
       this.init();
     });
 
