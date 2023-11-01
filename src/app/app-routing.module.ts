@@ -21,6 +21,9 @@ import { RespuestaListarComponent } from './components/respuesta/respuesta-lista
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
 import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
+import { TipoUsuarioComponent } from './components/tipo-usuario/tipo-usuario.component';
+import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousuario-creaedita/tipousuario-creaedita.component';
+import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuario-listar/tipousuario-listar.component';
 
 const routes: Routes = [
   {
@@ -76,6 +79,13 @@ const routes: Routes = [
       { path: 'nuevo', component: TipoRecursoCreaeditaComponent },
       { path: 'listar', component: TipoRecursoListarComponent },
       { path: 'edicion/:iD', component: TipoRecursoCreaeditaComponent}
+    ]
+  },
+  {
+    path: 'tipousuario', component: TipoUsuarioComponent, children: [
+      { path: 'nuevo', component: TipousuarioCreaeditaComponent },
+      { path: 'listar', component: TipousuarioListarComponent },
+      { path: 'edicion/:idTipoUsuario', component: TipousuarioCreaeditaComponent}
     ]
   },
 ];

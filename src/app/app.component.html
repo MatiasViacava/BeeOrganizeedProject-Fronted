@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-icon>menu</mat-icon>
   <button mat-button [matMenuTriggerFor]="menuPostres">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuTipoUsuario">Tipo Usuario</button>
   <button mat-button [matMenuTriggerFor]="menuTipoActividad">Tipo Actividad</button>
   <button mat-button [matMenuTriggerFor]="menuTipoRecurso">Tipo Recurso</button>
   <button mat-button [matMenuTriggerFor]="menuCursos">Cursos</button>
@@ -16,6 +17,16 @@
     Registrar</button>
  
   <button mat-menu-item routerLink="/usuarios/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoUsuario="matMenu">
+  <button mat-menu-item routerLink="/tipousuario/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/tipousuario/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>
