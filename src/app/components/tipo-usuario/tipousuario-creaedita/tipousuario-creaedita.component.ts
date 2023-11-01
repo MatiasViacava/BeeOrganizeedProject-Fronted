@@ -38,7 +38,6 @@ export class TipousuarioCreaeditaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.idTipoUsuario = data['idTipoUsuario']; //xd
       this.edicion = data['idTipoUsuario'] != null;
-      this.idUsuarioSeleccionada = data['idTipoUsuario'],
       this.init();
     });
 

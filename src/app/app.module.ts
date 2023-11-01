@@ -41,6 +41,9 @@ import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recur
 import { TipoUsuarioComponent } from './components/tipo-usuario/tipo-usuario.component';
 import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousuario-creaedita/tipousuario-creaedita.component';
 import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuario-listar/tipousuario-listar.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { EncuestaCreaeditaComponent } from './components/encuesta/encuesta-creaedita/encuesta-creaedita.component';
+import { EncuestaListarComponent } from './components/encuesta/encuesta-listar/encuesta-listar.component';
 
 
 
@@ -70,7 +73,10 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
     TipoRecursoListarComponent,
     TipoUsuarioComponent,
     TipousuarioCreaeditaComponent,
-    TipousuarioListarComponent
+    TipousuarioListarComponent,
+    EncuestaComponent,
+    EncuestaCreaeditaComponent,
+    EncuestaListarComponent
   ],
   imports: [
     BrowserModule,
