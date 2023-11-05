@@ -16,10 +16,9 @@ export class RespuestaCreaeditaComponent implements OnInit{
   respuesta: Respuesta = new Respuesta();
   mensaje: string = '';
 
-  idPreguntaSeleccionada: number = 0; //xd
   listaPregunta: Pregunta[] = [];
 
-  idRespuesta: number = 0; //xd
+  idRespuesta: number = 0;
   edicion: boolean = false;
 
   constructor(
@@ -52,25 +51,16 @@ export class RespuestaCreaeditaComponent implements OnInit{
       this.respuesta.idRespuesta = this.form.value.idRespuesta,
         this.respuesta.contenido = this.form.value.contenido,
 
-        this.respuesta.pregunta_Id.idPregunta = this.form.value.pregunta_Id.idPregunta
+        this.respuesta.pregunta_Id.idPregunta = this.form.value.pregunta_Id
 
 
       if (this.edicion) {
-        let d = new Pregunta();
-        d.idPregunta = this.idPreguntaSeleccionada;
-        this.respuesta.pregunta_Id = d;
-
-        
         this.rS.modificar(this.respuesta).subscribe((data) => {
           this.rS.list().subscribe(data => {
             this.rS.setList(data);
           })
         })
       } else {
-        let d = new Pregunta();
-        d.idPregunta = this.idPreguntaSeleccionada;
-        this.respuesta.pregunta_Id = d;
-
         this.rS.insert(this.respuesta).subscribe((data) => {
           this.rS.list().subscribe(data => {
             this.rS.setList(data)

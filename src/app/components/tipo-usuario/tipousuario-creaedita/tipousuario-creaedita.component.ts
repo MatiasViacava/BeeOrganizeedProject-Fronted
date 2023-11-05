@@ -16,10 +16,9 @@ export class TipousuarioCreaeditaComponent implements OnInit {
   tipousuario: TipoUsuario = new TipoUsuario();
   mensaje: string = '';
 
-  idUsuarioSeleccionada: number = 0; //xd
   listaUsuarios: Usuarios[] = [];
 
-  idTipoUsuario: number = 0; //xd
+  idTipoUsuario: number = 0;
   edicion: boolean = false;
   constructor(
     private tuS: TipoUsuarioService,
@@ -47,23 +46,15 @@ export class TipousuarioCreaeditaComponent implements OnInit {
     if (this.form.valid) {
       this.tipousuario.idTipoUsuario = this.form.value.idTipoUsuario,
         this.tipousuario.nombreTipoUsuario = this.form.value.nombreTipoUsuario,
-        this.tipousuario.usuarios.id = this.form.value.usuarios.id
+        this.tipousuario.usuarios.id = this.form.value.usuarios
 
       if (this.edicion) {
-        let u = new Usuarios();
-        u.id = this.idUsuarioSeleccionada;
-        this.tipousuario.usuarios = u;
-
         this.tuS.modificar(this.tipousuario).subscribe((data) => {
           this.tuS.list().subscribe(data => {
             this.tuS.setList(data);
           })
         })
       } else {
-        let u = new Usuarios();
-        u.id = this.idUsuarioSeleccionada;
-        this.tipousuario.usuarios = u;
-
         this.tuS.insert(this.tipousuario).subscribe((data) => {
           this.tuS.list().subscribe(data => {
             this.tuS.setList(data)

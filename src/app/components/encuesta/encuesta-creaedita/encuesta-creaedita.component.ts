@@ -16,7 +16,6 @@ export class EncuestaCreaeditaComponent implements OnInit{
   encuesta: Encuesta = new Encuesta();
   mensaje: string = '';
 
-  idUsuarioSeleccionada: number = 0; //
   listaUsuarios: Usuarios[] = []; //
 
   idEncuesta: number = 0;
@@ -50,13 +49,9 @@ export class EncuestaCreaeditaComponent implements OnInit{
       this.encuesta.idEncuesta = this.form.value.idEncuesta,
         this.encuesta.valoracionFinal = this.form.value.valoracionFinal,
         this.encuesta.comentario = this.form.value.comentario,
-        this.encuesta.usuario.id = this.form.value.usuario.id
+        this.encuesta.usuario.id = this.form.value.usuario
 
       if (this.edicion) {
-
-        let usuariotemp = new Usuarios();
-        usuariotemp.id = this.idUsuarioSeleccionada;
-        this.encuesta.usuario = usuariotemp;
 
         this.eS.modificar(this.encuesta).subscribe((data) => {
           this.eS.list().subscribe(data => {
@@ -64,10 +59,6 @@ export class EncuestaCreaeditaComponent implements OnInit{
           })
         })
       } else {
-        let usuariotemp = new Usuarios();
-        usuariotemp.id = this.idUsuarioSeleccionada;
-        this.encuesta.usuario = usuariotemp
-
         this.eS.insert(this.encuesta).subscribe((data) => {
           this.eS.list().subscribe(data => {
             this.eS.setList(data)
