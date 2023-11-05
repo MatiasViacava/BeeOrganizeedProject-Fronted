@@ -16,7 +16,7 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" />
+          <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" maxlength="18"/>
           <mat-error
             *ngIf="obtenerControlCampo('nombreCurso')?.errors?.['required']"
           >
@@ -32,6 +32,7 @@
             matInput
             placeholder="Descripción"
             formControlName="descripcionCurso"
+            maxlength="30"
           />
           <mat-error
             *ngIf="obtenerControlCampo('descripcionCurso')?.errors?.['required']"
@@ -48,7 +49,7 @@
             placeholder="Fecha de inicio de curso"
             [matDatepicker]="picker"
             formControlName="fechaInicioCurso"
-            [max]="maxFecha"
+            [min]="minFecha"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -71,6 +72,7 @@
               placeholder="Fecha de fin de curso"
               [matDatepicker]="picker2"
               formControlName="fechaFinCurso"
+              [max]="maxFecha"
             />
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle

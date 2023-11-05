@@ -19,7 +19,7 @@
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Valoración final</mat-label>
-                <input matInput placeholder="Valoración final" formControlName="valoracionFinal" />
+                <input matInput placeholder="Valoración final" formControlName="valoracionFinal" type="number" min="0" max="10"/>
 
                 <mat-error *ngIf="obtenerControlCampo('valoracionFinal')?.errors?.['required']">Obligatorio
                 </mat-error>
@@ -28,7 +28,7 @@
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Comentario</mat-label>
-                <input matInput placeholder="Comentario" formControlName="comentario" />
+                <input matInput placeholder="Comentario" formControlName="comentario" maxlength="25"/>
 
                 <mat-error *ngIf="obtenerControlCampo('comentario')?.errors?.['required']">Obligatorio
                 </mat-error>
