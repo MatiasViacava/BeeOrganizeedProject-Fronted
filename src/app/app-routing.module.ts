@@ -27,6 +27,12 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { EncuestaCreaeditaComponent } from './components/encuesta/encuesta-creaedita/encuesta-creaedita.component';
 import { EncuestaListarComponent } from './components/encuesta/encuesta-listar/encuesta-listar.component';
+import { HorarioComponent } from './components/horario/horario.component';
+import { HorarioListarComponent } from './components/horario/horario-listar/horario-listar.component';
+import { HorarioCreaeditaComponent } from './components/horario/horario-creaedita/horario-creaedita.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
+import { ActividadCreaeditaComponent } from './components/actividad/actividad-creaedita/actividad-creaedita.component';
+import { ActividadListarComponent } from './components/actividad/actividad-listar/actividad-listar.component';
 
 const routes: Routes = [
   {
@@ -96,6 +102,20 @@ const routes: Routes = [
       { path: 'nuevo', component: EncuestaCreaeditaComponent },
       { path: 'listar', component: EncuestaListarComponent },
       { path: 'edicion/:idEncuesta', component: EncuestaCreaeditaComponent}
+    ]
+  },
+  {
+    path: 'horario', component: HorarioComponent, children: [
+      { path: 'nuevo', component: HorarioCreaeditaComponent },
+      { path: 'listar', component: HorarioListarComponent },
+      { path: 'edicion/:idHorario', component: HorarioCreaeditaComponent}
+    ]
+  },
+  {
+    path: 'actividad', component: ActividadComponent, children: [
+      { path: 'nuevo', component: ActividadCreaeditaComponent },
+      { path: 'listar', component: ActividadListarComponent },
+      { path: 'edicion/:idActividad', component: ActividadCreaeditaComponent}
     ]
   },
 ];

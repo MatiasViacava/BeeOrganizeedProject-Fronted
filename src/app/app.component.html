@@ -9,6 +9,8 @@
   <button mat-button [matMenuTriggerFor]="menuPregunta">Pregunta</button>
   <button mat-button [matMenuTriggerFor]="menuRespuesta">Respuesta</button>
   <button mat-button [matMenuTriggerFor]="menuEncuesta">Encuesta</button>
+  <button mat-button [matMenuTriggerFor]="menuHorario">Horario</button>
+  <button mat-button [matMenuTriggerFor]="menuActividad">Actividad</button>
 
 </mat-toolbar>
 
@@ -98,6 +100,26 @@
     Registrar</button>
  
   <button mat-menu-item routerLink="/encuestas/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuHorario="matMenu">
+  <button mat-menu-item routerLink="/horario/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/horario/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuActividad="matMenu">
+  <button mat-menu-item routerLink="/actividad/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/actividad/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>
