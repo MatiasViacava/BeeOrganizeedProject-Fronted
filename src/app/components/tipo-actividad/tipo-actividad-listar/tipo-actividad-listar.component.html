@@ -17,7 +17,7 @@
     <div class="card-container" *ngFor="let element of dataSource.data">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Tipo Actividad</mat-card-title>
+          <mat-card-title>{{element.nombreTipoActividad}}</mat-card-title>
           <mat-card-subtitle>Código: {{element.iDTipoActividad}}</mat-card-subtitle>
           <mat-card-subtitle>Tipo Actividad: {{element.nombreTipoActividad}}</mat-card-subtitle>
         </mat-card-header>

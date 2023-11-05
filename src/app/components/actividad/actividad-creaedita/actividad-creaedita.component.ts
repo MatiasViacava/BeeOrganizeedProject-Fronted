@@ -20,8 +20,10 @@ export class ActividadCreaeditaComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   actividad: Actividad = new Actividad();
   mensaje: string = '';
-  maxFecha: Date = moment().add(-1, 'days').toDate();
+  minFecha: Date = moment().add('days').toDate();
   cierreCiclo = new FormControl(new Date());
+  tipos: { value: string, viewValue: string }[] = [{ value: 'Completo', viewValue: 'Completo' },
+  { value: 'Incompleto', viewValue: 'Incompleto' },{ value: 'Cancelado', viewValue: 'Cancelado' }]
 
   //ACTUALIZAR
   idActividad: number = 0;

@@ -13,12 +13,12 @@
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
             <mat-form-field class="example-full-width" *ngIf="edicion" >
-                <mat-label>idPregunta</mat-label>
+                <mat-label>ID</mat-label>
                 <input matInput placeholder="idPregunta" formControlName="idPregunta" readonly/>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <mat-label>enunciado</mat-label>
+                <mat-label>Enunciado</mat-label>
                 <input matInput placeholder="enunciado" formControlName="enunciado" maxlength="35"/>
 
                 <mat-error *ngIf="obtenerControlCampo('enunciado')?.errors?.['required']">El enunciado
@@ -28,7 +28,7 @@
 
             <br>
             <mat-form-field>
-                <mat-label>Nombre de la encuesta</mat-label>
+                <mat-label>ID de la encuesta</mat-label>
                 <mat-select formControlName="encuesta_id">
                     <mat-option *ngFor="let d of listaEncuesta" [value]="d.idEncuesta"> <!--Se modifico la "t"-->
                         {{d.idEncuesta}}

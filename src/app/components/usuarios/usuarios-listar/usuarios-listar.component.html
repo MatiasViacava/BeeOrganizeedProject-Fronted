@@ -21,10 +21,10 @@
             <th mat-header-cell *matHeaderCellDef> Username </th>
             <td mat-cell *matCellDef="let element"> {{element.username}}</td>
           </ng-container>
-                    <!-- Weight Column -->
+                    <!-- OCULTO -->
             <ng-container matColumnDef="password">
-              <th mat-header-cell *matHeaderCellDef> Password </th>
-              <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+              <th mat-header-cell *matHeaderCellDef hidden="true"> Password </th>
+              <td mat-cell *matCellDef="let element" hidden="true"> {{element.password}} </td>
             </ng-container>
               <!-- Weight Column -->
               <ng-container matColumnDef="enabled">
@@ -66,7 +66,7 @@
                     (click)="eliminar(element.id)"
                   >
                     <mat-icon>delete</mat-icon>
-                    Eliminar
+                    
                   </button>
                 </td>
                 <ng-container matColumnDef="actualizar">
@@ -78,7 +78,7 @@
                       [routerLink]="['/usuarios/edicion', element.id]"
                     >
                       <mat-icon>update</mat-icon>
-                      Actualizar
+                       
                     </button>
                   </td>
                    </ng-container

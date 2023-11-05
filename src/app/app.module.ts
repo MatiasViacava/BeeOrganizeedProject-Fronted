@@ -55,6 +55,7 @@ import { ActividadCreaeditaComponent } from './components/actividad/actividad-cr
 import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TipoActividadConfirmarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-confirmar/tipo-actividad-confirmar.component';
+import { CursosConfirmarComponent } from './components/cursos/cursos-listar/cursos-confirmar/cursos-confirmar.component';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { TipoActividadConfirmarComponent } from './components/tipo-actividad/tip
     ActividadComponent,
     ActividadListarComponent,
     ActividadCreaeditaComponent,
-    TipoActividadConfirmarComponent
+    TipoActividadConfirmarComponent,
+    CursosConfirmarComponent
   ],
   imports: [
     BrowserModule,

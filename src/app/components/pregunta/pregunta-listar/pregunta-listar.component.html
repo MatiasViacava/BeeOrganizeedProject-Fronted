@@ -22,12 +22,12 @@
       </ng-container>
     
       <ng-container matColumnDef="enunciado">
-        <th mat-header-cell *matHeaderCellDef> enunciado </th>
+        <th mat-header-cell *matHeaderCellDef> Enunciado </th>
         <td mat-cell *matCellDef="let element"> {{element.enunciado}} </td>
       </ng-container>
 
       <ng-container matColumnDef="encuesta_id">
-        <th mat-header-cell *matHeaderCellDef> encuesta_id </th>
+        <th mat-header-cell *matHeaderCellDef> ID de Encuesta </th>
         <td mat-cell *matCellDef="let element"> {{element.encuesta_id.idEncuesta}} </td>
       </ng-container>
 
@@ -39,18 +39,18 @@
             mat-raised-button
             color="primary"
             [routerLink]="['/pregunta/edicion', element.idPregunta]"
-            ><mat-icon>update</mat-icon> Actualizar
+            ><mat-icon>update</mat-icon>
           </button>
       </td></ng-container>
 
       <ng-container matColumnDef="eliminar">
-        <th mat-header-cell *matHeaderCellDef>eliminar</th>
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button
             mat-raised-button
             color="warn"
             (click)="eliminar(element.idPregunta)"
-            ><mat-icon>delete</mat-icon> Eliminar
+            ><mat-icon>delete</mat-icon>
           </button>
       </td></ng-container>
     
@@ -62,7 +62,7 @@
     <button mat-button color="primary" routerLink="/pregunta/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
 
     <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
+    [pageSizeOptions]="[10, 50, 100]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
   

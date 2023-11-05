@@ -17,12 +17,12 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="idActividad">
-        <th mat-header-cell *matHeaderCellDef> idActividad </th>
+        <th mat-header-cell *matHeaderCellDef> Código </th>
         <td mat-cell *matCellDef="let element"> {{element.idActividad}} </td>
       </ng-container>
     
       <ng-container matColumnDef="nombreActividad">
-        <th mat-header-cell *matHeaderCellDef> Nombre actividad </th>
+        <th mat-header-cell *matHeaderCellDef> Actividad </th>
         <td mat-cell *matCellDef="let element"> {{element.nombreActividad}} </td>
       </ng-container>
 
@@ -47,17 +47,17 @@
       </ng-container>
 
       <ng-container matColumnDef="horario">
-        <th mat-header-cell *matHeaderCellDef> Id Horario </th>
+        <th mat-header-cell *matHeaderCellDef> Id de Horario </th>
         <td mat-cell *matCellDef="let element"> {{element.horario.idHorario}} </td>
       </ng-container>
 
       <ng-container matColumnDef="tipoActividad">
-        <th mat-header-cell *matHeaderCellDef> Tipo Actividad </th>
+        <th mat-header-cell *matHeaderCellDef> Tipo de Actividad </th>
         <td mat-cell *matCellDef="let element"> {{element.tipoActividad.nombreTipoActividad}} </td>
       </ng-container>
 
       <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef> Nombre Curso </th>
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
         <td mat-cell *matCellDef="let element"> {{element.curso.nombreCurso}} </td>
       </ng-container>
 
@@ -71,7 +71,7 @@
             mat-raised-button
             color="primary"
             [routerLink]="['/actividad/edicion', element.idActividad]"
-            ><mat-icon>update</mat-icon> Actualizar
+            ><mat-icon>update</mat-icon>
           </button>
       </td></ng-container>
 
@@ -82,7 +82,7 @@
             mat-raised-button
             color="warn"
             (click)="eliminar(element.idActividad)"
-            ><mat-icon>delete</mat-icon> Eliminar
+            ><mat-icon>delete</mat-icon>
           </button>
       </td></ng-container>
     
