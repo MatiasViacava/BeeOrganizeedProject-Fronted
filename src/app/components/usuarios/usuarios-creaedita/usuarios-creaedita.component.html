@@ -20,7 +20,6 @@
           </mat-error>
         </mat-form-field>
         <br />
-        <br />
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
           <input matInput placeholder="Password" formControlName="password" type="password"/>
@@ -30,19 +29,7 @@
             Complete el campo
           </mat-error>
         </mat-form-field>
-        <br />
-        <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>Enabled</mat-label>
-          <mat-select formControlName="enabled">
-            <mat-option *ngFor="let p of enabled" [value]="p.value">
-              {{p.viewValue}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="obtenerControlCampo('enabled')?.errors?.['required']">
-            El tipo es obligatorio.
-          </mat-error>
-        </mat-form-field>
+        
         <br />
         <mat-form-field class="example-full-width">
             <mat-label>Nombres</mat-label>

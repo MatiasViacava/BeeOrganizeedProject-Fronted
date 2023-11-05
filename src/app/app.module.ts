@@ -44,6 +44,12 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { EncuestaCreaeditaComponent } from './components/encuesta/encuesta-creaedita/encuesta-creaedita.component';
 import { EncuestaListarComponent } from './components/encuesta/encuesta-listar/encuesta-listar.component';
+import { HorarioComponent } from './components/horario/horario.component';
+import { HorarioListarComponent } from './components/horario/horario-listar/horario-listar.component';
+import { HorarioCreaeditaComponent } from './components/horario/horario-creaedita/horario-creaedita.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
+import { ActividadListarComponent } from './components/actividad/actividad-listar/actividad-listar.component';
+import { ActividadCreaeditaComponent } from './components/actividad/actividad-creaedita/actividad-creaedita.component';
 
 
 
@@ -76,7 +82,13 @@ import { EncuestaListarComponent } from './components/encuesta/encuesta-listar/e
     TipousuarioListarComponent,
     EncuestaComponent,
     EncuestaCreaeditaComponent,
-    EncuestaListarComponent
+    EncuestaListarComponent,
+    HorarioComponent,
+    HorarioListarComponent,
+    HorarioCreaeditaComponent,
+    ActividadComponent,
+    ActividadListarComponent,
+    ActividadCreaeditaComponent
   ],
   imports: [
     BrowserModule,
