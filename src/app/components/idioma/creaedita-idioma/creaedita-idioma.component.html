@@ -12,13 +12,13 @@
         
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idIdioma</mat-label>
-          <input matInput placeholder="idIdioma" formControlName="idIdioma" />
+          <input matInput placeholder="idIdioma" formControlName="idIdioma" readonly="true"/>
         </mat-form-field>
           
         <mat-form-field class="example-full-width">
           <mat-label>Nombre idioma</mat-label>
-          <input matInput placeholder="nombreIdioma" formControlName="nombreIdioma" />
-          
+          <input matInput placeholder="nombreIdioma" formControlName="nombreIdioma" maxlength="15" pattern="^[a-z~A-ZáéíóúÁÉÍÓÚñÑ]*$"/>
+        
           <mat-error
               *ngIf="obtenerControlCampo('nombreIdioma')?.errors?.['required']"
             >El nombre del idioma es obligatorio.

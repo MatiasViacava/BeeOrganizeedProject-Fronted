@@ -19,7 +19,7 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>enunciado</mat-label>
-                <input matInput placeholder="enunciado" formControlName="enunciado" />
+                <input matInput placeholder="enunciado" formControlName="enunciado" maxlength="35"/>
 
                 <mat-error *ngIf="obtenerControlCampo('enunciado')?.errors?.['required']">El enunciado
                     es obligatorio.

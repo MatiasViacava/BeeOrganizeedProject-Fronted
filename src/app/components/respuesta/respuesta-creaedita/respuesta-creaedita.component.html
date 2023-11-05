@@ -9,7 +9,7 @@
 
 <body>
     <div class="container" style="text-align: center">
-        <h2>Registro de PREGUNTAS</h2>
+        <h2>Registro de RESPUESTAS</h2>
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
             <mat-form-field class="example-full-width" *ngIf="edicion" >
@@ -19,7 +19,7 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>contenido</mat-label>
-                <input matInput placeholder="contenido" formControlName="contenido" />
+                <input matInput placeholder="contenido" formControlName="contenido" maxlength="20" />
 
                 <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">El contenido de la respuesta
                     es obligatorio.
@@ -31,7 +31,7 @@
                 <mat-label>Id de la pregunta</mat-label>
                 <mat-select formControlName="pregunta_Id">
                     <mat-option *ngFor="let d of listaPregunta" [value]="d.idPregunta"> <!--Se modifico la "t"-->
-                        {{d.idPregunta}}
+                        {{d.enunciado}}
                     </mat-option>
 
                     <mat-error *ngIf="obtenerControlCampo('pregunta_Id')?.errors?.['required']"> 

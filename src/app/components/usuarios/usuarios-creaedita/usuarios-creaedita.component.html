@@ -12,7 +12,7 @@
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         <mat-form-field class="example-full-width">
           <mat-label>Usuario</mat-label>
-          <input matInput placeholder="Usuario" formControlName="username" />
+          <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
           <mat-error
             *ngIf="obtenerControlCampo('username')?.errors?.['required']"
           >
@@ -22,7 +22,7 @@
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" formControlName="password" type="password"/>
+          <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
           <mat-error
             *ngIf="obtenerControlCampo('password')?.errors?.['required']"
           >
@@ -33,7 +33,7 @@
         <br />
         <mat-form-field class="example-full-width">
             <mat-label>Nombres</mat-label>
-            <input matInput placeholder="Nombres" formControlName="nombres" />
+            <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25"/>
             <mat-error
               *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
             >
@@ -43,7 +43,7 @@
           <br />
           <mat-form-field class="example-full-width">
             <mat-label>Apellidos</mat-label>
-            <input matInput placeholder="Apellidos" formControlName="apellidos" />
+            <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" />
             <mat-error
               *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
             >
@@ -74,7 +74,7 @@
         <br />
         <mat-form-field class="example-full-width">
             <mat-label>Universidad</mat-label>
-            <input matInput placeholder="Universidad" formControlName="universidad"/>
+            <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25"/>
             <mat-error
               *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
             >
@@ -95,7 +95,7 @@
         <button mat-button color="primary">
           Registrar
         </button>
-        <button mat-button color="warn" routerLink="/arevalo">Cancelar</button>
+        <button mat-button color="warn" routerLink="/usuarios/listar">Cancelar</button>
         <br />
       </form>
     </div>
