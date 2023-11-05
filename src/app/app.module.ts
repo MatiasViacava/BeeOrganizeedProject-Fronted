@@ -51,6 +51,10 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 import { ActividadListarComponent } from './components/actividad/actividad-listar/actividad-listar.component';
 import { ActividadCreaeditaComponent } from './components/actividad/actividad-creaedita/actividad-creaedita.component';
 
+//NUEVO
+import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TipoActividadConfirmarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-confirmar/tipo-actividad-confirmar.component';
 
 
 @NgModule({
@@ -88,7 +92,8 @@ import { ActividadCreaeditaComponent } from './components/actividad/actividad-cr
     HorarioCreaeditaComponent,
     ActividadComponent,
     ActividadListarComponent,
-    ActividadCreaeditaComponent
+    ActividadCreaeditaComponent,
+    TipoActividadConfirmarComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +114,9 @@ import { ActividadCreaeditaComponent } from './components/actividad/actividad-cr
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
+
+    MatCardModule,
+    MatDialogModule,
     
   ],
   providers: [],
