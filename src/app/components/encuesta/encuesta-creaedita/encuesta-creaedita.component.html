@@ -20,7 +20,7 @@
             <mat-form-field class="example-full-width">
                 <mat-label>Valoración final</mat-label>
                 <input matInput placeholder="Valoración final" formControlName="valoracionFinal" type="number" min="0" max="10"/>
-
+                <mat-hint>0 a 10</mat-hint>
                 <mat-error *ngIf="obtenerControlCampo('valoracionFinal')?.errors?.['required']">Obligatorio
                 </mat-error>
             </mat-form-field>
@@ -36,10 +36,10 @@
 
             <br>
             <mat-form-field>
-                <mat-label>Id de usuario</mat-label>
+                <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuario">
                     <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
-                        {{u.id}}
+                        {{u.username}}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">Obligatorio

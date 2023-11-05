@@ -9,7 +9,7 @@ body {
 .container {
   width: 64%; /* Ajusta este porcentaje según tus necesidades */
   height: 560px;
-  background-color: rgba(21, 79, 204, 0.897); /*COLOR DE LA TABLA*/
+  background-color: #EBD481; /*COLOR DE LA TABLA*/
   border: 1px solid #ccc; /*Color del borde de la TABLA*/
   padding: 30px;  
   

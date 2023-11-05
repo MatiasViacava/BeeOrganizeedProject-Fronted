@@ -37,17 +37,17 @@
             <mat-datepicker #picker></mat-datepicker>
                 <mat-error
                 *ngIf="obtenerControlCampo('cierreCiclo')?.errors?.['required']"
-                    >La fecha de cierre del ciclo es obligatoria.
+                    >Obligatorio*
                 </mat-error>
             </mat-form-field>
 
             <!--Usuarios-->
             <br>
             <mat-form-field>
-                <mat-label>Nombre del usuario</mat-label>
+                <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuario">
                   <mat-option *ngFor="let d of listaUsuarios" [value]="d.id">
-                    {{d.nombres}}
+                    {{d.username}}
                   </mat-option>
                   
                   <mat-error
@@ -58,7 +58,7 @@
             </mat-form-field>
 
             <br>
-            <button mat-button color="primary"> <mat-icon color="primary">library_add</mat-icon> Registrar</button>
+            <button mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> Registrar</button>
             <button mat-raised-button color="warn" routerLink="/horario/listar"> <mat-icon>close</mat-icon> Cancelar </button>
         </form>
     </div>

@@ -17,14 +17,14 @@
         <form [formGroup]="form" (submit)="registrar()" class="example-form" >
 
             <mat-form-field class="example-full-width" *ngIf="edicion" >
-                <mat-label>idActividad</mat-label>
-                <input matInput placeholder="idActividad" formControlName="idActividad" readonly/>
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" formControlName="idActividad" readonly/>
             </mat-form-field>
 
             <br>
             <mat-form-field class="example-full-width">
-                <mat-label>Nombre acitividad</mat-label>
-                <input matInput placeholder="nombreActividad" formControlName="nombreActividad" />
+                <mat-label>Nombre de actividad</mat-label>
+                <input matInput placeholder="Nombre de actividad" formControlName="nombreActividad" />
                 
                 <mat-error
                   *ngIf="obtenerControlCampo('nombreActividad')?.errors?.['required']"
@@ -34,8 +34,8 @@
 
             <br>
             <mat-form-field class="example-full-width">
-                <mat-label>Descripcion</mat-label>
-                <input matInput placeholder="descripcion" formControlName="descripcion" />
+                <mat-label>Descripción</mat-label>
+                <input matInput placeholder="Descripción" formControlName="descripcion" />
                 
                 <mat-error
                   *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
@@ -46,8 +46,11 @@
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Estado</mat-label>
-                <input matInput placeholder="estado" formControlName="estado" />
-                
+                <mat-select formControlName="estado">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
                 <mat-error
                   *ngIf="obtenerControlCampo('estado')?.errors?.['required']"
                   >El estado es obligatorio.
@@ -56,9 +59,9 @@
 
             <br>
             <mat-form-field class="example-full-width">
-                <mat-label>Calificacion</mat-label>
-                <input matInput placeholder="calificacion" formControlName="calificacion" />
-                
+                <mat-label>Calificación</mat-label>
+                <input matInput placeholder="Calificación" formControlName="calificacion"  type="number" min="0.0" max="20.0"/>
+                <mat-hint>0.0 al 20.0</mat-hint>
                 <mat-error
                   *ngIf="obtenerControlCampo('calificacion')?.errors?.['required']"
                   >La calificación es obligatorio.
@@ -72,8 +75,9 @@
                 placeholder="Ingrese la fecha"
                 [matDatepicker]="picker"
                 formControlName="fecha"
-                [max]="maxFecha"
+                [min]="minFecha"
             />
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker"
@@ -88,33 +92,31 @@
             <!--HORARIO-->
             <br>
             <mat-form-field>
-                <mat-label>Nombre del usuario</mat-label>
+                <mat-label>ID de Horario</mat-label>
                 <mat-select formControlName="horario">
                   <mat-option *ngFor="let d of listaHorarios" [value]="d.idHorario">
                     {{d.idHorario}}
                   </mat-option>
-                  
-                  <mat-error
-                    *ngIf="obtenerControlCampo('horario')?.errors?.['required']"
-                    > El horario es obligatorio.
-                  </mat-error>
                 </mat-select>
+                <mat-error
+                *ngIf="obtenerControlCampo('horario')?.errors?.['required']"
+                > El horario es obligatorio.
+              </mat-error>
             </mat-form-field>
 
             <!--Tipo actividad-->
             <br>
             <mat-form-field>
-                <mat-label>Nombre del tipo actividad</mat-label>
+                <mat-label>Tipo de actividad</mat-label>
                 <mat-select formControlName="tipoActividad">
                   <mat-option *ngFor="let d of listaTipoActividades" [value]="d.iDTipoActividad">
                     {{d.nombreTipoActividad}}
                   </mat-option>
-                  
-                  <mat-error
-                    *ngIf="obtenerControlCampo('tipoActividad')?.errors?.['required']"
-                    > El nombre del tipo actividad es obligatorio.
-                  </mat-error>
                 </mat-select>
+                <mat-error
+                *ngIf="obtenerControlCampo('tipoActividad')?.errors?.['required']"
+                > El nombre del tipo actividad es obligatorio.
+              </mat-error>
             </mat-form-field>
 
             <!--Curso-->
@@ -125,16 +127,15 @@
                   <mat-option *ngFor="let d of listaCurso" [value]="d.idCurso">
                     {{d.nombreCurso}}
                   </mat-option>
-                  
-                  <mat-error
-                    *ngIf="obtenerControlCampo('curso')?.errors?.['required']"
-                    > El nombre del curso es obligatorio.
-                  </mat-error>
                 </mat-select>
+                <mat-error
+                *ngIf="obtenerControlCampo('curso')?.errors?.['required']"
+                > El nombre del curso es obligatorio.
+              </mat-error>
             </mat-form-field>
 
             <br>
-            <button mat-button color="primary"> <mat-icon color="primary">library_add</mat-icon> Registrar</button>
+            <button mat-raised-button color="primary"> <mat-icon color="primary">library_add</mat-icon> Registrar</button>
             <button mat-raised-button color="warn" routerLink="/actividad/listar"> <mat-icon>close</mat-icon> Cancelar </button>
         </form>
     </div>
