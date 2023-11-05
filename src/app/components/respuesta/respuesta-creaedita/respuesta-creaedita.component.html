@@ -29,7 +29,7 @@
             <br>
             <mat-form-field>
                 <mat-label>Id de la pregunta</mat-label>
-                <mat-select formControlName="pregunta_Id" [(value)]="idPreguntaSeleccionada" required>
+                <mat-select formControlName="pregunta_Id">
                     <mat-option *ngFor="let d of listaPregunta" [value]="d.idPregunta"> <!--Se modifico la "t"-->
                         {{d.idPregunta}}
                     </mat-option>

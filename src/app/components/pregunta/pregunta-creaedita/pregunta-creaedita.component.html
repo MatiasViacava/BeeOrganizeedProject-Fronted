@@ -29,7 +29,7 @@
             <br>
             <mat-form-field>
                 <mat-label>Nombre de la encuesta</mat-label>
-                <mat-select formControlName="encuesta_id" [(value)]="idEncuestaSeleccionada">
+                <mat-select formControlName="encuesta_id">
                     <mat-option *ngFor="let d of listaEncuesta" [value]="d.idEncuesta"> <!--Se modifico la "t"-->
                         {{d.idEncuesta}}
                     </mat-option>
