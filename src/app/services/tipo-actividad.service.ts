@@ -13,6 +13,8 @@ export class TipoActividadService {
   private url = `${base_url}/tiposactividades`;
   private listaCambio = new Subject<TipoActividad[]>();
   constructor(private http: HttpClient) {}
+  //ELIMINAR
+  private confirmarEliminacion = new Subject<Boolean>()
 
   list() {
     return this.http.get<TipoActividad[]>(this.url);
@@ -34,5 +36,13 @@ export class TipoActividadService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  //ELIMINAR
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:boolean){
+    this.confirmarEliminacion.next(estado);
   }
 }
