@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <div style=" text-align: center;"> 
+        <h2>REGISTRAR HORARIO</h2> 
+    </div>
+
+    <div class="container" style=" text-align: center;">
+        <form [formGroup]="form" (submit)="registrar()" class="example-form" >
+
+            <mat-form-field class="example-full-width" *ngIf="edicion" >
+                <mat-label>idHorario</mat-label>
+                <input matInput placeholder="idIngredient" formControlName="idHorario" readonly/>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field appearance="fill" class="example-full-width">
+            <input
+                matInput
+                placeholder="Ingrese la fecha"
+                [matDatepicker]="picker"
+                formControlName="cierreCiclo"
+                [max]="maxFecha"
+            />
+            <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                *ngIf="obtenerControlCampo('cierreCiclo')?.errors?.['required']"
+                    >Obligatorio*
+                </mat-error>
+            </mat-form-field>
+
+            <!--Usuarios-->
+            <br>
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <mat-select formControlName="usuario">
+                  <mat-option *ngFor="let d of listaUsuarios" [value]="d.id">
+                    {{d.username}}
+                  </mat-option>
+                  
+                  <mat-error
+                    *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
+                    > El nombre es obligatorio.
+                  </mat-error>
+                </mat-select>
+            </mat-form-field>
+
+            <br>
+            <button mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> Registrar</button>
+            <button mat-raised-button color="warn" routerLink="/horario/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+        </form>
+    </div>
+</body>
+</html>

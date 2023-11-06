@@ -15,6 +15,8 @@ export class CursosService {
   private url = `${base_url}/cursos`;
   private listaCambio = new Subject<Curso[]>();
   constructor(private http: HttpClient) {}
+  private confirmarEliminacion = new Subject<Boolean>()
+
 
   list() {
     return this.http.get<Curso[]>(this.url);
@@ -36,5 +38,11 @@ export class CursosService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:boolean){
+    this.confirmarEliminacion.next(estado);
   }
 }

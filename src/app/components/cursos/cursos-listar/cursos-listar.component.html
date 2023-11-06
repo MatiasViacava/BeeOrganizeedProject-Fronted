@@ -11,72 +11,42 @@
   <div style=" text-align: center;"> 
     <h2>LISTA DE CURSOS</h2> 
   </div>
-
+  
   <div class="container">
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="card-container" *ngFor="let element of dataSource.data">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{element.nombreCurso}}</mat-card-title>
+          <mat-card-subtitle>Código: {{element.idCurso}}</mat-card-subtitle>
+          <mat-card-subtitle>Inicio de curso: {{element.fechaInicioCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+          <mat-card-subtitle>Fin de curso: {{element.fechaFinCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+        </mat-card-header>
 
-      <ng-container matColumnDef="codigo">
-        <th mat-header-cell *matHeaderCellDef> Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreCurso}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="descripcion">
-        <th mat-header-cell *matHeaderCellDef> Descripción </th>
-        <td mat-cell *matCellDef="let element"> {{element.descripcionCurso}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="fechainicio">
-        <th mat-header-cell *matHeaderCellDef> Inicio de curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaInicioCurso | date:"dd/MM/yyyy"}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="fechafin">
-        <th mat-header-cell *matHeaderCellDef> Fin de curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaFinCurso | date:"dd/MM/yyyy"}} </td>
-      </ng-container>
-
-      <!-- ACCIONES -->
-      <ng-container matColumnDef="actualizar">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-        <td mat-cell *matCellDef="let element">
-          <button
+        <mat-card-actions class="card-actions">
+          <button class="card-actions-button"
             mat-raised-button
             color="primary"
-            [routerLink]="['/cursos/edicion', element.iDTipoActividad]"
-            ><mat-icon>update</mat-icon> Actualizar
+            [routerLink]="['/cursos/edicion', element.idCurso]"
+            
+          > <mat-icon>create</mat-icon>
           </button>
-      </td></ng-container>
-
-      <ng-container matColumnDef="eliminar">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td mat-cell *matCellDef="let element">
-          <button
+ 
+          <button class="card-actions-button"
             mat-raised-button
             color="warn"
-            (click)="eliminar(element.idCurso)"
-            ><mat-icon>delete</mat-icon> Eliminar
+            (click)="confirmar(element.idCurso)"
+          > <mat-icon>delete_forever</mat-icon>
           </button>
-      </td></ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        </mat-card-actions>
+        
+      </mat-card>
+    </div> 
 
     <br>
     <button mat-button color="primary" routerLink="/cursos/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
-
-    <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
-    showFirstLastButtons aria-label="Select page">
-  </mat-paginator>
-  
-</div>
+    
+  </div> 
 </body>
 </html>
 

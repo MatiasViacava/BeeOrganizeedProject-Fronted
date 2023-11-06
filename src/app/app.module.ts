@@ -38,10 +38,30 @@ import { RespuestaListarComponent } from './components/respuesta/respuesta-lista
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
 import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
+
 import { RecursoAcademicoComponent } from './components/recurso-academico/recurso-academico.component';
 import { RecursoAcademicoCreaeditaComponent } from './components/recurso-academico/recurso-academico-creaedita/recurso-academico-creaedita.component';
 import { RecursoAcademicoListarComponent } from './components/recurso-academico/recurso-academico-listar/recurso-academico-listar.component';
 
+import { TipoUsuarioComponent } from './components/tipo-usuario/tipo-usuario.component';
+import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousuario-creaedita/tipousuario-creaedita.component';
+import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuario-listar/tipousuario-listar.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { EncuestaCreaeditaComponent } from './components/encuesta/encuesta-creaedita/encuesta-creaedita.component';
+import { EncuestaListarComponent } from './components/encuesta/encuesta-listar/encuesta-listar.component';
+import { HorarioComponent } from './components/horario/horario.component';
+import { HorarioListarComponent } from './components/horario/horario-listar/horario-listar.component';
+import { HorarioCreaeditaComponent } from './components/horario/horario-creaedita/horario-creaedita.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
+import { ActividadListarComponent } from './components/actividad/actividad-listar/actividad-listar.component';
+import { ActividadCreaeditaComponent } from './components/actividad/actividad-creaedita/actividad-creaedita.component';
+
+
+//NUEVO
+import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TipoActividadConfirmarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-confirmar/tipo-actividad-confirmar.component';
+import { CursosConfirmarComponent } from './components/cursos/cursos-listar/cursos-confirmar/cursos-confirmar.component';
 
 
 @NgModule({
@@ -70,7 +90,21 @@ import { RecursoAcademicoListarComponent } from './components/recurso-academico/
     TipoRecursoListarComponent,
     RecursoAcademicoComponent,
     RecursoAcademicoCreaeditaComponent,
-    RecursoAcademicoListarComponent
+    RecursoAcademicoListarComponent,
+    TipoUsuarioComponent,
+    TipousuarioCreaeditaComponent,
+    TipousuarioListarComponent,
+    EncuestaComponent,
+    EncuestaCreaeditaComponent,
+    EncuestaListarComponent,
+    HorarioComponent,
+    HorarioListarComponent,
+    HorarioCreaeditaComponent,
+    ActividadComponent,
+    ActividadListarComponent,
+    ActividadCreaeditaComponent,
+    TipoActividadConfirmarComponent,
+    CursosConfirmarComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +125,9 @@ import { RecursoAcademicoListarComponent } from './components/recurso-academico/
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
+
+    MatCardModule,
+    MatDialogModule,
     
   ],
   providers: [],

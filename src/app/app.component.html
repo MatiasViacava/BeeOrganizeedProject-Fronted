@@ -1,13 +1,20 @@
 <mat-toolbar color="primary">
   <mat-icon>menu</mat-icon>
   <button mat-button [matMenuTriggerFor]="menuPostres">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuTipoUsuario">Tipo Usuario</button>
   <button mat-button [matMenuTriggerFor]="menuTipoActividad">Tipo Actividad</button>
   <button mat-button [matMenuTriggerFor]="menuTipoRecurso">Tipo Recurso</button>
   <button mat-button [matMenuTriggerFor]="menuCursos">Cursos</button>
   <button mat-button [matMenuTriggerFor]="menuIdioma">Idioma</button>
   <button mat-button [matMenuTriggerFor]="menuPregunta">Pregunta</button>
   <button mat-button [matMenuTriggerFor]="menuRespuesta">Respuesta</button>
+
   <button mat-button [matMenuTriggerFor]="menuRecursoAcademico">RecursoAcademico</button>
+
+  <button mat-button [matMenuTriggerFor]="menuEncuesta">Encuesta</button>
+  <button mat-button [matMenuTriggerFor]="menuHorario">Horario</button>
+  <button mat-button [matMenuTriggerFor]="menuActividad">Actividad</button>
+
 </mat-toolbar>
 
 <mat-menu #menuPostres="matMenu">
@@ -16,6 +23,16 @@
     Registrar</button>
 
   <button mat-menu-item routerLink="/usuarios/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoUsuario="matMenu">
+  <button mat-menu-item routerLink="/tipousuario/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/tipousuario/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>
@@ -83,9 +100,41 @@
   <button mat-menu-item routerLink="/recursoacademico/nuevo">
     <mat-icon>dns</mat-icon>
     Registrar</button>
-
   <button mat-menu-item routerLink="/recursoacademico/listar">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>
 <router-outlet></router-outlet>
+
+<mat-menu #menuEncuesta="matMenu">
+  <button mat-menu-item routerLink="/encuestas/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/encuestas/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuHorario="matMenu">
+  <button mat-menu-item routerLink="/horario/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/horario/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuActividad="matMenu">
+  <button mat-menu-item routerLink="/actividad/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+ 
+  <button mat-menu-item routerLink="/actividad/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<router-outlet></router-outlet>
+

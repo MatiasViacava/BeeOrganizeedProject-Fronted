@@ -1,57 +1,42 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /*Para que tenga color en toda la página*/
-  }
-  .menu {
-    background-color: grey; /*CHISDE: Color del menu*/
-    padding: 10px;
-    text-align: justify;
-  }
-  .menu a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-  .center {
-    text-align: center;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
-  }
-  
-  .container {
-    width: 50%; /* Ajusta este porcentaje según tus necesidades */
-    background-color: #fff; /*COLOR DE LA TABLA*/
-    border: 1px solid #ccc; /*Color del borde de la TABLA*/
-    padding: 30px;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /*Para que tenga color en toda la página*/
+}
 
-    
-  }
+.container {
+  width: 64%; /* Ajusta este porcentaje según tus necesidades */
+  height: 560px;
+  background-color: #EBD481; /*COLOR DE LA TABLA*/
+  border: 1px solid #ccc; /*Color del borde de la TABLA*/
+  padding: 30px;  
   
-  
-  .custom-table {
-    width: 100%;
-    display: flex; /* Habilita el diseño Flexbox para las filas */
-    flex-direction: column; /* Las filas se ajustarán verticalmente */
-   }
-  
-  th {
-    background-color: #cf1010;
-    color: rgb(75, 72, 72);
-    text-align: center; /*TITULO de las columnas*/
-    
-  }
-  
-  td {
-    background-color: #f2f2f2; /*Contenido de la tabla*/
-    color: #333;
-    text-align: center; /*Contenido de la tabla*/
-    
- }
- 
+  /* Ajusta el diseño de la cuadrícula */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.card {
+  width: 280px; /* Ancho de los cards */
+  margin: 10px; /* Margen de los cards */
+}
+
+.card-actions {
+  margin: 20px; /* Margen de las acciones */
+  display: flex; /* Habilita el diseño Flexbox para las acciones */
+  justify-content: center; /* Alinea las acciones al centro */
+  align-items: center; /* Alinea las acciones verticalmente al centro */
+}
+
+.card-container {
+  display: flex; /* Habilita el diseño Flexbox para los cards */
+  margin: 20px; /* Margen de los cards */
+}
+
+.card-actions-button {
+  margin-right: 20px; /* Ajusta el espacio entre los botones */
+}

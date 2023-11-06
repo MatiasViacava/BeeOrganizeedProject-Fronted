@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center">
+        <h2>Registro de Tipos Usuario</h2>
+        <form [formGroup]="form" (submit)="registrar()" class="example-form">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion" >
+                <mat-label>idTipoUsuario</mat-label>
+                <input matInput placeholder="idTipoUsuario" formControlName="idTipoUsuario" readonly/>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre del Usuario</mat-label>
+                <input matInput placeholder="contenido" formControlName="nombreTipoUsuario" />
+
+                <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El contenido de la respuesta
+                    es obligatorio.
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field>
+                <mat-label>Id del Usuario</mat-label>
+                <mat-select formControlName="usuarios">
+                    <mat-option *ngFor="let d of listaUsuarios" [value]="d.id"> <!--Se modifico la "t"-->
+                        {{d.username}}
+                    </mat-option>
+
+                    <mat-error *ngIf="obtenerControlCampo('usuarios')?.errors?.['required']"> 
+                    </mat-error>
+                </mat-select>
+            </mat-form-field>
+            <br/>
+
+
+            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
+            <button mat-raised-button color="warn" routerLink="/tipousuario"> <mat-icon>close</mat-icon> Cancelar </button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

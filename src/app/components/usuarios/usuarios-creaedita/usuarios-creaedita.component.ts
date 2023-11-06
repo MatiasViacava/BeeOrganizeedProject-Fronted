@@ -16,11 +16,7 @@ export class UsuariosCreaeditaComponent {
   mensaje: string = '';
   maxFecha: Date = moment().add(-1, 'days').toDate();
   fechanacimiento = new FormControl(new Date());
-  enabled: { value: boolean; viewValue: string }[] = [
-    { value: true, viewValue: 'true' },
-    { value: false, viewValue: 'false' },
-
-  ];
+  
   idUsuario: number = 0;
   edicion: boolean = false;
   constructor(
@@ -34,7 +30,6 @@ export class UsuariosCreaeditaComponent {
       id: [''],
       username: ['', Validators.required],
       password: ['', Validators.required],
-      enabled: ['', Validators.required],
       nombres: ['', [Validators.required]],
       apellidos: ['', Validators.required],
       fechaNacimiento: ['', Validators.required],
@@ -52,7 +47,6 @@ export class UsuariosCreaeditaComponent {
         this.usuarios.id=this.form.value.id,
         this.usuarios.username = this.form.value.username,
         this.usuarios.password = this.form.value.password,
-        this.usuarios.enabled = this.form.value.enabled,
         this.usuarios.nombres = this.form.value.nombres,
         this.usuarios.apellidos = this.form.value.apellidos,
         this.usuarios.fechaNacimiento = this.form.value.fechaNacimiento,
@@ -92,7 +86,6 @@ export class UsuariosCreaeditaComponent {
         id: new FormControl(data.id),
         username: new FormControl(data.username),
         password: new FormControl(data.password),
-        enabled:new FormControl(data.enabled),
         nombres:new FormControl(data.nombres),
         apellidos:new FormControl(data.apellidos),
         fechaNacimiento: new FormControl(data.fechaNacimiento),

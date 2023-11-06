@@ -15,7 +15,8 @@ export class CursosCreaeditaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   curso: Curso = new Curso();
   mensaje: string = '';
-  maxFecha: Date = moment().add(-1, 'days').toDate();
+  minFecha: Date = moment().add(-1,'days').toDate();
+  maxFecha: Date = moment().endOf('year').toDate();
   fechaInicioCurso = new FormControl(new Date());
   fechaFinCurso = new FormControl(new Date());
 
