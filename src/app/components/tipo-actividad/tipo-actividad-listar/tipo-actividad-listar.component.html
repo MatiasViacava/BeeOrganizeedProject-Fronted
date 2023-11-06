@@ -17,11 +17,12 @@
     <div class="card-container" *ngFor="let element of dataSource.data">
       <mat-card>
         <mat-card-header>
+         
           <mat-card-title>{{element.nombreTipoActividad}}</mat-card-title>
           <mat-card-subtitle>Código: {{element.iDTipoActividad}}</mat-card-subtitle>
           <mat-card-subtitle>Tipo Actividad: {{element.nombreTipoActividad}}</mat-card-subtitle>
         </mat-card-header>
-
+        <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
         <mat-card-actions class="card-actions">
           <button class="card-actions-button"
             mat-raised-button

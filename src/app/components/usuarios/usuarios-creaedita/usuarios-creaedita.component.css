@@ -1,23 +1,101 @@
+.titulo-registrar {
+  font-size: 24px; /* Ajusta el tamaño del texto */
+  font-family: “Roboto”, sans-serif; /* Cambia la fuente del texto */
+ }
 
-      /* Estilos para el menú */
-      .menu {
-        background-color: #f4f4f4;
-        padding: 10px;
-      }
-      /* Estilos para los enlaces */
-      .menu a {
-        text-align: center;
-        text-decoration: none;
-        color: #333;
-        padding: 8px 16px;
-        margin: 0 5px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
-      .menu a:hover {
-        background-color: #ddd;
-      }
+ .caracterminimo{
+  font-size: 15px; /* Ajusta el tamaño del texto */
+ }
 
-      mat-form-field {
-        width: 45%;
-    }
+mat-form-field {
+  width: 80%;
+}
+
+.contenedor-principal {
+  display: flex;
+  justify-content: space-around;
+}
+ 
+.columna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+.columna img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Agrega un espacio entre los botones */
+}
+ 
+.button-container button {
+  padding: 10px 20px; /* Ajusta el espacio dentro del botón */
+  font-size: 17px; /* Cambia el tamaño de la fuente del botón */
+  background-color: #d1ab22;
+  color: white;
+}
+
+
+/* Cambios en el tamaño y color del texto de los errores */
+mat-error {
+  font-size: 14px;
+  color: #ff6b6b;
+ }
+.titulo-registrar {
+  font-size: 24px; /* Ajusta el tamaño del texto */
+  font-family: “Roboto”, sans-serif; /* Cambia la fuente del texto */
+ }
+
+ .caracterminimo{
+  font-size: 15px; /* Ajusta el tamaño del texto */
+ }
+
+mat-form-field {
+  width: 80%;
+}
+.contenedor-principal {
+  display: flex;
+  justify-content: space-around;
+}
+ 
+.columna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+.columna img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Agrega un espacio entre los botones */
+}
+ 
+.button-container button {
+  padding: 10px 20px; /* Ajusta el espacio dentro del botón */
+  font-size: 17px; /* Cambia el tamaño de la fuente del botón */
+  background-color: #d1ab22;
+  color: white;
+}
+
+
+/* Cambios en el tamaño y color del texto de los errores */
+mat-error {
+  font-size: 14px;
+  color: #ff6b6b;
+ }
+ .mat-form-field {
+  margin-bottom: 20px;
+ }
+ 

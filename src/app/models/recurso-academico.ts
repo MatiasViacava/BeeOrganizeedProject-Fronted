@@ -8,6 +8,6 @@ export class RecursoAcademico{
   autor:string=""
   descripcion:string=""
   fechaPublicacion:Date=new Date(Date.now())
-  TipoRecursoDTO:TipoRecurso=new TipoRecurso
-  CursoDTO:Curso=new Curso
+  tipoRecurso_ID:TipoRecurso=new TipoRecurso
+  curso_IdCurso:Curso=new Curso
 }

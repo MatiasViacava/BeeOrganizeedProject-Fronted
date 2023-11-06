@@ -12,23 +12,23 @@
 
     <mat-form-field class="example-full-width" *ngIf="edicion" >
       <mat-label>id</mat-label>
-      <input matInput placeholder="ID" formControlName="idRecursoAcademico" readonly/>
+      <input matInput placeholder="ID" formControlName="iD" readonly/>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>enlace</mat-label>
-      <input matInput placeholder="http//:example.com" formControlName="enlace" />
+      <input matInput placeholder="http//:example.com" formControlName="enlaceRecurso" />
 
-      <mat-error *ngIf="obtenerControlCampo('enlace')?.errors?.['required']">El contenido de la respuesta
+      <mat-error *ngIf="obtenerControlCampo('enlaceRecurso')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.
       </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>nombre</mat-label>
-      <input matInput placeholder="nombre" formControlName="nombre" />
+      <input matInput placeholder="nombre" formControlName="nombreRecurso" />
 
-      <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">El contenido de la respuesta
+      <mat-error *ngIf="obtenerControlCampo('nombreRecurso')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.
       </mat-error>
     </mat-form-field>
@@ -74,24 +74,24 @@
     <br/>
     <mat-form-field>
       <mat-label>Tipo de recurso academico</mat-label>
-      <mat-select formControlName="TipoRecursoDTO" [(value)]="idTipoRecurso">
+      <mat-select formControlName="tipoRecurso_ID" [(value)]="idTipoRecurso">
         <mat-option *ngFor="let t of listaTR" [value]="t.iD">
           {{t.nombreTipo}}
         </mat-option>
 
-        <mat-error *ngIf="obtenerControlCampo('TipoRecursoDTO')?.errors?.['required']">
+        <mat-error *ngIf="obtenerControlCampo('tipoRecurso_ID')?.errors?.['required']">
         </mat-error>
       </mat-select>
     </mat-form-field>
     <br/>
     <mat-form-field>
       <mat-label>Curso</mat-label>
-      <mat-select formControlName="CursoDTO" [(value)]="idCurso">
+      <mat-select formControlName="curso_IdCurso" [(value)]="idCurso">
         <mat-option *ngFor="let c of listaCursos" [value]="c.idCurso">
           {{c.nombreCurso}}
         </mat-option>
 
-        <mat-error *ngIf="obtenerControlCampo('CursoDTO')?.errors?.['required']">
+        <mat-error *ngIf="obtenerControlCampo('curso_IdCurso')?.errors?.['required']">
         </mat-error>
       </mat-select>
     </mat-form-field>

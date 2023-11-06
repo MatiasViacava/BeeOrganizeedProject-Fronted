@@ -8,13 +8,16 @@
 <body>
     <br>
   <div style=" text-align: center;"> 
-    <h2>LISTA DE CURSOS</h2> 
+    <h2>LISTA DE RECURSOS ACADEMICOS</h2> 
   </div>
 
   <div class="container">
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.iD}} </td>
+      </ng-container>
       <ng-container matColumnDef="enlace">
         <th mat-header-cell *matHeaderCellDef> enlace </th>
         <td mat-cell *matCellDef="let element"> {{element.enlaceRecurso}} </td>
@@ -41,11 +44,11 @@
       </ng-container>
       <ng-container matColumnDef="tipo de recurso">
         <th mat-header-cell *matHeaderCellDef> tipo recurso </th>
-        <td mat-cell *matCellDef="let element"> {{element.TipoRecursoDTO.nombreTipo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.tipoRecurso_ID.nombreTipo}} </td>
       </ng-container>
       <ng-container matColumnDef="curso">
         <th mat-header-cell *matHeaderCellDef> curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.CursoDTO.nombreCurso}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.curso_IdCurso.nombreCurso}} </td>
       </ng-container>
       <!-- ACCIONES -->
       <ng-container matColumnDef="actualizar">
@@ -54,7 +57,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/cursos/edicion', element.iDTipoActividad]"
+            [routerLink]="['/recursoacademico/edicion', element.iD]"
             ><mat-icon>update</mat-icon> Actualizar
           </button>
       </td></ng-container>

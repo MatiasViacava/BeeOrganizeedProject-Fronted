@@ -38,6 +38,9 @@ import { HorarioCreaeditaComponent } from './components/horario/horario-creaedit
 import { ActividadComponent } from './components/actividad/actividad.component';
 import { ActividadCreaeditaComponent } from './components/actividad/actividad-creaedita/actividad-creaedita.component';
 import { ActividadListarComponent } from './components/actividad/actividad-listar/actividad-listar.component';
+import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { ConfiguracionCreaeditaComponent } from './components/configuracion/configuracion-creaedita/configuracion-creaedita.component';
+import { ConfiguracionListarComponent } from './components/configuracion/configuracion-listar/configuracion-listar.component';
 
 
 const routes: Routes = [
@@ -46,6 +49,13 @@ const routes: Routes = [
       { path: 'nuevo', component: UsuariosCreaeditaComponent },
       { path: 'listar', component: UsuariosListarComponent },
       { path: 'edicion/:id', component: UsuariosCreaeditaComponent}
+    ]
+  },
+  {
+    path: 'configuracion', component: ConfiguracionComponent, children: [
+      { path: 'nuevo', component: ConfiguracionCreaeditaComponent },
+      { path: 'listar', component: ConfiguracionListarComponent },
+      { path: 'edicion/:idConfiguracion', component: ConfiguracionCreaeditaComponent}
     ]
   },
 
