@@ -10,8 +10,8 @@ const base_url=environment.base
   providedIn: 'root'
 })
 export class RecursoAcademicoService {
-  private url:string =`${base_url}/recursosacademicos`
-  private listaCambio:Subject<RecursoAcademico[]>=new Subject<RecursoAcademico[]>();
+  private url =`${base_url}/recursosacademicos`
+  private listaCambio=new Subject<RecursoAcademico[]>();
   constructor(private http:HttpClient) { }
   list(){
     return this.http.get<RecursoAcademico[]>(this.url)

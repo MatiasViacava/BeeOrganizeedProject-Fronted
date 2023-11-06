@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,7 @@
       <mat-label>id</mat-label>
       <input matInput placeholder="ID" formControlName="idRecursoAcademico" readonly/>
     </mat-form-field>
-
+    <br>
     <mat-form-field class="example-full-width">
       <mat-label>enlace</mat-label>
       <input matInput placeholder="http//:example.com" formControlName="enlace" />
@@ -23,18 +23,53 @@
         es obligatorio.
       </mat-error>
     </mat-form-field>
-
     <br>
-    <mat-form-field>
-      <mat-label>Tipo de recurso academico</mat-label>
-      <mat-select formControlName="TipoRecursoDTO" [(value)]="idTipoRecurso">
-        <mat-option *ngFor="let t of listaTR" [value]="t.iD">
-          {{t.nombreTipo}}
-        </mat-option>
+    <mat-form-field class="example-full-width">
+      <mat-label>nombre</mat-label>
+      <input matInput placeholder="nombre" formControlName="nombre" />
 
-        <mat-error *ngIf="obtenerControlCampo('TipoRecursoDTO')?.errors?.['required']">
-        </mat-error>
-      </mat-select>
+      <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">El contenido de la respuesta
+        es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>autor</mat-label>
+      <input matInput placeholder="autor" formControlName="autor" />
+
+      <mat-error *ngIf="obtenerControlCampo('autor')?.errors?.['required']">El contenido de la respuesta
+        es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>descripcion</mat-label>
+      <input matInput placeholder="descripcion" formControlName="descripcion" />
+
+      <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">El contenido de la respuesta
+        es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input
+        matInput
+        placeholder="Fecha de publicacion"
+        [matDatepicker]="picker"
+        formControlName="fechaPublicacion"
+        [max]="maxFecha"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="obtenerControlCampo('fechaPublicacion')?.errors?.['required']"
+      >
+       Obligatorio.
+      </mat-error>
     </mat-form-field>
     <br/>
     <mat-form-field>

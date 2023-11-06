@@ -22,12 +22,8 @@ import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.com
 import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
 import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
 import {RecursoAcademicoComponent} from "./components/recurso-academico/recurso-academico.component";
-import {
-  RecursoAcademicoCreaeditaComponent
-} from "./components/recurso-academico/recurso-academico-creaedita/recurso-academico-creaedita.component";
-import {
-  RecursoAcademicoListarComponent
-} from "./components/recurso-academico/recurso-academico-listar/recurso-academico-listar.component";
+import {RecursoAcademicoCreaeditaComponent} from "./components/recurso-academico/recurso-academico-creaedita/recurso-academico-creaedita.component";
+import {RecursoAcademicoListarComponent} from "./components/recurso-academico/recurso-academico-listar/recurso-academico-listar.component";
 
 const routes: Routes = [
   {

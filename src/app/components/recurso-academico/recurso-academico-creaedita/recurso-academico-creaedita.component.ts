@@ -25,6 +25,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   idCurso:number=0;
   listaCursos:Curso[]=[];
   edicion:boolean=false;
+  idRecurso:number=0
   constructor(
     private raS:RecursoAcademicoService,
     private trS:TipoRecursoService,
@@ -34,7 +35,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
     private route:ActivatedRoute
   ) {
   }
-  ngOnInit() {
+  ngOnInit():void {
     this.form=this.formBuilder.group({
       idRecursoAcademico:[''],
       enlace:['',Validators.required],
@@ -46,12 +47,12 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
       CursoDTO:['',Validators.required]
     });
     this.route.params.subscribe((data:Params)=>{
-      this.idTipoRecurso=data['iD'];
+      this.idRecurso=data['iD'];
       this.edicion=data['iD']!=null;
       this.init();
     })
   }
-  aceptar(){
+  aceptar():void{
     if(this.form.valid){
       this.recursoac.iD=this.form.value.idRecursoAcademico;
       this.recursoac.enlaceRecurso=this.form.value.enlace;
@@ -96,7 +97,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   }
   init(){
     if(this.edicion){
-      this.raS.listarid(this.idTipoRecurso).subscribe((data:RecursoAcademico)=>{
+      this.raS.listarid(this.idRecurso).subscribe((data:RecursoAcademico)=>{
         this.form=this.formBuilder.group({
           idRecursoAcademico:[data.iD],
           enlace:[data.enlaceRecurso],
