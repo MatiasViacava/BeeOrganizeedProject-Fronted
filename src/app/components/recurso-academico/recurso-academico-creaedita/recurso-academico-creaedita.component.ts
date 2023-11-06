@@ -20,10 +20,13 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   mensaje:string='';
   maxFecha:Date= moment().add(-1,"days").toDate();
   fechaPublicacion:FormControl=new FormControl(new Date());
+
   idTipoRecurso:number=0;
   listaTR:TipoRecurso[]=[];
+
   idCurso:number=0;
   listaCursos:Curso[]=[];
+
   edicion:boolean=false;
   idRecurso:number=0
   constructor(
@@ -37,45 +40,40 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   }
   ngOnInit():void {
     this.form=this.formBuilder.group({
-      idRecursoAcademico:[''],
-      enlace:['',Validators.required],
-      nombre:['',Validators.required],
+      iD:[''],
+      enlaceRecurso:['',Validators.required],
+      nombreRecurso:['',Validators.required],
       autor:['',Validators.required],
       descripcion:['',Validators.required],
       fechaPublicacion:['',Validators.required],
-      TipoRecursoDTO:['',Validators.required],
-      CursoDTO:['',Validators.required]
+      tipoRecurso_ID:['',Validators.required],
+      curso_IdCurso:['',Validators.required]
     });
     this.route.params.subscribe((data:Params)=>{
       this.idRecurso=data['iD'];
       this.edicion=data['iD']!=null;
       this.init();
     })
+    this.cS.list().subscribe(data => { this.listaCursos = data });
+    this.trS.list().subscribe(data => { this.listaTR = data });
   }
   aceptar():void{
     if(this.form.valid){
-      this.recursoac.iD=this.form.value.idRecursoAcademico;
-      this.recursoac.enlaceRecurso=this.form.value.enlace;
-      this.recursoac.nombreRecurso=this.form.value.nombre;
+      this.recursoac.iD=this.form.value.iD;
+      this.recursoac.enlaceRecurso=this.form.value.enlaceRecurso;
+      this.recursoac.autor=this.form.value.autor
+      this.recursoac.nombreRecurso=this.form.value.nombreRecurso;
       this.recursoac.descripcion=this.form.value.descripcion;
       this.recursoac.fechaPublicacion=this.form.value.fechaPublicacion;
-      this.recursoac.TipoRecursoDTO=this.form.value.TipoRecursoDTO;
-      this.recursoac.CursoDTO=this.form.value.CursoDTO;
+      this.recursoac.tipoRecurso_ID.iD=this.form.value.tipoRecurso_ID;
+      this.recursoac.curso_IdCurso.idCurso=this.form.value.curso_IdCurso;
       if(this.edicion){
-        let tr:TipoRecurso=new TipoRecurso();
-        tr.iD=this.idTipoRecurso;
-        let c:Curso=new Curso();
-        c.idCurso=this.idCurso;
         this.raS.modificar(this.recursoac).subscribe((data)=>{
           this.raS.list().subscribe(data=>{
             this.raS.setlist(data);
           })
         })
       }else {
-        let tr:TipoRecurso=new TipoRecurso();
-        tr.iD=this.idTipoRecurso;
-        let c:Curso=new Curso();
-        c.idCurso=this.idCurso;
         this.raS.insert(this.recursoac).subscribe((data)=>{
           this.raS.list().subscribe(data =>{
             this.raS.setlist(data);
@@ -99,14 +97,14 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
     if(this.edicion){
       this.raS.listarid(this.idRecurso).subscribe((data:RecursoAcademico)=>{
         this.form=this.formBuilder.group({
-          idRecursoAcademico:[data.iD],
-          enlace:[data.enlaceRecurso],
-          nombre:[data.nombreRecurso],
+          iD:[data.iD],
+          enlaceRecurso:[data.enlaceRecurso],
+          nombreRecurso:[data.nombreRecurso],
           autor:[data.autor],
           descripcion:[data.descripcion],
           fechaPublicacion:[data.fechaPublicacion],
-          TipoRecursoDTO:[data.TipoRecursoDTO],
-          CursoDTO:[data.CursoDTO]
+          tipoRecurso_ID:[data.tipoRecurso_ID.iD],
+          curso_IdCurso:[data.curso_IdCurso.idCurso]
         })
       })
     }

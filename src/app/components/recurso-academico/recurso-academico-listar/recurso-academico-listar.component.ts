@@ -12,7 +12,7 @@ import { RecursoAcademicoService } from 'src/app/services/recurso-academico.serv
 export class RecursoAcademicoListarComponent {
   dataSource: MatTableDataSource<RecursoAcademico> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['enlace', 'nombre','autor', 'fecha Publicacion','descripcion','tipo de recurso','curso']
+  ['id','enlace', 'nombre','autor', 'fecha Publicacion','descripcion','tipo de recurso','curso','actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private raS:RecursoAcademicoService) {}
 
@@ -26,8 +26,8 @@ export class RecursoAcademicoListarComponent {
       this.dataSource.paginator = this.paginator;
     }); 
   }
-  eliminar(idPregunta: number){
-    this.raS.eliminar(idPregunta).subscribe(() => {
+  eliminar(iD: number){
+    this.raS.eliminar(iD).subscribe(() => {
       this.raS.list().subscribe(data => {
         this.raS.setlist(data);
       });

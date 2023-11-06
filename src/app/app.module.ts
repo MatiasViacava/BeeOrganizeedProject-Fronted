@@ -62,6 +62,9 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TipoActividadConfirmarComponent } from './components/tipo-actividad/tipo-actividad-listar/tipo-actividad-confirmar/tipo-actividad-confirmar.component';
 import { CursosConfirmarComponent } from './components/cursos/cursos-listar/cursos-confirmar/cursos-confirmar.component';
+import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { ConfiguracionCreaeditaComponent } from './components/configuracion/configuracion-creaedita/configuracion-creaedita.component';
+import { ConfiguracionListarComponent } from './components/configuracion/configuracion-listar/configuracion-listar.component';
 
 
 @NgModule({
@@ -104,7 +107,10 @@ import { CursosConfirmarComponent } from './components/cursos/cursos-listar/curs
     ActividadListarComponent,
     ActividadCreaeditaComponent,
     TipoActividadConfirmarComponent,
-    CursosConfirmarComponent
+    CursosConfirmarComponent,
+    ConfiguracionComponent,
+    ConfiguracionCreaeditaComponent,
+    ConfiguracionListarComponent
   ],
   imports: [
     BrowserModule,

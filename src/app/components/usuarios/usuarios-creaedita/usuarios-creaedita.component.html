@@ -5,100 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body>
     <div class="container" style="text-align: center">
-      <h2>Registrar</h2>
+      <br>
+      <h2 class="titulo-registrar">Registrar Usuario</h2>
       <br />
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Usuario</mat-label>
-          <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
-          <mat-error
-            *ngIf="obtenerControlCampo('username')?.errors?.['required']"
-          >
-            Complete el campo
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>Contraseña</mat-label>
-          <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
-          <mat-hint>5 caracteres como mínimo</mat-hint>
-          <mat-error
-            *ngIf="obtenerControlCampo('password')?.errors?.['required']"
-          >
-            Complete el campo
-          </mat-error>
-        </mat-form-field>
+
+        <div class="contenedor-principal">
+
+          <div class="columna">
+            <mat-form-field class="example-full-width">
+              <mat-label>Usuario</mat-label>
+              <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('username')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
+              <mat-hint class="caracterminimo">Ingrese 5 caracteres como mínimo</mat-hint>
+              <mat-error
+                *ngIf="obtenerControlCampo('password')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+            <br>
+            <img src="../assets/images/logo_amarillo.png" alt="Logo">
+            <br>
+            <div class="button-container">
+              <button mat-button color="primary"> Registrar </button>
+              <button mat-button color="warn" routerLink="/usuarios/listar">Cancelar</button>
+            </div>
+            
+          </div>
+
+          <div class="columna">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombres</mat-label>
+                <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25"/>
+                <mat-error
+                  *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" />
+                <mat-error
+                  *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+              </mat-form-field>
+
+            <br />
+            <mat-form-field>
+              <mat-label>Fecha de registro</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="Fecha de Nacimiento"
+                formControlName="fechaNacimiento"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="obtenerControlCampo('fechaNacimiento')?.errors?.['required']"
+              >
+                El Campo es obligatorio
+              </mat-error>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field class="example-full-width">
+                <mat-label>Universidad</mat-label>
+                <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25"/>
+                <mat-error
+                  *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+              </mat-form-field>
+
+            <br />
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" />
+                <mat-error
+                  *ngIf="obtenerControlCampo('email')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+            </mat-form-field>
+
+          </div><!--Columna end-->
+          
+        </div> <!--Columna Principal end-->
         
-        <br />
-        <mat-form-field class="example-full-width">
-            <mat-label>Nombres</mat-label>
-            <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25"/>
-            <mat-error
-              *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
-            >
-              Complete el campo
-            </mat-error>
-          </mat-form-field>
-          <br />
-          <mat-form-field class="example-full-width">
-            <mat-label>Apellidos</mat-label>
-            <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" />
-            <mat-error
-              *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
-            >
-              Complete el campo
-            </mat-error>
-          </mat-form-field>
-          <br />
-        <mat-form-field>
-          <mat-label>Fecha de registro</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            placeholder="Fecha de Nacimiento"
-            formControlName="fechaNacimiento"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error
-            *ngIf="obtenerControlCampo('fechaNacimiento')?.errors?.['required']"
-          >
-            El Campo es obligatorio
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <br />
-        <mat-form-field class="example-full-width">
-            <mat-label>Universidad</mat-label>
-            <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25"/>
-            <mat-error
-              *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
-            >
-              Complete el campo
-            </mat-error>
-          </mat-form-field>
-          <br />
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="email" />
-            <mat-error
-              *ngIf="obtenerControlCampo('email')?.errors?.['required']"
-            >
-              Complete el campo
-            </mat-error>
-          </mat-form-field>
-        <br />
-        <button mat-button color="primary">
-          Registrar
-        </button>
-        <button mat-button color="warn" routerLink="/usuarios/listar">Cancelar</button>
-        <br />
       </form>
     </div>
   </body>
