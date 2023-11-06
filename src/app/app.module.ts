@@ -38,6 +38,9 @@ import { RespuestaListarComponent } from './components/respuesta/respuesta-lista
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
 import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
+import { RecursoAcademicoComponent } from './components/recurso-academico/recurso-academico.component';
+import { RecursoAcademicoCreaeditaComponent } from './components/recurso-academico/recurso-academico-creaedita/recurso-academico-creaedita.component';
+import { RecursoAcademicoListarComponent } from './components/recurso-academico/recurso-academico-listar/recurso-academico-listar.component';
 
 
 
@@ -64,7 +67,10 @@ import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recur
     RespuestaListarComponent,
     TipoRecursoComponent,
     TipoRecursoCreaeditaComponent,
-    TipoRecursoListarComponent
+    TipoRecursoListarComponent,
+    RecursoAcademicoComponent,
+    RecursoAcademicoCreaeditaComponent,
+    RecursoAcademicoListarComponent
   ],
   imports: [
     BrowserModule,

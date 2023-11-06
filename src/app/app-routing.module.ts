@@ -21,6 +21,13 @@ import { RespuestaListarComponent } from './components/respuesta/respuesta-lista
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { TipoRecursoCreaeditaComponent } from './components/tipo-recurso/tipo-recurso-creaedita/tipo-recurso-creaedita.component';
 import { TipoRecursoListarComponent } from './components/tipo-recurso/tipo-recurso-listar/tipo-recurso-listar.component';
+import {RecursoAcademicoComponent} from "./components/recurso-academico/recurso-academico.component";
+import {
+  RecursoAcademicoCreaeditaComponent
+} from "./components/recurso-academico/recurso-academico-creaedita/recurso-academico-creaedita.component";
+import {
+  RecursoAcademicoListarComponent
+} from "./components/recurso-academico/recurso-academico-listar/recurso-academico-listar.component";
 
 const routes: Routes = [
   {
@@ -70,12 +77,19 @@ const routes: Routes = [
       { path: 'edicion/:idRespuesta', component: RespuestaCreaeditaComponent}
     ]
   },
-  
+
   {
     path: 'tiporecurso', component: TipoRecursoComponent, children: [
       { path: 'nuevo', component: TipoRecursoCreaeditaComponent },
       { path: 'listar', component: TipoRecursoListarComponent },
       { path: 'edicion/:iD', component: TipoRecursoCreaeditaComponent}
+    ]
+  },
+  {
+    path:'recursoacademico',component:RecursoAcademicoComponent,children:[
+      {path:'nuevo',component:RecursoAcademicoCreaeditaComponent},
+      {path:'listar',component: RecursoAcademicoListarComponent},
+      {path: 'edicion/:iD',component: RecursoAcademicoCreaeditaComponent}
     ]
   },
 ];

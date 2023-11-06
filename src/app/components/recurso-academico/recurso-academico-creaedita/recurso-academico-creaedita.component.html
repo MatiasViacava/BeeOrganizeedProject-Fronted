@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="container" style="text-align: center">
+  <h2>Registro de PREGUNTAS</h2>
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+    <mat-form-field class="example-full-width" *ngIf="edicion" >
+      <mat-label>id</mat-label>
+      <input matInput placeholder="ID" formControlName="idRecursoAcademico" readonly/>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>enlace</mat-label>
+      <input matInput placeholder="http//:example.com" formControlName="enlace" />
+
+      <mat-error *ngIf="obtenerControlCampo('enlace')?.errors?.['required']">El contenido de la respuesta
+        es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+    <mat-form-field>
+      <mat-label>Id de la pregunta</mat-label>
+      <mat-select formControlName="pregunta_Id" [(value)]="idPreguntaSeleccionada">
+        <mat-option *ngFor="let d of listaPregunta" [value]="d.idPregunta"> <!--Se modifico la "t"-->
+          {{d.idPregunta}}
+        </mat-option>
+
+        <mat-error *ngIf="obtenerControlCampo('pregunta_Id')?.errors?.['required']">
+        </mat-error>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+
+    <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/respuesta"> <mat-icon>close</mat-icon> Cancelar </button>
+    <p>{{ mensaje }}</p>
+  </form>
+</div>
+</body>
+</html>
