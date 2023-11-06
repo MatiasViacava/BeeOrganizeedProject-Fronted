@@ -21,7 +21,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   maxFecha:Date= moment().add(-1,"days").toDate();
   fechaPublicacion:FormControl=new FormControl(new Date());
   idTipoRecurso:number=0;
-  listaTR:RecursoAcademico[]=[];
+  listaTR:TipoRecurso[]=[];
   idCurso:number=0;
   listaCursos:Curso[]=[];
   edicion:boolean=false;

@@ -9,4 +9,5 @@ import {ActivatedRoute} from "@angular/router";
 export class RecursoAcademicoComponent {
   constructor(public route:ActivatedRoute) {
   }
+  ngOnInit():void{}
 }
