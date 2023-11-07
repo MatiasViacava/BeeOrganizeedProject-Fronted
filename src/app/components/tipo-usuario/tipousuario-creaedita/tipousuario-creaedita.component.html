@@ -20,7 +20,7 @@
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombre del Usuario</mat-label>
-                <input matInput placeholder="contenido" formControlName="nombreTipoUsuario" />
+                <input matInput placeholder="contenido" formControlName="nombreTipoUsuario" maxlength="18"/>
 
                 <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El contenido de la respuesta
                     es obligatorio.

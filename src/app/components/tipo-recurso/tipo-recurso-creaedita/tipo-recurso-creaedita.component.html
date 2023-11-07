@@ -15,7 +15,7 @@
             matInput
             placeholder="iDTipoRecurso"
             formControlName="iD"
-            readonly=""
+            readonly
           />
         </mat-form-field>
         <mat-form-field class="example-full-width">
@@ -24,6 +24,7 @@
             matInput
             placeholder="nombreTipo"
             formControlName="nombreTipo"
+            maxlength="15"
           />
           <mat-error
             *ngIf="obtenerControlCampo('nombreTipo')?.errors?.['required']"
