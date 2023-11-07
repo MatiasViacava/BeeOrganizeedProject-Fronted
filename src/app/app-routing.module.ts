@@ -43,6 +43,7 @@ import { ConfiguracionCreaeditaComponent } from './components/configuracion/conf
 import { ConfiguracionListarComponent } from './components/configuracion/configuracion-listar/configuracion-listar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { RecursoAcademicoBuscarfechaComponent } from './components/recurso-academico/recurso-academico-buscarfecha/recurso-academico-buscarfecha.component';
 
 
 const routes: Routes = [
@@ -112,7 +113,8 @@ const routes: Routes = [
     path:'recursoacademico',component:RecursoAcademicoComponent,children:[
       {path:'nuevo',component:RecursoAcademicoCreaeditaComponent},
       {path:'listar',component: RecursoAcademicoListarComponent},
-      {path: 'edicion/:iD',component: RecursoAcademicoCreaeditaComponent}
+      {path: 'edicion/:iD',component: RecursoAcademicoCreaeditaComponent},
+      {path: 'buscarfecha',component: RecursoAcademicoBuscarfechaComponent}
     ]
   },
   {

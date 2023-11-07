@@ -80,7 +80,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
           })
         })
       }
-      this.router.navigate(['recursoacademico']);
+      this.router.navigate(['/recursoacademico/listar']);
     }else{
       this.mensaje="Falta completar campos"
     }

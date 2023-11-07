@@ -12,6 +12,13 @@
       <br>
     </div>
     <div class="container">
+
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput type="text"  (keyup)="buscarNombre($event)" placeholder="Ingrese nombre">
+      </mat-form-field>
+      <br>
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Name Column -->
           <ng-container matColumnDef="id">

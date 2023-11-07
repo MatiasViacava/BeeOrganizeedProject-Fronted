@@ -68,6 +68,7 @@ import { ConfiguracionListarComponent } from './components/configuracion/configu
 import { MenuComponent } from './components/menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RecursoAcademicoBuscarfechaComponent } from './components/recurso-academico/recurso-academico-buscarfecha/recurso-academico-buscarfecha.component';
 
 
 @NgModule({
@@ -115,7 +116,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     ConfiguracionCreaeditaComponent,
     ConfiguracionListarComponent,
     MenuComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RecursoAcademicoBuscarfechaComponent
   ],
   imports: [
     BrowserModule,

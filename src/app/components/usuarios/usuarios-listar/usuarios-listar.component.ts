@@ -23,7 +23,6 @@ export class UsuariosListarComponent {
     this.uS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-
     }); 
   }
 
@@ -31,7 +30,20 @@ export class UsuariosListarComponent {
     this.uS.eliminar(idUsuario).subscribe(() => {
       this.uS.list().subscribe(data => {
         this.uS.setList(data);
-      });
-    });
-  }
+      });
+    });
+  }
+
+  //BUSCAR POR NOMBRE
+  buscarNombre(e: any) {
+    let array: Usuarios[] = [];
+    this.uS.list().subscribe(data => {
+      data.forEach((element, index) => {
+        if (element.nombres.includes(e.target.value)) {
+          array.push(data[index]);
+        }
+      });
+      this.uS.setList(array);
+    })
+  }
 }
