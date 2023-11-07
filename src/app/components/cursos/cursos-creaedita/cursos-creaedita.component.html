@@ -27,7 +27,6 @@
         </mat-form-field>
 
         <br />
-
         <mat-form-field class="example-full-width">
           <mat-label>Descripción</mat-label>
           <input
@@ -44,7 +43,6 @@
         </mat-form-field>
 
         <br />
-
         <mat-form-field appearance="fill" class="example-full-width">
           <input
             matInput
@@ -54,7 +52,6 @@
             [min]="minFecha"
             [max]="maxFecha"
           />
-          <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
@@ -68,7 +65,6 @@
         </mat-form-field>
 
         <br />
-
         <mat-form-field appearance="fill" class="example-full-width">
             <input
               matInput
@@ -78,7 +74,6 @@
               [min]="minFecha"
               [max]="maxFecha"
             />
-            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker2"
@@ -90,11 +85,11 @@
              Obligatorio.
             </mat-error>
           </mat-form-field>
-          
-          <br />
 
+          <br />
         <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/cursos">Cancelar</button>
+        <button mat-raised-button color="warn" routerLink="/cursos/listar">Cancelar</button>
+        
         <p>{{ mensaje }}</p>
       </form>
     </div>
