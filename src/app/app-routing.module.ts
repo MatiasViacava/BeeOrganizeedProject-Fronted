@@ -41,13 +41,15 @@ import { ActividadListarComponent } from './components/actividad/actividad-lista
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import { ConfiguracionCreaeditaComponent } from './components/configuracion/configuracion-creaedita/configuracion-creaedita.component';
 import { ConfiguracionListarComponent } from './components/configuracion/configuracion-listar/configuracion-listar.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 const routes: Routes = [
   {
     path: 'usuarios', component: UsuariosComponent, children: [
-      { path: 'nuevo', component: UsuariosCreaeditaComponent },
       { path: 'listar', component: UsuariosListarComponent },
+      { path: 'nuevo', component: UsuariosCreaeditaComponent },
       { path: 'edicion/:id', component: UsuariosCreaeditaComponent}
     ]
   },
@@ -142,6 +144,12 @@ const routes: Routes = [
 
     ]
   },
+  {
+    path: 'menu', component: MenuComponent
+  },
+  {
+    path: '', component: LandingPageComponent
+  }
 ];
 
 @NgModule({

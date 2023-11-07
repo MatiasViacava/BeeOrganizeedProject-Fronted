@@ -65,6 +65,9 @@ import { CursosConfirmarComponent } from './components/cursos/cursos-listar/curs
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import { ConfiguracionCreaeditaComponent } from './components/configuracion/configuracion-creaedita/configuracion-creaedita.component';
 import { ConfiguracionListarComponent } from './components/configuracion/configuracion-listar/configuracion-listar.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -110,7 +113,9 @@ import { ConfiguracionListarComponent } from './components/configuracion/configu
     CursosConfirmarComponent,
     ConfiguracionComponent,
     ConfiguracionCreaeditaComponent,
-    ConfiguracionListarComponent
+    ConfiguracionListarComponent,
+    MenuComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -134,6 +139,8 @@ import { ConfiguracionListarComponent } from './components/configuracion/configu
 
     MatCardModule,
     MatDialogModule,
+
+    MatSidenavModule
     
   ],
   providers: [],

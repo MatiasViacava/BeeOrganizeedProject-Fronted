@@ -1,0 +1,146 @@
+<mat-toolbar class="color">
+    <button (click)="drawer.toggle()"  mat-icon-button> <mat-icon>menu</mat-icon> </button> <!--Ayuda a que se oculte-->
+    <span>BeeOrganized</span>
+    <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+    <button mat-icon-button><mat-icon>sms</mat-icon></button>
+</mat-toolbar>
+  
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="false" mode="push" position="start"> <!--over: Para darle tono oscuro al darle clic al menu, push: mueve el contenido hacia la derecha, side:se queda ahi, end: el menu aparece a la derecha-->
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button routerLink=""><mat-icon>home</mat-icon>Home</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuUsuarios"><mat-icon>people</mat-icon>Usuarios</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuTipoUsuario"><mat-icon>person</mat-icon>Tipo Usuario</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuConfiguracion"><mat-icon>settings</mat-icon>Configuracion</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuTipoActividad"><mat-icon>assignment</mat-icon>Tipo Actividad</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuTipoRecurso"><mat-icon>assignment_ind</mat-icon>Tipo Recurso</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuCursos"><mat-icon>book</mat-icon>Cursos</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuIdioma"><mat-icon>language</mat-icon>Idioma</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuPregunta"><mat-icon>question_answer</mat-icon>Pregunta</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuRespuesta"><mat-icon>check_box</mat-icon>Respuesta</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuRecursoAcademico"><mat-icon>dns</mat-icon>Recurso Academico</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuEncuesta"><mat-icon>poll</mat-icon>Encuesta</button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuHorario"><mat-icon>schedule</mat-icon>Horario</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="menuActividad"><mat-icon>layers</mat-icon>Actividad</button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button><mat-icon>settings</mat-icon>setting</button>
+        </mat-list-item>
+  
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <mat-drawer-content>
+      <div style="text-align: center; min-height: 758px;"> <!--1200px-->
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+
+</mat-drawer-container>
+
+<mat-menu #menuUsuarios="matMenu">
+  <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>dns</mat-icon> Registrar</button>
+  <button mat-menu-item routerLink="/usuarios/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoUsuario="matMenu">
+  <button mat-menu-item routerLink="/tipousuario/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+   <button mat-menu-item routerLink="/tipousuario/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuConfiguracion="matMenu">
+  <button mat-menu-item routerLink="/configuracion/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+   <button mat-menu-item routerLink="/configuracion/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoActividad="matMenu">
+  <button mat-menu-item routerLink="/tipoactividad/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/tipoactividad/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuTipoRecurso="matMenu">
+  <button mat-menu-item routerLink="/tiporecurso/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/tiporecurso/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuCursos="matMenu">
+  <button mat-menu-item routerLink="/cursos/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/cursos/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuIdioma="matMenu">
+  <button mat-menu-item routerLink="/idioma/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/idioma/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuPregunta="matMenu">
+  <button mat-menu-item routerLink="/pregunta/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/pregunta/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuRespuesta="matMenu">
+  <button mat-menu-item routerLink="/respuesta/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/respuesta/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuRecursoAcademico="matMenu">
+  <button mat-menu-item routerLink="/recursoacademico/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/recursoacademico/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuEncuesta="matMenu">
+  <button mat-menu-item routerLink="/encuestas/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+   <button mat-menu-item routerLink="/encuestas/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuHorario="matMenu">
+  <button mat-menu-item routerLink="/horario/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+   <button mat-menu-item routerLink="/horario/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+
+<mat-menu #menuActividad="matMenu">
+  <button mat-menu-item routerLink="/actividad/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
+   <button mat-menu-item routerLink="/actividad/listar"><mat-icon>dns</mat-icon>Listar</button>
+</mat-menu>
+  
