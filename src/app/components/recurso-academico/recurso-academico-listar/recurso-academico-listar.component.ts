@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RecursoAcademico } from 'src/app/models/recurso-academico';
@@ -9,7 +9,7 @@ import { RecursoAcademicoService } from 'src/app/services/recurso-academico.serv
   templateUrl: './recurso-academico-listar.component.html',
   styleUrls: ['./recurso-academico-listar.component.css']
 })
-export class RecursoAcademicoListarComponent {
+export class RecursoAcademicoListarComponent implements OnInit{
   dataSource: MatTableDataSource<RecursoAcademico> = new MatTableDataSource();
   displayedColumns: string[] =
   ['id','enlace', 'nombre','autor', 'fecha Publicacion','descripcion','tipo de recurso','curso','actualizar','eliminar']

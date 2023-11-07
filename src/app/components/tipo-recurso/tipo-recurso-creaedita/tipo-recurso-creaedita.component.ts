@@ -51,7 +51,7 @@ export class TipoRecursoCreaeditaComponent implements OnInit {
             })
           })
         }
-        this.router.navigate(['tiporecurso']);
+        this.router.navigate(['/tiporecurso/listar']);
     } else {
       this.mensaje="Complete todos los campos!!!!"
     }

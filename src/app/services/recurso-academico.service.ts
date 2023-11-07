@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {RecursoAcademico} from "../models/recurso-academico";
 import {HttpClient} from "@angular/common/http";
 
@@ -33,5 +33,9 @@ export class RecursoAcademicoService {
   }
   eliminar(id:number){
     return this.http.delete(`${this.url}/${id}`)
+  }
+  //BUSCAR POR FECHA
+  buscar(fecha: string): Observable<RecursoAcademico[]> {
+    return this.http.post<RecursoAcademico[]>(`${this.url}/buscar`, { fecha: fecha });
   }
 }

@@ -6,10 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <br>
+  <br>
   <div style=" text-align: center;"> 
-    <h2>LISTA DE RECURSOS ACADEMICOS</h2> 
+    <h2>BUSQUEDA DE RECURSOS ACADEMICOS</h2> 
   </div>
+
+    <div [formGroup]="fechaForm" class="container">
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Seleccione una fecha"
+          formControlName="fecha"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+       
+      </mat-form-field>
+      <button (click)="buscar()" mat-raised-button color="primary">Buscar</button>
+    </div>
 
   <div class="container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -49,37 +64,16 @@
         <th mat-header-cell *matHeaderCellDef> curso </th>
         <td mat-cell *matCellDef="let element"> {{element.curso_IdCurso.nombreCurso}} </td>
       </ng-container>
-      <!-- ACCIONES -->
-      <ng-container matColumnDef="actualizar">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-        <td mat-cell *matCellDef="let element">
-          <button
-            mat-raised-button
-            color="primary"
-            [routerLink]="['/recursoacademico/edicion', element.iD]"
-            ><mat-icon>update</mat-icon> Actualizar
-          </button>
-      </td></ng-container>
-
-      <ng-container matColumnDef="eliminar">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td mat-cell *matCellDef="let element">
-          <button
-            mat-raised-button
-            color="warn"
-            (click)="eliminar(element.iD)"
-            ><mat-icon>delete</mat-icon> Eliminar
-          </button>
-      </td></ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
-    showFirstLastButtons aria-label="Select page">
-  </mat-paginator>
   </div>
+  <div class="container">
+    <!-- ... tu código existente ... -->
+    <div *ngIf="mensaje" style="color: red; margin-top: 10px;">{{ mensaje }}</div>
+  </div>
+
 </body>
 </html>

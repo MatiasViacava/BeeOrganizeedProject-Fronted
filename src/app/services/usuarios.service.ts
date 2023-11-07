@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Usuarios } from '../models/usuarios';
-import { Subject } from 'rxjs';
+import { EMPTY, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 const base_url = environment.base;
 @Injectable({
@@ -32,5 +32,13 @@ export class UsuariosService {
   }
   modificar(de: Usuarios) {
     return this.smvohttp.put(this.url, de);
+  }
+
+  //BUSCAR POR NOMBRE
+  buscar(texto: string) {
+    if (texto.length != 0) {
+      return this.smvohttp.post<Usuarios[]>(`${this.url}/buscarnombre`, texto.toLowerCase());
+    }
+    return EMPTY;
   }
 }
