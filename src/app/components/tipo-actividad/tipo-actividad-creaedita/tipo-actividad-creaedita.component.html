@@ -17,7 +17,7 @@
           
         <mat-form-field class="example-full-width">
           <mat-label>Nombre tipo acitividad</mat-label>
-          <input matInput placeholder="nombreTipoActividad" formControlName="nombreTipoActividad" />
+          <input matInput placeholder="nombreTipoActividad" formControlName="nombreTipoActividad" maxlength="25"/>
           
           <mat-error
               *ngIf="obtenerControlCampo('nombreTipoActividad')?.errors?.['required']"

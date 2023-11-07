@@ -26,7 +26,7 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>nombre</mat-label>
-      <input matInput placeholder="nombre" formControlName="nombreRecurso" />
+      <input matInput placeholder="nombre" formControlName="nombreRecurso" maxlength="15"/>
 
       <mat-error *ngIf="obtenerControlCampo('nombreRecurso')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.
@@ -35,7 +35,7 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>autor</mat-label>
-      <input matInput placeholder="autor" formControlName="autor" />
+      <input matInput placeholder="autor" formControlName="autor" maxlength="15"/>
 
       <mat-error *ngIf="obtenerControlCampo('autor')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.
@@ -44,7 +44,7 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>descripcion</mat-label>
-      <input matInput placeholder="descripcion" formControlName="descripcion" />
+      <input matInput placeholder="descripcion" formControlName="descripcion" maxlength="35"/>
 
       <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.

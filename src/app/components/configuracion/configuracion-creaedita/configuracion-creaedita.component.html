@@ -17,7 +17,7 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>Color de la Interfaz</mat-label>
-      <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" />
+      <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15" pattern="^[a-z~A-ZáéíóúÁÉÍÓÚñÑ]*$"/>
 
       <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.

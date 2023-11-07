@@ -52,6 +52,7 @@
             [matDatepicker]="picker"
             formControlName="fechaInicioCurso"
             [min]="minFecha"
+            [max]="maxFecha"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -74,6 +75,7 @@
               placeholder="Fecha de fin de curso"
               [matDatepicker]="picker2"
               formControlName="fechaFinCurso"
+              [min]="minFecha"
               [max]="maxFecha"
             />
             <mat-hint>MM/DD/YYYY</mat-hint>
