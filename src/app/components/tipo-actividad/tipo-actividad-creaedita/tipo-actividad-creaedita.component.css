@@ -15,12 +15,11 @@ body {
   }
   
   .container {
-    width: 100%; /* Ajusta este porcentaje según tus necesidades */
+    width: 50%; /* Ajusta este porcentaje según tus necesidades */
     background-color: #fff; /*COLOR DE LA TABLA*/
     border: 1px solid #ccc; /*Color del borde de la TABLA*/
     padding: 30px;
-
-    
+    margin: 20px auto; /*Espacio entre el menu y el contenedor*/
   }
   
   
@@ -41,5 +40,11 @@ body {
     background-color: #f2f2f2; /*Contenido de la tabla*/
     color: #333;
     text-align: center; /*Contenido de la tabla*/
-    
  }
+
+ /* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Agrega un espacio entre los botones */
+}

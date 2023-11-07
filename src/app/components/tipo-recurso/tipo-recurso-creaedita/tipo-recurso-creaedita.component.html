@@ -8,6 +8,7 @@
   <body>
     <div class="container" style="text-align: center">
       <h2>Registro de tipos de recursos</h2>
+      <br>
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>iDTipoRecurso</mat-label>
@@ -32,11 +33,12 @@
           </mat-error>
         </mat-form-field>
 
-        <br />
+        <br>
+        <br>
         <button mat-raised-button color="primary">
           <mat-icon>library_add</mat-icon> Aceptar
         </button>
-        <button mat-raised-button color="warn" routerLink="/tiporecurso">
+        <button mat-raised-button color="warn" routerLink="/tiporecurso/listar">
           <mat-icon>close</mat-icon> Cancelar
         </button>
         <p>{{ mensaje }}</p>

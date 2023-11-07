@@ -5,17 +5,7 @@ body {
     padding: 0;
     min-height: 100vh; /*Para que tenga color en toda la página*/
   }
-  .menu {
-    background-color: grey; /*Color del menu*/
-    padding: 10px;
-    text-align: justify;
-  }
-  .menu a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
+  
   .center {
     text-align: center;
     color: #333;
@@ -30,8 +20,7 @@ body {
     background-color: #fff; /*COLOR DE LA TABLA*/
     border: 1px solid #ccc; /*Color del borde de la TABLA*/
     padding: 30px;
-
-    
+    margin: 20px auto; /*Espacio entre el menu y el contenedor*/
   }
   
   
@@ -52,6 +41,5 @@ body {
     background-color: #f2f2f2; /*Contenido de la tabla*/
     color: #333;
     text-align: center; /*Contenido de la tabla*/
-    
  }
  
