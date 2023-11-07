@@ -7,97 +7,115 @@
 </head>
 <body>
 <div class="container" style="text-align: center">
+  
   <h2>Registro de Recurso Academico</h2>
+ 
   <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
-    <mat-form-field class="example-full-width" *ngIf="edicion" >
-      <mat-label>id</mat-label>
-      <input matInput placeholder="ID" formControlName="iD" readonly/>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>enlace</mat-label>
-      <input matInput placeholder="http//:example.com" formControlName="enlaceRecurso" />
+    <div class="contenedor-principal">
 
-      <mat-error *ngIf="obtenerControlCampo('enlaceRecurso')?.errors?.['required']">El contenido de la respuesta
-        es obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>nombre</mat-label>
-      <input matInput placeholder="nombre" formControlName="nombreRecurso" maxlength="15"/>
+      <div class="columna">
 
-      <mat-error *ngIf="obtenerControlCampo('nombreRecurso')?.errors?.['required']">El contenido de la respuesta
-        es obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>autor</mat-label>
-      <input matInput placeholder="autor" formControlName="autor" maxlength="15"/>
+        <mat-form-field class="example-full-width" *ngIf="edicion" >
+          <mat-label>id</mat-label>
+          <input matInput placeholder="ID" formControlName="iD" readonly/>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>enlace</mat-label>
+          <input matInput placeholder="http//:example.com" formControlName="enlaceRecurso" />
+    
+          <mat-error *ngIf="obtenerControlCampo('enlaceRecurso')?.errors?.['required']">El contenido de la respuesta
+            es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>nombre</mat-label>
+          <input matInput placeholder="nombre" formControlName="nombreRecurso" maxlength="15"/>
+    
+          <mat-error *ngIf="obtenerControlCampo('nombreRecurso')?.errors?.['required']">El contenido de la respuesta
+            es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>autor</mat-label>
+          <input matInput placeholder="autor" formControlName="autor" maxlength="15"/>
+    
+          <mat-error *ngIf="obtenerControlCampo('autor')?.errors?.['required']">El contenido de la respuesta
+            es obligatorio.
+          </mat-error>
+        </mat-form-field>
 
-      <mat-error *ngIf="obtenerControlCampo('autor')?.errors?.['required']">El contenido de la respuesta
-        es obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>descripcion</mat-label>
-      <input matInput placeholder="descripcion" formControlName="descripcion" maxlength="35"/>
+      </div>
 
-      <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">El contenido de la respuesta
-        es obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill" class="example-full-width">
-      <input
-        matInput
-        placeholder="Fecha de publicacion"
-        [matDatepicker]="picker"
-        formControlName="fechaPublicacion"
-        [max]="maxFecha"
-      />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error
-        *ngIf="obtenerControlCampo('fechaPublicacion')?.errors?.['required']"
-      >
-       Obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-      <mat-label>Tipo de recurso academico</mat-label>
-      <mat-select formControlName="tipoRecurso_ID" [(value)]="idTipoRecurso">
-        <mat-option *ngFor="let t of listaTR" [value]="t.iD">
-          {{t.nombreTipo}}
-        </mat-option>
+      <div class="columna">
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>descripcion</mat-label>
+          <input matInput placeholder="descripcion" formControlName="descripcion" maxlength="35"/>
+    
+          <mat-error *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']">El contenido de la respuesta
+            es obligatorio.
+          </mat-error>
+        </mat-form-field>
 
-        <mat-error *ngIf="obtenerControlCampo('tipoRecurso_ID')?.errors?.['required']">
-        </mat-error>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-      <mat-label>Curso</mat-label>
-      <mat-select formControlName="curso_IdCurso" [(value)]="idCurso">
-        <mat-option *ngFor="let c of listaCursos" [value]="c.idCurso">
-          {{c.nombreCurso}}
-        </mat-option>
+        <br>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <input
+            matInput
+            placeholder="Fecha de publicacion"
+            [matDatepicker]="picker"
+            formControlName="fechaPublicacion"
+            [max]="maxFecha"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="obtenerControlCampo('fechaPublicacion')?.errors?.['required']"
+          >
+           Obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+          <mat-label>Tipo de recurso academico</mat-label>
+          <mat-select formControlName="tipoRecurso_ID" [(value)]="idTipoRecurso">
+            <mat-option *ngFor="let t of listaTR" [value]="t.iD">
+              {{t.nombreTipo}}
+            </mat-option>
+    
+            <mat-error *ngIf="obtenerControlCampo('tipoRecurso_ID')?.errors?.['required']">
+            </mat-error>
+          </mat-select>
+        </mat-form-field>
 
-        <mat-error *ngIf="obtenerControlCampo('curso_IdCurso')?.errors?.['required']">
-        </mat-error>
-      </mat-select>
-    </mat-form-field>
+        <br/>
+        <mat-form-field>
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="curso_IdCurso" [(value)]="idCurso">
+            <mat-option *ngFor="let c of listaCursos" [value]="c.idCurso">
+              {{c.nombreCurso}}
+            </mat-option>
+    
+            <mat-error *ngIf="obtenerControlCampo('curso_IdCurso')?.errors?.['required']">
+            </mat-error>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+
     <br>
-    <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-    <button mat-raised-button color="warn" routerLink="/recursoacademico/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+    <div class="button-container">
+      <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="/recursoacademico/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+    </div>
+    
     <p>{{ mensaje }}</p>
   </form>
 </div>

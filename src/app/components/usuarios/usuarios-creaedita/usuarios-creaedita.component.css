@@ -1,11 +1,14 @@
-.titulo-registrar {
-  font-size: 24px; /* Ajusta el tamaño del texto */
-  font-family: “Roboto”, sans-serif; /* Cambia la fuente del texto */
- }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /*Para que tenga color en toda la página*/
+}
 
- .caracterminimo{
-  font-size: 15px; /* Ajusta el tamaño del texto */
- }
+.caracterminimo{
+ font-size: 15px; /* Ajusta el tamaño del texto */
+}
 
 mat-form-field {
   width: 80%;
@@ -41,18 +44,7 @@ mat-form-field {
   color: white;
 }
 
-
-/* Cambios en el tamaño y color del texto de los errores */
-mat-error {
-  font-size: 14px;
-  color: #ff6b6b;
- }
-.titulo-registrar {
-  font-size: 24px; /* Ajusta el tamaño del texto */
-  font-family: “Roboto”, sans-serif; /* Cambia la fuente del texto */
- }
-
- .caracterminimo{
+.caracterminimo{
   font-size: 15px; /* Ajusta el tamaño del texto */
  }
 
@@ -97,5 +89,13 @@ mat-error {
  }
  .mat-form-field {
   margin-bottom: 20px;
- }
+}
+
+.container {
+  width: 100%; /* Ajusta este porcentaje según tus necesidades */
+  background-color: #fff; /*COLOR DE LA TABLA*/
+  border: 1px solid #ccc; /*Color del borde de la TABLA*/
+  padding: 30px;
+  margin: 20px auto; /*Espacio entre el menu y el contenedor*/
+}
  
