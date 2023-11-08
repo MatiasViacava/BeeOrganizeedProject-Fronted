@@ -27,17 +27,17 @@
           </ng-container>
           <!-- Weight Column -->
           <ng-container matColumnDef="username">
-            <th mat-header-cell *matHeaderCellDef> Username </th>
+            <th mat-header-cell *matHeaderCellDef> Usuario </th>
             <td mat-cell *matCellDef="let element"> {{element.username}}</td>
           </ng-container>
                     <!-- OCULTO -->
             <ng-container matColumnDef="password">
-              <th mat-header-cell *matHeaderCellDef hidden="true"> Password </th>
+              <th mat-header-cell *matHeaderCellDef hidden="true"> Contraseña </th>
               <td mat-cell *matCellDef="let element" hidden="true"> {{element.password}} </td>
             </ng-container>
               <!-- Weight Column -->
               <ng-container matColumnDef="enabled">
-                <th mat-header-cell *matHeaderCellDef> Enabled </th>
+                <th mat-header-cell *matHeaderCellDef> Activado </th>
                 <td mat-cell *matCellDef="let element"> {{element.enabled}} </td>
               </ng-container>
                 <!-- Weight Column -->
@@ -67,7 +67,7 @@
               </ng-container>
               
               <ng-container matColumnDef="estado">
-                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
                 <td mat-cell *matCellDef="let element">
                   <button
                     mat-raised-button

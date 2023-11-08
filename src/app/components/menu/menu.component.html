@@ -1,15 +1,16 @@
-<mat-toolbar class="color">
+<mat-toolbar class="color" *ngIf="verificar()">
     <button (click)="drawer.toggle()"  mat-icon-button> <mat-icon>menu</mat-icon> </button> <!--Ayuda a que se oculte-->
     <span>BeeOrganized</span>
     <button mat-icon-button><mat-icon>notifications</mat-icon></button>
     <button mat-icon-button><mat-icon>sms</mat-icon></button>
+    <label>{{role}}</label>
 </mat-toolbar>
   
 <mat-drawer-container autosize>
     <mat-drawer #drawer opened="false" mode="push" position="start"> <!--over: Para darle tono oscuro al darle clic al menu, push: mueve el contenido hacia la derecha, side:se queda ahi, end: el menu aparece a la derecha-->
       <mat-nav-list>
         <mat-list-item>
-          <button mat-button routerLink=""><mat-icon>home</mat-icon>Home</button>
+          <button mat-button (click)="cerrar()"><mat-icon>home</mat-icon>Cerrar sesión</button>
         </mat-list-item>
   
         <mat-list-item>
@@ -80,68 +81,68 @@
 </mat-drawer-container>
 
 <mat-menu #menuUsuarios="matMenu">
-  <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>dns</mat-icon> Registrar</button>
-  <button mat-menu-item routerLink="/usuarios/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('usuarios','nuevo')"><mat-icon>dns</mat-icon> Registrar</button>
+  <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuTipoUsuario="matMenu">
-  <button mat-menu-item routerLink="/tipousuario/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-   <button mat-menu-item routerLink="/tipousuario/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('tipousuario','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('tipousuario','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuConfiguracion="matMenu">
-  <button mat-menu-item routerLink="/configuracion/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-   <button mat-menu-item routerLink="/configuracion/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('configuracion','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('configuracion','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuTipoActividad="matMenu">
-  <button mat-menu-item routerLink="/tipoactividad/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/tipoactividad/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('tipoactividad','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('tipoactividad','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuTipoRecurso="matMenu">
-  <button mat-menu-item routerLink="/tiporecurso/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/tiporecurso/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('tiporecurso','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('tiporecurso','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuCursos="matMenu">
-  <button mat-menu-item routerLink="/cursos/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/cursos/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('cursos','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('cursos','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuIdioma="matMenu">
-  <button mat-menu-item routerLink="/idioma/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/idioma/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('idioma','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('idioma','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuPregunta="matMenu">
-  <button mat-menu-item routerLink="/pregunta/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/pregunta/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('pregunta','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('pregunta','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuRespuesta="matMenu">
-  <button mat-menu-item routerLink="/respuesta/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/respuesta/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('respuesta','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('pregunta','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuRecursoAcademico="matMenu">
-  <button mat-menu-item routerLink="/recursoacademico/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/recursoacademico/listar"><mat-icon>dns</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/recursoacademico/buscarfecha"><mat-icon>dns</mat-icon>Buscar fecha</button>
+  <button mat-menu-item (click)="iralink('recursoacademico','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('recursoacademico','listar')"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('recursoacademico','buscarfecha')"><mat-icon>dns</mat-icon>Buscar fecha</button>
 </mat-menu>
 
 <mat-menu #menuEncuesta="matMenu">
-  <button mat-menu-item routerLink="/encuestas/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-   <button mat-menu-item routerLink="/encuestas/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('encuestas','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('encuestas','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuHorario="matMenu">
-  <button mat-menu-item routerLink="/horario/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-   <button mat-menu-item routerLink="/horario/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('horario','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('horario','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
 
 <mat-menu #menuActividad="matMenu">
-  <button mat-menu-item routerLink="/actividad/nuevo"><mat-icon>dns</mat-icon>Registrar</button>
-   <button mat-menu-item routerLink="/actividad/listar"><mat-icon>dns</mat-icon>Listar</button>
+  <button mat-menu-item (click)="iralink('actividad','nuevo')"><mat-icon>dns</mat-icon>Registrar</button>
+  <button mat-menu-item (click)="iralink('actividad','listar')"><mat-icon>dns</mat-icon>Listar</button>
 </mat-menu>
   

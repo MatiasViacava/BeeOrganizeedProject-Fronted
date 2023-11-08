@@ -2,7 +2,7 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Actividad } from '../models/actividad';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const base_url=environment.base
 
@@ -15,10 +15,22 @@ export class ActividadService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Actividad[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Actividad[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(de: Actividad) {
-    return this.http.post(this.url, de);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, de, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    } );
   }
   setList(listaNueva: Actividad[]) {
     this.listaCambio.next(listaNueva);
@@ -26,13 +38,32 @@ export class ActividadService {
   getList() {
     return this.listaCambio.asObservable();
   }
+  
   listarId(id: number) {
-    return this.http.get<Actividad>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Actividad>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   modificar(de: Actividad) {
-    return this.http.put(this.url, de);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, de, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   eliminar(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

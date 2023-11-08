@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -10,7 +10,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   templateUrl: './usuarios-creaedita.component.html',
   styleUrls: ['./usuarios-creaedita.component.css']
 })
-export class UsuariosCreaeditaComponent {
+export class UsuariosCreaeditaComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   usuarios: Usuarios = new Usuarios();
   mensaje: string = '';
@@ -65,7 +65,7 @@ export class UsuariosCreaeditaComponent {
             })
           })
         }
-        this.router.navigate(['usuarios']);
+        this.router.navigate(['usuarios/listar']);
 
     } else {
       this.mensaje="Complete todos los campos!!!!"
