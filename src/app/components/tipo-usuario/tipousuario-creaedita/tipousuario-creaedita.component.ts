@@ -61,7 +61,7 @@ export class TipousuarioCreaeditaComponent implements OnInit {
           })
         })
       }
-      this.router.navigate(['tipousuario']);
+      this.router.navigate(['/components/tipousuario/listar']);
 
     } else {
       this.mensaje = "Complete todos los campos!!!!"

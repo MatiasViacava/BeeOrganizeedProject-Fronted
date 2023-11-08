@@ -65,7 +65,7 @@ export class UsuariosCreaeditaComponent implements OnInit{
             })
           })
         }
-        this.router.navigate(['usuarios/listar']);
+        this.router.navigate(['/components/usuarios/listar']);
 
     } else {
       this.mensaje="Complete todos los campos!!!!"

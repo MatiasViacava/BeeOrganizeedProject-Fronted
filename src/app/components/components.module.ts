@@ -130,7 +130,7 @@ import { RecursoAcademicoBuscarfechaComponent } from './recurso-academico/recurs
     MatSelectModule,
     MatCardModule,
     MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
   ]
 })
 

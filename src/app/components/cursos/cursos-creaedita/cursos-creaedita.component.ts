@@ -67,7 +67,7 @@ export class CursosCreaeditaComponent implements OnInit {
         })
       }
 
-      this.router.navigate(['cursos/listar']);
+      this.router.navigate(['/components/cursos/listar']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
