@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -17,10 +17,22 @@ export class IdiomaService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Idioma[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Idioma[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(de: Idioma) {
-    return this.http.post(this.url, de);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, de, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   setList(listaNueva: Idioma[]) {
     this.listaCambio.next(listaNueva);
@@ -29,12 +41,30 @@ export class IdiomaService {
     return this.listaCambio.asObservable();
   }
   listarId(id: number) {
-    return this.http.get<Idioma>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Idioma>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   modificar(de: Idioma) {
-    return this.http.put(this.url, de);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, de, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   eliminar(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

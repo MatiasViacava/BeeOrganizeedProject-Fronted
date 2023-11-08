@@ -15,11 +15,11 @@ body {
   }
   
   .container {
-    width: 100%; /* Ajusta este porcentaje según tus necesidades */
+    width: 70%; /* Ajusta este porcentaje según tus necesidades */
     background-color: #fff; /*COLOR DE LA TABLA*/
     border: 1px solid #ccc; /*Color del borde de la TABLA*/
     padding: 30px;
-
+    margin: 20px auto;
     
   }
   

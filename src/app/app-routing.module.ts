@@ -44,113 +44,23 @@ import { ConfiguracionListarComponent } from './components/configuracion/configu
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RecursoAcademicoBuscarfechaComponent } from './components/recurso-academico/recurso-academico-buscarfecha/recurso-academico-buscarfecha.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  {
-    path: 'usuarios', component: UsuariosComponent, children: [
-      { path: 'listar', component: UsuariosListarComponent },
-      { path: 'nuevo', component: UsuariosCreaeditaComponent },
-      { path: 'edicion/:id', component: UsuariosCreaeditaComponent}
-    ]
+ {
+    path: '',
+    redirectTo: 'landingpage', pathMatch: 'full'
   },
   {
-    path: 'configuracion', component: ConfiguracionComponent, children: [
-      { path: 'nuevo', component: ConfiguracionCreaeditaComponent },
-      { path: 'listar', component: ConfiguracionListarComponent },
-      { path: 'edicion/:idConfiguracion', component: ConfiguracionCreaeditaComponent}
-    ]
-  },
-
-  {
-    path: 'tipoactividad', component: TipoActividadComponent, children: [
-      { path: 'nuevo', component: TipoActividadCreaeditaComponent },
-      { path: 'listar', component: TipoActividadListarComponent },
-      { path: 'edicion/:iDTipoActividad', component: TipoActividadCreaeditaComponent}
-    ]
-  },
-
-  {
-    path: 'cursos', component: CursosComponent, children: [
-      { path: 'nuevo', component: CursosCreaeditaComponent },
-      { path: 'listar', component: CursosListarComponent },
-      { path: 'edicion/:idCurso', component: CursosCreaeditaComponent}
-    ]
-  },
-
-  {
-    path: 'idioma', component: IdiomaComponent, children: [
-      { path: 'nuevo', component: CreaeditaIdiomaComponent },
-      { path: 'listar', component: ListarIdiomaComponent },
-      { path: 'edicion/:idIdioma', component: CreaeditaIdiomaComponent}
-    ]
-  },
-
-  {
-    path: 'pregunta', component: PreguntaComponent, children: [
-      { path: 'nuevo', component: PreguntaCreaeditaComponent },
-      { path: 'listar', component: PreguntaListarComponent },
-      { path: 'edicion/:idPregunta', component: PreguntaCreaeditaComponent}
-    ]
-  },
-
-  {
-    path: 'respuesta', component: RespuestaComponent, children: [
-      { path: 'nuevo', component: RespuestaCreaeditaComponent },
-      { path: 'listar', component: RespuestaListarComponent },
-      { path: 'edicion/:idRespuesta', component: RespuestaCreaeditaComponent}
-    ]
-  },
-
-  {
-    path: 'tiporecurso', component: TipoRecursoComponent, children: [
-      { path: 'nuevo', component: TipoRecursoCreaeditaComponent },
-      { path: 'listar', component: TipoRecursoListarComponent },
-      { path: 'edicion/:iD', component: TipoRecursoCreaeditaComponent}
-    ]
+    path: 'login', component: LoginComponent
   },
   {
-    path:'recursoacademico',component:RecursoAcademicoComponent,children:[
-      {path:'nuevo',component:RecursoAcademicoCreaeditaComponent},
-      {path:'listar',component: RecursoAcademicoListarComponent},
-      {path: 'edicion/:iD',component: RecursoAcademicoCreaeditaComponent},
-      {path: 'buscarfecha',component: RecursoAcademicoBuscarfechaComponent}
-    ]
+    path: 'components',
+    loadChildren: () => import('./components/components.module').then((m) => m.ComponentsModule),
   },
   {
-    path: 'tipousuario', component: TipoUsuarioComponent, children: [
-      { path: 'nuevo', component: TipousuarioCreaeditaComponent },
-      { path: 'listar', component: TipousuarioListarComponent },
-      { path: 'edicion/:idTipoUsuario', component: TipousuarioCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'encuestas', component: EncuestaComponent, children: [
-      { path: 'nuevo', component: EncuestaCreaeditaComponent },
-      { path: 'listar', component: EncuestaListarComponent },
-      { path: 'edicion/:idEncuesta', component: EncuestaCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'horario', component: HorarioComponent, children: [
-      { path: 'nuevo', component: HorarioCreaeditaComponent },
-      { path: 'listar', component: HorarioListarComponent },
-      { path: 'edicion/:idHorario', component: HorarioCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'actividad', component: ActividadComponent, children: [
-      { path: 'nuevo', component: ActividadCreaeditaComponent },
-      { path: 'listar', component: ActividadListarComponent },
-      { path: 'edicion/:idActividad', component: ActividadCreaeditaComponent}
-
-    ]
-  },
-  {
-    path: 'menu', component: MenuComponent
-  },
-  {
-    path: '', component: LandingPageComponent
+    path: 'landingpage', component: LandingPageComponent
   }
 ];
 
