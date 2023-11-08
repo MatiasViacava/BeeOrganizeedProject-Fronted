@@ -65,7 +65,7 @@ export class EncuestaCreaeditaComponent implements OnInit{
           })
         })
       }
-      this.router.navigate(['encuestas']);
+      this.router.navigate(['/components/encuestas/listar']);
 
     } else {
       this.mensaje = "Complete todos los campos"

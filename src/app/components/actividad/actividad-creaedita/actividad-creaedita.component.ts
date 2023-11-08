@@ -100,7 +100,7 @@ export class ActividadCreaeditaComponent implements OnInit{
           });
         });
       }
-      this.router.navigate(['actividad/listar']);
+      this.router.navigate(['/components/actividad/listar']);
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
