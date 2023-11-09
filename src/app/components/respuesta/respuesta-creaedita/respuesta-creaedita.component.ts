@@ -67,7 +67,7 @@ export class RespuestaCreaeditaComponent implements OnInit{
           })
         })
       }
-      this.router.navigate(['respuesta']);
+      this.router.navigate(['/components/respuesta/listar']);
 
     } else {
       this.mensaje = "Complete todos los campos!!!!"

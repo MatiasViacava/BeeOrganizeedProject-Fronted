@@ -72,7 +72,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
           })
         })
       }
-      this.router.navigate(['configuracion']);
+      this.router.navigate(['/components/configuracion/listar']);
     }else{
       this.mensaje="Falta completar campos"
     }

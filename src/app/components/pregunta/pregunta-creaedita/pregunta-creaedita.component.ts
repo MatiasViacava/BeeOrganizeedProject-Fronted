@@ -66,7 +66,7 @@ export class PreguntaCreaeditaComponent implements OnInit{
           })
         })
       }
-      this.router.navigate(['pregunta']);
+      this.router.navigate(['/components/pregunta/listar']);
 
     } else {
       this.mensaje = "Complete todos los campos!!!!"

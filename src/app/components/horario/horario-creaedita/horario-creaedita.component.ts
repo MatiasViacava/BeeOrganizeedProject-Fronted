@@ -75,7 +75,7 @@ export class HorarioCreaeditaComponent implements OnInit{
           });
         });
       }
-      this.router.navigate(['horario/listar']);
+      this.router.navigate(['/components/horario/listar']);
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
