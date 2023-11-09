@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <footer>
-  <mat-toolbar class="color" *ngIf="verificar()">
+  <mat-toolbar [ngClass]="{'color-admin': role == 'Administrador', 'color-estudiante': role == 'Estudiante'}" *ngIf="verificar()">
     <button (click)="drawer.toggle()"  mat-icon-button> <mat-icon>menu</mat-icon> </button> <!--Ayuda a que se oculte-->
     <span>BeeOrganized</span>
     <button mat-icon-button><mat-icon>notifications</mat-icon></button>
@@ -24,59 +24,61 @@
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuUsuarios"><mat-icon>people</mat-icon>Usuarios</button>
+        <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>people</mat-icon>Usuarios</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuTipoUsuario"><mat-icon>person</mat-icon>Tipo Usuario</button>
+        <button mat-button [matMenuTriggerFor]="menuHorario" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>schedule</mat-icon>Horario</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuConfiguracion"><mat-icon>settings</mat-icon>Configuracion</button>
+        <button mat-button [matMenuTriggerFor]="menuCursos" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>book</mat-icon>Cursos</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuTipoActividad"><mat-icon>assignment</mat-icon>Tipo Actividad</button>
+        <button mat-button [matMenuTriggerFor]="menuConfiguracion" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>settings</mat-icon>Configuracion</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuTipoRecurso"><mat-icon>assignment_ind</mat-icon>Tipo Recurso</button>
+        <button mat-button [matMenuTriggerFor]="menuActividad" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>layers</mat-icon>Actividad</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuCursos"><mat-icon>book</mat-icon>Cursos</button>
+        <button mat-button [matMenuTriggerFor]="menuRespuesta" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>check_box</mat-icon>Respuesta</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuIdioma"><mat-icon>language</mat-icon>Idioma</button>
+        <button mat-button [matMenuTriggerFor]="menuRecursoAcademico" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>dns</mat-icon>Recurso Academico</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuPregunta"><mat-icon>question_answer</mat-icon>Pregunta</button>
+        <button mat-button [matMenuTriggerFor]="menuTipoRecurso" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>assignment_ind</mat-icon>Tipo Recurso</button>
+      </mat-list-item>
+
+    
+      
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuTipoUsuario" *ngIf="role == 'Administrador'"><mat-icon>person</mat-icon>Tipo Usuario</button>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuTipoActividad" *ngIf="role == 'Administrador'"><mat-icon>assignment</mat-icon>Tipo Actividad</button>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuIdioma" *ngIf="role == 'Administrador'"><mat-icon>language</mat-icon>Idioma</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuRespuesta"><mat-icon>check_box</mat-icon>Respuesta</button>
+        <button mat-button [matMenuTriggerFor]="menuEncuesta" *ngIf="role == 'Administrador'"><mat-icon>poll</mat-icon>Encuesta</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuRecursoAcademico"><mat-icon>dns</mat-icon>Recurso Academico</button>
+        <button mat-button [matMenuTriggerFor]="menuPregunta" *ngIf="role == 'Administrador'"><mat-icon>question_answer</mat-icon>Pregunta</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuEncuesta"><mat-icon>poll</mat-icon>Encuesta</button>
-      </mat-list-item>
-
-      <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuHorario"><mat-icon>schedule</mat-icon>Horario</button>
-      </mat-list-item>
-
-      <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuActividad"><mat-icon>layers</mat-icon>Actividad</button>
-      </mat-list-item>
-
-      <mat-list-item>
-        <button mat-button><mat-icon>markunread_mailbox</mat-icon>Reportes</button>
+        <button mat-button *ngIf="role == 'Administrador'"><mat-icon>markunread_mailbox</mat-icon>Reportes</button>
       </mat-list-item>
 
     </mat-nav-list>

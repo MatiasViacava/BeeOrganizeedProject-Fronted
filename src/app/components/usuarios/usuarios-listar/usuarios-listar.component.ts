@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuarios } from 'src/app/models/usuarios';
+import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -12,10 +13,20 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class UsuariosListarComponent {
   dataSource: MatTableDataSource<Usuarios> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['id','username', 'password','enabled','nombres','apellidos','fechaNacimiento','universidad','email','estado','actualizar'];
+  ['id','username', 'password','enabled','nombres','apellidos','fechaNacimiento','universidad','email','actualizar','eliminar'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private uS: UsuariosService) {}
+  constructor(
+    private uS: UsuariosService,
+    private ls: LoginService
+  ) {}
+
+  role:string=""; //NUEVO
+
   ngOnInit(): void {
+    this.role=this.ls.showRole();
+    console.log(this.role);
+
+
     this.uS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
