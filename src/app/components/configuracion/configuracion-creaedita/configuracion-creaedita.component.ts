@@ -26,6 +26,8 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
 
   edicion:boolean=false;
   idCOnfiguracion:number=0
+  colorSeleccionado: any;
+  
   constructor(
     private raS:ConfiguracionService,
     private trS:IdiomaService,
@@ -95,4 +97,12 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       })
     }
   }
+
+  colorF(event: any) {
+    this.colorSeleccionado = event.color.hex; // Actualiza el color seleccionado
+    this.form.get('colorInterfaz')?.setValue(this.colorSeleccionado); // Actualiza el valor en el formulario
+  }
+
+
+  
 }

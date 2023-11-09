@@ -17,6 +17,9 @@ export class CursosCreaeditaComponent implements OnInit {
   mensaje: string = '';
   minFecha: Date = moment().add('days').toDate();
   maxFecha: Date = moment().endOf('year').toDate();
+
+  minFechaFin: Date = moment().add('days').toDate();
+  
   fechaInicioCurso = new FormControl(new Date());
   fechaFinCurso = new FormControl(new Date());
 
@@ -94,6 +97,14 @@ export class CursosCreaeditaComponent implements OnInit {
       });
     }
   }
+
+  onFechaInicioChange(event: any) {
+    let fechaInicio = new Date(event.value);
+    fechaInicio.setDate(fechaInicio.getDate() + 1);
+    this.minFechaFin = fechaInicio;
+  }
+
+
   
 }
 

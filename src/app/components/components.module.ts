@@ -63,6 +63,8 @@ import { ConfiguracionListarComponent } from './configuracion/configuracion-list
 import { MenuComponent } from './menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RecursoAcademicoBuscarfechaComponent } from './recurso-academico/recurso-academico-buscarfecha/recurso-academico-buscarfecha.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
+
 
 
 @NgModule({
@@ -131,6 +133,7 @@ import { RecursoAcademicoBuscarfechaComponent } from './recurso-academico/recurs
     MatCardModule,
     MatDialogModule,
     MatSidenavModule,
+    ColorSketchModule
   ]
 })
 
