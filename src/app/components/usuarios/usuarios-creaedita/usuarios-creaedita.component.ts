@@ -65,7 +65,7 @@ export class UsuariosCreaeditaComponent implements OnInit{
             })
           })
         }
-        this.router.navigate(['usuarios/listar']);
+        this.router.navigate(['/components/usuarios/listar']);
 
     } else {
       this.mensaje="Complete todos los campos!!!!"
@@ -79,6 +79,22 @@ export class UsuariosCreaeditaComponent implements OnInit{
     }
     return control;
   }
+  //init() {
+  //  if (this.edicion) {
+  //    this.uS.listarId(this.idUsuario).subscribe((data) => {
+  //      this.form = new FormGroup({
+  //      id: new FormControl(data.id),
+  //      username: new FormControl(data.username),
+  //      password: new FormControl(data.password),
+  //      nombres:new FormControl(data.nombres),
+  //      apellidos:new FormControl(data.apellidos),
+  //      fechaNacimiento: new FormControl(data.fechaNacimiento),
+  //      universidad:new FormControl(data.universidad),
+  //      email:new FormControl(data.email),
+  //      });
+  //    });
+  //  }
+  //}
   init() {
     if (this.edicion) {
       this.uS.listarId(this.idUsuario).subscribe((data) => {
@@ -92,7 +108,18 @@ export class UsuariosCreaeditaComponent implements OnInit{
         universidad:new FormControl(data.universidad),
         email:new FormControl(data.email),
         });
-      });
-    }
+    });
+    } else {
+      this.form = this.formBuilder.group({
+        id: [''],
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+        nombres: ['', [Validators.required]],
+        apellidos: ['', Validators.required],
+        fechaNacimiento: [new Date()], // establece la fecha de hoy
+        universidad: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+      });
+    }
   }
 }

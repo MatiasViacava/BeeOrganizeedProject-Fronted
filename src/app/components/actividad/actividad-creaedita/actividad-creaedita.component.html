@@ -44,7 +44,7 @@
             </mat-form-field>
 
             <br>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" *ngIf="edicion">
                 <mat-label>Estado</mat-label>
                 <mat-select formControlName="estado">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
@@ -56,9 +56,9 @@
                   >El estado es obligatorio.
                 </mat-error>
             </mat-form-field>
-
-            <br>
-            <mat-form-field class="example-full-width">
+            
+            <br> 
+            <mat-form-field class="example-full-width" *ngIf="edicion">
                 <mat-label>Calificación</mat-label>
                 <input matInput placeholder="Calificación" formControlName="calificacion"  type="number" min="0.0" max="20.0"/>
                 <mat-hint>0.0 al 20.0</mat-hint>

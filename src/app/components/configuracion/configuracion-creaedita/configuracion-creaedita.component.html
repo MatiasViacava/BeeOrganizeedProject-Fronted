@@ -17,12 +17,13 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>Color de la Interfaz</mat-label>
-      <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15" pattern="^[a-z~A-ZáéíóúÁÉÍÓÚñÑ]*$"/>
+      <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15"/>
 
       <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El contenido de la respuesta
         es obligatorio.
       </mat-error>
     </mat-form-field>
+    <div class="color1"><color-sketch color="#fff" (onChangeComplete)="colorF($event)"></color-sketch></div>
     <br>
     <mat-form-field>
       <mat-label>Idioma</mat-label>

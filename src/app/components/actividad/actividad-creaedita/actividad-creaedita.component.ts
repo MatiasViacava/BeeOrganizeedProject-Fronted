@@ -53,8 +53,10 @@ export class ActividadCreaeditaComponent implements OnInit{
       idActividad: [''],
       nombreActividad: ['', Validators.required],
       descripcion: ['', Validators.required],
-      estado: ['', Validators.required],
-      calificacion: ['', Validators.required],
+      //estado: ['', Validators.required],
+      estado: [this.edicion ? '' : 'Incompleto', Validators.required],
+      //calificacion: ['', Validators.required],
+      calificacion: [this.edicion ? '' : 0, Validators.required],
       fecha: ['', Validators.required],
       horario: ['', Validators.required],
       tipoActividad: ['', Validators.required],
@@ -82,10 +84,11 @@ export class ActividadCreaeditaComponent implements OnInit{
       this.actividad.estado = this.form.value.estado;
       this.actividad.calificacion = this.form.value.calificacion;
       this.actividad.fecha = this.form.value.fecha;
-
       this.actividad.horario.idHorario = this.form.value.horario;
       this.actividad.tipoActividad.iDTipoActividad = this.form.value.tipoActividad;
       this.actividad.curso.idCurso = this.form.value.curso;
+
+      
 
       if (this.edicion) {
         this.aS.modificar(this.actividad).subscribe((data) => {
@@ -100,7 +103,7 @@ export class ActividadCreaeditaComponent implements OnInit{
           });
         });
       }
-      this.router.navigate(['actividad/listar']);
+      this.router.navigate(['/components/actividad/listar']);
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';

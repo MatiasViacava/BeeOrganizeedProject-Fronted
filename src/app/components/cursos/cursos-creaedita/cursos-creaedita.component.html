@@ -51,6 +51,7 @@
             formControlName="fechaInicioCurso"
             [min]="minFecha"
             [max]="maxFecha"
+            (dateChange)="onFechaInicioChange($event)"
           />
           <mat-datepicker-toggle
             matIconSuffix
@@ -71,7 +72,7 @@
               placeholder="Fecha de fin de curso"
               [matDatepicker]="picker2"
               formControlName="fechaFinCurso"
-              [min]="minFecha"
+              [min]="minFechaFin"
               [max]="maxFecha"
             />
             <mat-datepicker-toggle
