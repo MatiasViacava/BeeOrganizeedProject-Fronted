@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Encuesta } from 'src/app/models/encuesta';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 
@@ -14,7 +15,10 @@ export class EncuestaListarComponent implements OnInit{
   displayedColumns: string[] =
   ['codigo', 'valoracionfinal', 'comentario', 'usuario_id', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private eS: EncuestaService) {}
+  constructor(
+    public route: ActivatedRoute, 
+    private router: Router, 
+    private eS: EncuestaService) {}
 
   ngOnInit(): void {
     this.eS.list().subscribe((data) => {
@@ -32,5 +36,8 @@ export class EncuestaListarComponent implements OnInit{
         this.eS.setList(data);
       });
     });
+  }
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/encuestas/',comp1, comp2]);
   }
 }

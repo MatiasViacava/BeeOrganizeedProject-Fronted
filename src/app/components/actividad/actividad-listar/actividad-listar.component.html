@@ -70,7 +70,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/components/actividad/edicion', element.idActividad]"
+            (click)="iralink('edicion', element.idActividad)"
             ><mat-icon>update</mat-icon>
           </button>
       </td></ng-container>
@@ -91,10 +91,9 @@
     </table>
 
     <br>
-    <button mat-button color="primary" routerLink="/actividad/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
 
     <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
+    [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
   

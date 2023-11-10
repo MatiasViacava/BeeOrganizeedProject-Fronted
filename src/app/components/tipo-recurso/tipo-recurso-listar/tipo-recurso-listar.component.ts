@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TipoRecurso } from 'src/app/models/tiporecurso';
 import { TipoRecursoService } from 'src/app/services/tipo-recurso.service';
 
@@ -14,7 +15,10 @@ export class TipoRecursoListarComponent {
   displayedColumns: string[] =
   ['codigo', 'nombre', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private trS: TipoRecursoService) {}
+  constructor(
+    public route: ActivatedRoute, 
+    private router: Router, 
+    private trS: TipoRecursoService) {}
 
   ngOnInit(): void {
     this.trS.list().subscribe((data) => {
@@ -32,5 +36,8 @@ export class TipoRecursoListarComponent {
         this.trS.setList(data);
       });
     });
+  }
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/tiporecurso/',comp1, comp2]);
   }
 }

@@ -14,39 +14,39 @@
   <div class="container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <th mat-header-cell *matHeaderCellDef> Código </th>
         <td mat-cell *matCellDef="let element"> {{element.iD}} </td>
       </ng-container>
       <ng-container matColumnDef="enlace">
-        <th mat-header-cell *matHeaderCellDef> enlace </th>
+        <th mat-header-cell *matHeaderCellDef> Enlace </th>
         <td mat-cell *matCellDef="let element"> {{element.enlaceRecurso}} </td>
       </ng-container>
     
       <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> nombre </th>
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
         <td mat-cell *matCellDef="let element"> {{element.nombreRecurso}} </td>
       </ng-container>
 
       <ng-container matColumnDef="autor">
-        <th mat-header-cell *matHeaderCellDef> autor </th>
+        <th mat-header-cell *matHeaderCellDef> Autor </th>
         <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
       </ng-container>
 
       <ng-container matColumnDef="fecha Publicacion">
-        <th mat-header-cell *matHeaderCellDef> fecha publicacion </th>
+        <th mat-header-cell *matHeaderCellDef> Fecha publicación </th>
         <td mat-cell *matCellDef="let element"> {{element.fechaPublicacion | date:"dd/MM/yyyy"}} </td>
       </ng-container>
 
       <ng-container matColumnDef="descripcion">
-        <th mat-header-cell *matHeaderCellDef> Descripción </th>
-        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+        <th mat-header-cell *matHeaderCellDef hidden> Descripción </th>
+        <td mat-cell *matCellDef="let element" hidden> {{element.descripcion}} </td>
       </ng-container>
       <ng-container matColumnDef="tipo de recurso">
-        <th mat-header-cell *matHeaderCellDef> tipo recurso </th>
+        <th mat-header-cell *matHeaderCellDef> Tipo de recurso </th>
         <td mat-cell *matCellDef="let element"> {{element.tipoRecurso_ID.nombreTipo}} </td>
       </ng-container>
       <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef> curso </th>
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
         <td mat-cell *matCellDef="let element"> {{element.curso_IdCurso.nombreCurso}} </td>
       </ng-container>
       <!-- ACCIONES -->
@@ -56,8 +56,8 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/recursoacademico/edicion', element.iD]"
-            ><mat-icon>update</mat-icon> Actualizar
+            (click)="iralink('edicion', element.iD)"
+            ><mat-icon>update</mat-icon>
           </button>
       </td></ng-container>
 
@@ -68,7 +68,7 @@
             mat-raised-button
             color="warn"
             (click)="eliminar(element.iD)"
-            ><mat-icon>delete</mat-icon> Eliminar
+            ><mat-icon>delete</mat-icon>
           </button>
       </td></ng-container>
     
@@ -77,7 +77,7 @@
     </table>
 
     <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
+    [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
   </div>

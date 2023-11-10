@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TipoUsuario } from 'src/app/models/tipousuario';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 
@@ -14,7 +15,10 @@ export class TipousuarioListarComponent {
   displayedColumns: string[] =
   ['codigo', 'nombre','usuario_id','actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private tuS: TipoUsuarioService) {}
+  constructor(
+    public route: ActivatedRoute, 
+    private router: Router, 
+    private tuS: TipoUsuarioService) {}
 
   ngOnInit(): void {
     this.tuS.list().subscribe((data) => {
@@ -32,5 +36,8 @@ export class TipousuarioListarComponent {
         this.tuS.setList(data);
       });
     });
+  }
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/tipousuario/',comp1, comp2]);
   }
 }

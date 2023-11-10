@@ -10,7 +10,7 @@
   <h2>Registro de Configuración General</h2>
   <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
-    <mat-form-field class="example-full-width" *ngIf="edicion" >
+    <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
       <mat-label>id</mat-label>
       <input matInput placeholder="ID" formControlName="idConfiguracion" readonly/>
     </mat-form-field>

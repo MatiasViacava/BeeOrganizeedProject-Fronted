@@ -12,7 +12,7 @@
         <h2>Registro de Encuesta</h2>
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
-            <mat-form-field class="example-full-width" *ngIf="edicion" >
+            <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
                 <mat-label>ID</mat-label>
                 <input matInput placeholder="ID" formControlName="idEncuesta" readonly/>
             </mat-form-field>

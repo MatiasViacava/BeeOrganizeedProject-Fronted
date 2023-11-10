@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Idioma } from 'src/app/models/idioma';
 import { IdiomaService } from 'src/app/services/idioma.service';
 
@@ -14,7 +15,10 @@ export class ListarIdiomaComponent implements OnInit {
   displayedColumns: string[] =
   ['idIdioma', 'nombreIdioma', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private iS: IdiomaService) {}
+  constructor(
+    public route: ActivatedRoute, 
+    private router: Router, 
+    private iS: IdiomaService) {}
 
   ngOnInit(): void {
     this.iS.list().subscribe((data) => {
@@ -32,6 +36,9 @@ export class ListarIdiomaComponent implements OnInit {
         this.iS.setList(data);
       });
     });
+  }
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/idioma/',comp1, comp2]);
   }
 
 }

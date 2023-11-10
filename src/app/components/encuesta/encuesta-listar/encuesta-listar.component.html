@@ -41,7 +41,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/encuestas/edicion', element.idEncuesta]"
+            (click)="iralink('edicion',element.idEncuesta)"
             ><mat-icon>update</mat-icon><!-- Sin texto -->
           </button>
       </td></ng-container>
@@ -61,11 +61,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <br>
-    <button mat-button color="primary" routerLink="/encuestas/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
-
     <mat-paginator 
-    [pageSizeOptions]="[100, 200, 300]" 
+    [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
   
