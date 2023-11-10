@@ -17,7 +17,7 @@ export class RecursoAcademicoBuscarfechaComponent implements OnInit{
   fechaVacia: boolean = false;
   displayedColumns: string[] =
   ['id','enlace', 'nombre','autor', 'fecha Publicacion','descripcion','tipo de recurso','curso']
-
+  
   constructor(
     private raS:RecursoAcademicoService,
     private formBuilder: FormBuilder
@@ -34,7 +34,7 @@ export class RecursoAcademicoBuscarfechaComponent implements OnInit{
       const fechas = this.fechaForm.value.fecha.toISOString().substring(0, 10);
       this.raS.buscar(fechas).subscribe((data) => {        
         this.dataSource.data = data;       
-        if (data.length === 0) {
+        if (data.length == 0) {
           this.mensaje = "No se encontraron resultados para la fecha seleccionada.";
         } else {
           this.mensaje = '';

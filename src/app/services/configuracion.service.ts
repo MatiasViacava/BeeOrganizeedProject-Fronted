@@ -63,4 +63,13 @@ export class ConfiguracionService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listporusuarioid(idusuario: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Configuracion[]>(`${this.url}/listar/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

@@ -15,6 +15,14 @@
         <div class="contenedor-principal">
 
           <div class="columna">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+              <mat-label>ID</mat-label>
+              <input matInput placeholder="id" formControlName="id" readonly/>
+          </mat-form-field>
+
+          <br>
+
             <mat-form-field class="example-full-width">
               <mat-label>Usuario</mat-label>
               <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
@@ -43,6 +51,7 @@
             <div class="button-container">
               <button mat-button color="primary"> Registrar </button>
               <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
+              <p>{{ mensaje }}</p>
             </div>
             
           </div>
@@ -69,7 +78,7 @@
               </mat-form-field>
 
             <br />
-            <mat-form-field>
+            <mat-form-field hidden="true">
               <mat-label>Fecha de registro</mat-label>
               <input
                 matInput
@@ -110,7 +119,6 @@
                   Complete el campo
                 </mat-error>
             </mat-form-field>
-
           </div><!--Columna end-->
           
         </div> <!--Columna Principal end-->

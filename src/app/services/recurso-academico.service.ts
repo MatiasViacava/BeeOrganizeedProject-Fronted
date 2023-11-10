@@ -64,6 +64,15 @@ export class RecursoAcademicoService {
         .set('Content-Type', 'application/json'),
     })
   }
+  listporusuarioid(idusuario: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<RecursoAcademico[]>(`${this.url}/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
   //BUSCAR POR FECHA
   buscar(fecha: string): Observable<RecursoAcademico[]> {
     let token = sessionStorage.getItem('token');

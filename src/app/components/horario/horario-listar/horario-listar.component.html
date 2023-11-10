@@ -18,7 +18,7 @@
 
       <ng-container matColumnDef="idHorario">
         <th mat-header-cell *matHeaderCellDef> Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.idHorario}} </td>
+        <td mat-cell *matCellDef="let element">{{element.idHorario}} </td>
       </ng-container>
     
       <ng-container matColumnDef="cierreCiclo">
@@ -28,7 +28,7 @@
 
       <ng-container matColumnDef="usuario">
         <th mat-header-cell *matHeaderCellDef> Usuario </th>
-        <td mat-cell *matCellDef="let element"> {{element.usuario.nombres}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.usuario.username}} </td>
       </ng-container>
 
       <!-- ACCIONES -->
@@ -38,7 +38,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['/horario/edicion', element.idHorario]"
+            (click)="iralink('edicion',element.idHorario)"
             ><mat-icon>update</mat-icon>
           </button>
       </td></ng-container>
@@ -59,12 +59,13 @@
     </table>
 
     <br>
-    <button mat-button color="primary" routerLink="/horario/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
 
     <mat-paginator 
-    [pageSizeOptions]="[3, 6, 9]" 
+    [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
+
+  <span>Usuario es {{username}}, rol es {{role}}, y tu id es {{id}}</span>
   
 </div>
 </body>

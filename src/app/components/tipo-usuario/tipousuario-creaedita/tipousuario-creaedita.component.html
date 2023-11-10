@@ -12,7 +12,7 @@
         <h2>Registro de Tipos Usuario</h2>
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
-            <mat-form-field class="example-full-width" *ngIf="edicion" >
+            <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
                 <mat-label>idTipoUsuario</mat-label>
                 <input matInput placeholder="idTipoUsuario" formControlName="idTipoUsuario" readonly/>
             </mat-form-field>
@@ -29,7 +29,7 @@
 
             <br>
             <mat-form-field>
-                <mat-label>Id del Usuario</mat-label>
+                <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuarios">
                     <mat-option *ngFor="let d of listaUsuarios" [value]="d.id"> <!--Se modifico la "t"-->
                         {{d.username}}

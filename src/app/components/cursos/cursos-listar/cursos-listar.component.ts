@@ -1,3 +1,4 @@
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -5,6 +6,8 @@ import { Curso } from 'src/app/models/curso';
 import { CursosService } from 'src/app/services/cursos.service';
 import { CursosConfirmarComponent } from './cursos-confirmar/cursos-confirmar.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos-listar',
@@ -16,22 +19,54 @@ export class CursosListarComponent implements OnInit{
   displayedColumns: string[] =
   ['codigo', 'nombre', 'descripcion', 'fechainicio', 'fechafin', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   constructor(
+    public route: ActivatedRoute, 
+    private router: Router,
     private cS: CursosService,    
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loginService: LoginService, 
+    private uS: UsuariosService
     ) {}
 
   idSeleccionado: number = 0;
 
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
-    this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    }); 
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+    if (this.role=='Estudiante')
+    {    this.uS.list().subscribe(data=>{
+      for (let u of data) {if (u.username==this.username) 
+        {this.id=u.id;
+          
+        this.cS.listporusuarioid(this.id).subscribe((data)=>{
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
+        });
+
+        this.cS.getList().subscribe((data) => {
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
+        });
+        }
+      }
+    })}
+    else if (this.role=='Administrador')
+    {
+      this.cS.list().subscribe((data) => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      });
+      this.cS.getList().subscribe((data) => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      }); 
+    }
+
     this.cS.getConfirmDelete().subscribe(data => {
       data == true ? this.eliminar(this.idSeleccionado) : false;
       this.ngOnInit()
@@ -48,5 +83,9 @@ export class CursosListarComponent implements OnInit{
   confirmar(id: number) {
     this.idSeleccionado = id;
     this.dialog.open(CursosConfirmarComponent);
+  }
+
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/cursos/',comp1, comp2]);
   }
 }

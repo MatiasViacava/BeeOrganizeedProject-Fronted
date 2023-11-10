@@ -9,7 +9,7 @@
     <div class="container" style="text-align: center">
       <h2>Registro de cursos</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
           <mat-label>Código</mat-label>
           <input matInput placeholder="Id" formControlName="idCurso" readonly/>
         </mat-form-field>

@@ -66,4 +66,13 @@ export class ActividadService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listporusuarioid(idusuario: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Actividad[]>(`${this.url}/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

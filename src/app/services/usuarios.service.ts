@@ -79,4 +79,29 @@ export class UsuariosService {
     }
     return EMPTY;
   }
+
+  //Devolver último usuario creado
+  ultimousuariocreado() {
+      let token = sessionStorage.getItem('token');
+  
+        return this.smvohttp.get<number>(`${this.url}/ultimousuariocreado`, {
+          headers: new HttpHeaders()
+            .set('Authorization', `Bearer ${token}`)
+            .set('Content-Type', 'application/json'),
+    });
+  }
+
+  //Actualiza el usuario sin crear conflictos en la tabla de tipo usuario
+
+  actualizarusuario(id:number,p1:string,p2:string,p3:string,p4:string,p5:string,p6:string,p7:string,p8:string){
+    let token = sessionStorage.getItem('token');
+  
+    return this.smvohttp.get<number>(`${this.url}/actualizar/${id}/${p1}/${p2}/${p3}/${p4}/${p5}/${p6}/${p7}/${p8}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+});
+  }
+
+  
 }

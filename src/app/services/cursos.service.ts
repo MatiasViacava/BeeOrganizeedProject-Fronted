@@ -75,4 +75,13 @@ export class CursosService {
   setConfirmDelete(estado:boolean){
     this.confirmarEliminacion.next(estado);
   }
+  listporusuarioid(idusuario: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Curso[]>(`${this.url}/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

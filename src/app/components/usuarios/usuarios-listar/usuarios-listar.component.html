@@ -75,7 +75,7 @@
                     <button
                       mat-raised-button
                       color="primary"
-                      [routerLink]="['/components/usuarios/edicion', element.id]"
+                      (click)="iralink('edicion', element.id)"
                     >
                       <mat-icon>settings</mat-icon>
                        
@@ -103,7 +103,7 @@
 
         <br>
         <mat-paginator
-        [pageSizeOptions]="[3, 6, 9]"
+        [pageSizeOptions]="[10, 30, 50]"
         showFirstLastButtons
       ></mat-paginator>
         

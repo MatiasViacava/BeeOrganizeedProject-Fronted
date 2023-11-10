@@ -6,6 +6,7 @@ import { TipoActividadService } from 'src/app/services/tipo-actividad.service';
 
 import { MatDialog } from '@angular/material/dialog'; //NUEVO
 import { TipoActividadConfirmarComponent } from './tipo-actividad-confirmar/tipo-actividad-confirmar.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tipo-actividad-listar',
@@ -18,6 +19,8 @@ export class TipoActividadListarComponent implements OnInit {
   ['codigo', 'nombre', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
+    public route: ActivatedRoute, 
+    private router: Router, 
     private taS: TipoActividadService,
     private dialog: MatDialog //ELIMINAR - NUEVO
   ) {}
@@ -50,10 +53,14 @@ export class TipoActividadListarComponent implements OnInit {
       });
     });
   }
+  iralink(comp1:string, comp2:string){
+    this.router.navigate(['components/tipoactividad/',comp1, comp2]);
+  }
 
   //ELIMINAR - NUEVO
   confirmar(id: number) {
     this.idSeleccionado = id;
     this.dialog.open(TipoActividadConfirmarComponent);
   }
+
 }

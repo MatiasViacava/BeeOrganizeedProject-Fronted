@@ -67,4 +67,13 @@ export class RespuestaService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listporusuarioid(idusuario: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Respuesta[]>(`${this.url}/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

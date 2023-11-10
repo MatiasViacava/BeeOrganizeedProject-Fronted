@@ -16,7 +16,7 @@
     <div class="container" style=" text-align: center;">
         <form [formGroup]="form" (submit)="registrar()" class="example-form" >
 
-            <mat-form-field class="example-full-width" *ngIf="edicion" >
+            <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
                 <mat-label>idHorario</mat-label>
                 <input matInput placeholder="idIngredient" formControlName="idHorario" readonly/>
             </mat-form-field>
