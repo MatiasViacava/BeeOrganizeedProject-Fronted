@@ -15,18 +15,18 @@
   <div class="container">
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+      
       <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
         <td mat-cell *matCellDef="let element"> {{element.idConfiguracion}} </td>
       </ng-container>
     
       <ng-container matColumnDef="color">
-        <th mat-header-cell *matHeaderCellDef> Nombre del Usuario </th>
+        <th mat-header-cell *matHeaderCellDef> Color de Interfaz </th>
         <td mat-cell *matCellDef="let element"> {{element.colorInterfaz}} </td>
       </ng-container>
       <ng-container matColumnDef="idioma_id">
-        <th mat-header-cell *matHeaderCellDef> ID del Idioma </th>
+        <th mat-header-cell *matHeaderCellDef> Idioma </th>
         <td mat-cell *matCellDef="let element"> {{element.idioma.nombreIdioma }} </td>
       </ng-container>
       <ng-container matColumnDef="usuario_id">
@@ -67,6 +67,7 @@
     [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Select page">
   </mat-paginator>
+ 
   
 </div>
 </body>

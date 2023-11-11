@@ -59,7 +59,7 @@
           <div class="columna">
             <mat-form-field class="example-full-width">
                 <mat-label>Nombres</mat-label>
-                <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25"/>
+                <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
                 <mat-error
                   *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
                 >
@@ -69,7 +69,7 @@
               <br />
               <mat-form-field class="example-full-width">
                 <mat-label>Apellidos</mat-label>
-                <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" />
+                <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*" />
                 <mat-error
                   *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
                 >
@@ -101,7 +101,7 @@
             <br />
             <mat-form-field class="example-full-width">
                 <mat-label>Universidad</mat-label>
-                <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25"/>
+                <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
                 <mat-error
                   *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
                 >

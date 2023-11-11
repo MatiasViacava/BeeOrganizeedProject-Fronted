@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <footer>
-  <mat-toolbar [ngClass]="{'color-admin': role == 'Administrador', 'color-estudiante': role == 'Estudiante'}" *ngIf="verificar()">
+  <mat-toolbar [ngClass]="{'color-admin': role == 'Administrador', 'color-estudiante': role == 'Estudiante'}" *ngIf="verificar()" [style.background-color]="colorActivo">
     <button (click)="drawer.toggle()"  mat-icon-button> <mat-icon>menu</mat-icon> </button> <!--Ayuda a que se oculte-->
     <span>BeeOrganized</span>
     <button mat-icon-button><mat-icon>notifications</mat-icon></button>

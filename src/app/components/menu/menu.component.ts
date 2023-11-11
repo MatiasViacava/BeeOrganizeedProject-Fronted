@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -13,12 +14,14 @@ export class MenuComponent implements OnInit{
     public route: ActivatedRoute, 
     private router: Router, 
     private loginService: LoginService,
-    private uS: UsuariosService) {}
+    private uS: UsuariosService,
+    private tuS: ConfiguracionService) {}
 
   //Puse lo mismo que el app.component para que pueda validar los roles en un futuro.
   role:string="";
   username: string="";
   id: number = 0;
+  colorActivo: any;
 
   cerrar() {
     sessionStorage.clear();
@@ -39,6 +42,10 @@ export class MenuComponent implements OnInit{
     this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) this.id=u.id}
     })
+    
+    this.tuS.colorSubject.subscribe(color => {
+      this.colorActivo = color;
+    });
   }
  
 }

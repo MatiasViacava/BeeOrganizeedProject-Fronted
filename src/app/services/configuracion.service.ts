@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Configuracion } from '../models/configuracion';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,7 +11,14 @@ export class ConfiguracionService {
 
   private url = `${base_url}/configuraciones`;
   private listaCambio = new Subject<Configuracion[]>();
+  colorSubject=new BehaviorSubject<string>('');
+
   constructor(private http: HttpClient) {}
+
+  updateColor(color: string) {
+    this.colorSubject.next(color);
+  }
+
   list() {
     let token = sessionStorage.getItem('token');
 
