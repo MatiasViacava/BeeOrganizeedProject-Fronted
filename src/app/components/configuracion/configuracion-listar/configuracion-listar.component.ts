@@ -21,6 +21,7 @@ export class ConfiguracionListarComponent {
   role: string = "";
   username: string = "";
   id: number = 0;
+  colorActivo:any;
   
   constructor(
     public route: ActivatedRoute, 
@@ -38,11 +39,25 @@ export class ConfiguracionListarComponent {
         {this.id=u.id;
           
         this.tuS.listporusuarioid(this.id).subscribe((data)=>{
+
+          if (data.length > 0) {
+            this.tuS.updateColor(data[0].colorInterfaz)
+          }
+          
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
+          
         });
 
+        this.tuS.colorSubject.subscribe(color => {
+          this.colorActivo = color;
+        });
+    
         this.tuS.getList().subscribe((data) => {
+          if (data.length > 0) {
+            this.tuS.updateColor(data[0].colorInterfaz)
+          }
+    
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
         });
@@ -68,6 +83,7 @@ export class ConfiguracionListarComponent {
       });
     });
   }
+  
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/configuracion/',comp1, comp2]);
   }
