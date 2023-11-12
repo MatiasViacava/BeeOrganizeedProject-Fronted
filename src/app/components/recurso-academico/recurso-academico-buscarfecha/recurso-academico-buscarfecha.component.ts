@@ -3,7 +3,9 @@ import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/fo
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RecursoAcademico } from 'src/app/models/recurso-academico';
+import { LoginService } from 'src/app/services/login.service';
 import { RecursoAcademicoService } from 'src/app/services/recurso-academico.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-recurso-academico-buscarfecha',
@@ -18,12 +20,21 @@ export class RecursoAcademicoBuscarfechaComponent implements OnInit{
   displayedColumns: string[] =
   ['id','enlace', 'nombre','autor', 'fecha Publicacion','descripcion','tipo de recurso','curso']
   
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   constructor(
+    private uS: UsuariosService,
+    private loginService: LoginService, 
     private raS:RecursoAcademicoService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.fechaForm = this.formBuilder.group({
       fecha: [null, Validators.required],
     });

@@ -8,6 +8,7 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { IdiomaService } from 'src/app/services/idioma.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -30,8 +31,14 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   idCOnfiguracion:number=0
   colorSeleccionado: any;
   idiomaActivo: any;
+
+  role: string = "";
+  username: string = "";
+  id: number = 0;
   
   constructor(
+    private uS: UsuariosService,
+    private loginService: LoginService, 
     private raS:ConfiguracionService,
     private trS:IdiomaService,
     private cS:UsuariosService,
@@ -43,6 +50,9 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   ) {
   }
   ngOnInit():void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.form=this.formBuilder.group({
       idConfiguracion:[''],
       colorInterfaz:['',Validators.required],
@@ -75,14 +85,32 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       this.configuracionarc.usuario.id=this.form.value.usuario;
       if(this.edicion){
         this.raS.modificar(this.configuracionarc).subscribe((data)=>{
-          this.raS.list().subscribe(data=>{
-            this.raS.setList(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.raS.list().subscribe((data) => {
+                  this.raS.setList(data);
+                  });}
+              }
+            }
           })
         })
       }else {
         this.raS.insert(this.configuracionarc).subscribe((data)=>{
-          this.raS.list().subscribe(data =>{
-            this.raS.setList(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.raS.list().subscribe((data) => {
+                  this.raS.setList(data);
+                  });}
+              }
+            }
           })
         })
       }

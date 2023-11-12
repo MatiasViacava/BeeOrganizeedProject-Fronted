@@ -3,8 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Pregunta } from 'src/app/models/pregunta';
 import { Respuesta } from 'src/app/models/respuesta';
+import { LoginService } from 'src/app/services/login.service';
 import { PreguntaService } from 'src/app/services/pregunta.service';
 import { RespuestaService } from 'src/app/services/respuesta.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-respuesta-creaedita',
@@ -21,7 +23,13 @@ export class RespuestaCreaeditaComponent implements OnInit{
   idRespuesta: number = 0;
   edicion: boolean = false;
 
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   constructor(
+    private uS: UsuariosService,
+    private loginService: LoginService, 
     private rS: RespuestaService,
     private pS: PreguntaService,
     private router: Router,
@@ -30,6 +38,9 @@ export class RespuestaCreaeditaComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.form = this.formBuilder.group({
       idRespuesta: [''],
       contenido: ['', Validators.required],
@@ -56,14 +67,32 @@ export class RespuestaCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.rS.modificar(this.respuesta).subscribe((data) => {
-          this.rS.list().subscribe(data => {
-            this.rS.setList(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.rS.list().subscribe((data) => {
+                  this.rS.setList(data);
+                  });}
+              }
+            }
           })
         })
       } else {
         this.rS.insert(this.respuesta).subscribe((data) => {
-          this.rS.list().subscribe(data => {
-            this.rS.setList(data)
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.rS.list().subscribe((data) => {
+                  this.rS.setList(data);
+                  });}
+              }
+            }
           })
         })
       }

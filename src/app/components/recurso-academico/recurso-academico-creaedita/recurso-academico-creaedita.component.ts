@@ -8,6 +8,8 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TipoRecursoService} from "../../../services/tipo-recurso.service";
 import * as moment from 'moment'
 import {TipoRecurso} from "../../../models/tiporecurso";
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-recurso-academico-creaedita',
@@ -27,9 +29,15 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   idCurso:number=0;
   listaCursos:Curso[]=[];
 
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   edicion:boolean=false;
   idRecurso:number=0
   constructor(
+    private uS: UsuariosService,
+    private loginService: LoginService, 
     private raS:RecursoAcademicoService,
     private trS:TipoRecursoService,
     private cS:CursosService,
@@ -69,14 +77,32 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
       this.recursoac.curso_IdCurso.idCurso=this.form.value.curso_IdCurso;
       if(this.edicion){
         this.raS.modificar(this.recursoac).subscribe((data)=>{
-          this.raS.list().subscribe(data=>{
-            this.raS.setlist(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.raS.list().subscribe((data) => {
+                  this.raS.setlist(data);
+                  });}
+              }
+            }
           })
         })
       }else {
         this.raS.insert(this.recursoac).subscribe((data)=>{
-          this.raS.list().subscribe(data =>{
-            this.raS.setlist(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.raS.list().subscribe((data) => {
+                  this.raS.setlist(data);
+                  });}
+              }
+            }
           })
         })
       }

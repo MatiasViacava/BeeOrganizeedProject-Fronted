@@ -9,7 +9,9 @@ import { TipoActividad } from 'src/app/models/tipoactividad';
 import { ActividadService } from 'src/app/services/actividad.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { HorarioService } from 'src/app/services/horario.service';
+import { LoginService } from 'src/app/services/login.service';
 import { TipoActividadService } from 'src/app/services/tipo-actividad.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-actividad-creaedita',
@@ -34,10 +36,16 @@ export class ActividadCreaeditaComponent implements OnInit{
   listaTipoActividades: TipoActividad[] = [];
   listaCurso: Curso[] = [];
 
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   constructor(
+    private loginService: LoginService, 
     private aS: ActividadService,
     private router: Router,
     private formBuilder: FormBuilder,
+    private uS: UsuariosService,
 
     //ACTUALIZAR
     private route: ActivatedRoute,
@@ -49,6 +57,9 @@ export class ActividadCreaeditaComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.form = this.formBuilder.group({
       idActividad: [''],
       nombreActividad: ['', Validators.required],
@@ -92,15 +103,33 @@ export class ActividadCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.aS.modificar(this.actividad).subscribe((data) => {
-          this.aS.list().subscribe((data) => {
-          this.aS.setList(data);
-          });
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.aS.list().subscribe((data) => {
+                  this.aS.setList(data);
+                  });}
+              }
+            }
+          })
         });
       } else {
         this.aS.insert(this.actividad).subscribe((data) => {
-          this.aS.list().subscribe((data) => {
-          this.aS.setList(data);
-          });
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.aS.list().subscribe((data) => {
+                  this.aS.setList(data);
+                  });}
+              }
+            }
+          })
         });
       }
       this.router.navigate(['/components/actividad/listar']);
