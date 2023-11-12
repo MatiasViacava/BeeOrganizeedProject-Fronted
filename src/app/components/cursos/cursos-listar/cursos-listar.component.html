@@ -9,7 +9,7 @@
 
   <br>
   <div style=" text-align: center;"> 
-    <h2>LISTA DE CURSOS</h2> 
+    <h2>{{"LISTA DE CURSOS" | translate}}</h2> 
   </div>
   
   <div class="container">
@@ -18,9 +18,9 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{element.nombreCurso}}</mat-card-title>
-          <mat-card-subtitle>Código: {{element.idCurso}}</mat-card-subtitle>
-          <mat-card-subtitle>Inicio de curso: {{element.fechaInicioCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
-          <mat-card-subtitle>Fin de curso: {{element.fechaFinCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Código" | translate}}: {{element.idCurso}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Inicio del curso" | translate}}: {{element.fechaInicioCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Fin del curso" | translate}}: {{element.fechaFinCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
         </mat-card-header>
 
         <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import{ MatTableModule} from '@angular/material/table'
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -64,6 +63,15 @@ import { MenuComponent } from './menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RecursoAcademicoBuscarfechaComponent } from './recurso-academico/recurso-academico-buscarfecha/recurso-academico-buscarfecha.component';
 import { ColorSketchModule } from 'ngx-color/sketch';
+
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
+}
 
 
 
@@ -133,7 +141,17 @@ import { ColorSketchModule } from 'ngx-color/sketch';
     MatCardModule,
     MatDialogModule,
     MatSidenavModule,
-    ColorSketchModule
+    ColorSketchModule,
+    HttpClientModule,
+
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+
   ]
 })
 

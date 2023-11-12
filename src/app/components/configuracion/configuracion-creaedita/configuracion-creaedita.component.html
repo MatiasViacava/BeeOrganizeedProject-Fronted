@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container" style="text-align: center">
-  <h2>Registro de Configuración General</h2>
+  <h2>{{"Registro de Configuración General" | translate}}</h2>
   <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
     <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
@@ -16,7 +16,7 @@
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-      <mat-label>Color de la Interfaz</mat-label>
+      <mat-label>{{"Color de la Interfaz" | translate}}</mat-label>
       <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15"/>
 
       <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El contenido de la respuesta
@@ -26,7 +26,7 @@
     <div class="color1"><color-sketch color="#fff" (onChangeComplete)="colorF($event)"></color-sketch></div>
     <br>
     <mat-form-field>
-      <mat-label>Idioma</mat-label>
+      <mat-label>{{"Idioma" | translate}}</mat-label>
       <mat-select formControlName="idioma" [(value)]="idIDIoma">
         <mat-option *ngFor="let t of listaID" [value]="t.idIdioma">
           {{t.nombreIdioma}}
@@ -38,7 +38,7 @@
     </mat-form-field>
     <br/>
     <mat-form-field>
-      <mat-label>Usuario</mat-label>
+      <mat-label>{{"Usuario" | translate}}</mat-label>
       <mat-select formControlName="usuario" [(value)]="idUsuario">
         <mat-option *ngFor="let c of listaUsuario" [value]="c.id">
           {{c.nombres}}
@@ -49,8 +49,8 @@
       </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-    <button mat-raised-button color="warn" routerLink="/configuracion"> <mat-icon>close</mat-icon> Cancelar </button>
+    <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> {{"Aceptar" | translate}}</button>
+    <button mat-raised-button color="warn" routerLink="/configuracion"> <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
     <p>{{ mensaje }}</p>
   </form>
 </div>

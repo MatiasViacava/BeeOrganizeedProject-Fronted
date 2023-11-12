@@ -18,6 +18,9 @@ export class CreaeditaIdiomaComponent implements OnInit {
   idIdioma: number = 0; //xd
   edicion: boolean = false;
 
+  idiomasDis: { value: string, viewValue: string }[] = [{ value: 'es', viewValue: 'Español' },
+  { value: 'en', viewValue: 'Ingles' }]
+
   constructor(
     private iS: IdiomaService,
     private router: Router,

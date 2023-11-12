@@ -8,6 +8,9 @@ import { CursosConfirmarComponent } from './cursos-confirmar/cursos-confirmar.co
 import { MatDialog } from '@angular/material/dialog';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+
 
 @Component({
   selector: 'app-cursos-listar',
@@ -23,6 +26,7 @@ export class CursosListarComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  idiomaActivo: any;
 
   constructor(
     public route: ActivatedRoute, 
@@ -30,7 +34,9 @@ export class CursosListarComponent implements OnInit{
     private cS: CursosService,    
     private dialog: MatDialog,
     private loginService: LoginService, 
-    private uS: UsuariosService
+    private uS: UsuariosService,
+    public translate: TranslateService,
+    private tuS: ConfiguracionService,
     ) {}
 
   idSeleccionado: number = 0;
@@ -38,6 +44,9 @@ export class CursosListarComponent implements OnInit{
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+
     if (this.role=='Estudiante')
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
@@ -53,6 +62,12 @@ export class CursosListarComponent implements OnInit{
           this.dataSource.paginator = this.paginator;
         });
         }
+
+        this.tuS.idiomaSubject.subscribe(idioma => {
+          this.idiomaActivo = idioma;
+          this.translate.use(this.idiomaActivo);
+        });
+        this.translate.use(this.idiomaActivo);
       }
     })}
     else if (this.role=='Administrador')
