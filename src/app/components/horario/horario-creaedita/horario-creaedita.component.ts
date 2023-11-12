@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Horario } from 'src/app/models/horario';
 import { Usuarios } from 'src/app/models/usuarios';
 import { HorarioService } from 'src/app/services/horario.service';
+import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -26,7 +27,12 @@ export class HorarioCreaeditaComponent implements OnInit{
   //DEPENDIENTES
   listaUsuarios: Usuarios[] = [];
 
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
   constructor(
+    private loginService: LoginService, 
     private hS: HorarioService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -39,6 +45,9 @@ export class HorarioCreaeditaComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+    
     this.form = this.formBuilder.group({
       idHorario: [''],
       cierreCiclo: ['', Validators.required],
@@ -64,15 +73,33 @@ export class HorarioCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.hS.modificar(this.horario).subscribe((data) => {
-          this.hS.list().subscribe((data) => {
-          this.hS.setList(data);
-          });
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.hS.list().subscribe((data) => {
+                  this.hS.setList(data);
+                  });}
+              }
+            }
+          })
         });
       } else {
         this.hS.insert(this.horario).subscribe((data) => {
-          this.hS.list().subscribe((data) => {
-          this.hS.setList(data);
-          });
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.hS.list().subscribe((data) => {
+                  this.hS.setList(data);
+                  });}
+              }
+            }
+          })
         });
       }
       this.router.navigate(['/components/horario/listar']);

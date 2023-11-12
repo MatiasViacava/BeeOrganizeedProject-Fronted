@@ -6,6 +6,8 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 
 @Component({
@@ -30,8 +32,14 @@ export class CursosCreaeditaComponent implements OnInit {
   idCurso:number=0;
   idiomaActivo: any;
 
+  role: string = "";
+  username: string = "";
+  id: number = 0;
+
 
   constructor(
+    private uS: UsuariosService,
+    private loginService: LoginService, 
     private cS: CursosService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -41,6 +49,9 @@ export class CursosCreaeditaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.form = this.formBuilder.group({
       idCurso: [''],
       nombreCurso: ['', Validators.required],
@@ -73,14 +84,32 @@ export class CursosCreaeditaComponent implements OnInit {
 
       if(this.edicion){
         this.cS.modificar(this.curso).subscribe((data) => {
-          this.cS.list().subscribe(data => {
-            this.cS.setList(data);
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.cS.list().subscribe((data) => {
+                  this.cS.setList(data);
+                  });}
+              }
+            }
           })
         })
       } else {
         this.cS.insert(this.curso).subscribe((data) => {
-          this.cS.list().subscribe(data => {
-            this.cS.setList(data)
+          this.uS.list().subscribe(usuarios=>{
+            for (let u of usuarios)
+            {
+              if (u.username == this.username)
+              {
+                if (this.role=='Administrador'){
+                this.cS.list().subscribe((data) => {
+                  this.cS.setList(data);
+                  });}
+              }
+            }
           })
         })
       }
