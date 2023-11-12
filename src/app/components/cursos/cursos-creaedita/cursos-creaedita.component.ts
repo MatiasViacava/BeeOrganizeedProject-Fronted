@@ -4,6 +4,9 @@ import { Curso } from 'src/app/models/curso';
 import * as moment from 'moment'
 import { CursosService } from 'src/app/services/cursos.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+
 
 @Component({
   selector: 'app-cursos-creaedita',
@@ -25,12 +28,16 @@ export class CursosCreaeditaComponent implements OnInit {
 
   edicion:boolean=false;
   idCurso:number=0;
+  idiomaActivo: any;
+
 
   constructor(
     private cS: CursosService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private tuS: ConfiguracionService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +48,14 @@ export class CursosCreaeditaComponent implements OnInit {
       fechaInicioCurso: ['', [Validators.required]],
       fechaFinCurso: ['', Validators.required],
     });
+
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
 
     this.route.params.subscribe((data: Params) => {
       this.idCurso = data['idCurso'];

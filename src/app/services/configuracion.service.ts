@@ -12,11 +12,17 @@ export class ConfiguracionService {
   private url = `${base_url}/configuraciones`;
   private listaCambio = new Subject<Configuracion[]>();
   colorSubject=new BehaviorSubject<string>('');
+  idiomaSubject=new BehaviorSubject<string>('');
+
 
   constructor(private http: HttpClient) {}
 
   updateColor(color: string) {
     this.colorSubject.next(color);
+  }
+
+  updateIdioma(idioma: string) {
+    this.idiomaSubject.next(idioma);
   }
 
   list() {

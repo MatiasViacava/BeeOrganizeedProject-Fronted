@@ -6,6 +6,7 @@ import { Configuracion } from 'src/app/models/configuracion';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-configuracion-listar',
@@ -22,17 +23,22 @@ export class ConfiguracionListarComponent {
   username: string = "";
   id: number = 0;
   colorActivo:any;
+  idiomaActivo: any;
   
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
     private tuS: ConfiguracionService, 
     private loginService: LoginService, 
-    private uS: UsuariosService) {}
+    private uS: UsuariosService,
+    public translate: TranslateService) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+
     if (this.role=='Estudiante')
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
@@ -43,6 +49,10 @@ export class ConfiguracionListarComponent {
           if (data.length > 0) {
             this.tuS.updateColor(data[0].colorInterfaz)
           }
+
+          if (data.length > 0) {
+            this.tuS.updateIdioma(data[0].idioma.nombreIdioma)
+          }
           
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
@@ -52,15 +62,26 @@ export class ConfiguracionListarComponent {
         this.tuS.colorSubject.subscribe(color => {
           this.colorActivo = color;
         });
-    
+        
         this.tuS.getList().subscribe((data) => {
           if (data.length > 0) {
             this.tuS.updateColor(data[0].colorInterfaz)
+          }
+
+          if (data.length > 0) {
+            this.tuS.updateIdioma(data[0].idioma.nombreIdioma)
           }
     
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
         });
+
+        this.tuS.idiomaSubject.subscribe(idioma => {
+          this.idiomaActivo = idioma;
+          this.translate.use(this.idiomaActivo);
+        });
+        this.translate.use(this.idiomaActivo);
+        
         }
       }
     })}

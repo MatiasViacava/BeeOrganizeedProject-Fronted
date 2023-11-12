@@ -7,6 +7,8 @@ import { Usuarios } from 'src/app/models/usuarios';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { IdiomaService } from 'src/app/services/idioma.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-configuracion-creaedita',
@@ -27,6 +29,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   edicion:boolean=false;
   idCOnfiguracion:number=0
   colorSeleccionado: any;
+  idiomaActivo: any;
   
   constructor(
     private raS:ConfiguracionService,
@@ -34,7 +37,9 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
     private cS:UsuariosService,
     private router:Router,
     private formBuilder:FormBuilder,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    public translate: TranslateService,
+    private tuS: ConfiguracionService,
   ) {
   }
   ngOnInit():void {
@@ -49,6 +54,15 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       this.edicion=data['idConfiguracion']!=null;
       this.init();
     })
+    
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
+
     this.cS.list().subscribe(data => { this.listaUsuario = data });
     this.trS.list().subscribe(data => { this.listaID = data });
   }
