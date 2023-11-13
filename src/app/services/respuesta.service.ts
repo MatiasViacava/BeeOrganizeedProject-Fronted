@@ -70,7 +70,7 @@ export class RespuestaService {
   listporusuarioid(idusuario: number) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Respuesta[]>(`${this.url}/${idusuario}`, {
+    return this.http.get<Respuesta[]>(`${this.url}/listar/${idusuario}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

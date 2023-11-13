@@ -78,7 +78,7 @@ export class CursosService {
   listporusuarioid(idusuario: number) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Curso[]>(`${this.url}/${idusuario}`, {
+    return this.http.get<Curso[]>(`${this.url}/listar/${idusuario}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

@@ -40,7 +40,7 @@ export class RecursoAcademicoService {
   listarid(id:number){
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<RecursoAcademico>(`${this.url}/${id}`, {
+    return this.http.get<RecursoAcademico>(`${this.url}/listar/${id}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
