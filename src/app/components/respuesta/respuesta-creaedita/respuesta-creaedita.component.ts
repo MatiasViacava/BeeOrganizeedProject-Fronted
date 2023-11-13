@@ -7,6 +7,9 @@ import { LoginService } from 'src/app/services/login.service';
 import { PreguntaService } from 'src/app/services/pregunta.service';
 import { RespuestaService } from 'src/app/services/respuesta.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+
 
 @Component({
   selector: 'app-respuesta-creaedita',
@@ -26,6 +29,8 @@ export class RespuestaCreaeditaComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  idiomaActivo: any;
+
 
   constructor(
     private loginService: LoginService, 
@@ -33,12 +38,17 @@ export class RespuestaCreaeditaComponent implements OnInit{
     private pS: PreguntaService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tuS: ConfiguracionService,
+    public translate: TranslateService
   ) { }
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
 
     this.form = this.formBuilder.group({
       idRespuesta: [''],
@@ -51,6 +61,12 @@ export class RespuestaCreaeditaComponent implements OnInit{
       this.edicion = data['idRespuesta'] != null;
       this.init();
     });
+
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
 
     this.pS.list().subscribe(data => { this.listaPregunta = data });
 

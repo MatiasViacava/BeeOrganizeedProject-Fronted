@@ -48,8 +48,26 @@ export class MenuComponent implements OnInit{
     this.translate.setDefaultLang('es');
 
     this.uS.list().subscribe(data=>{
-      for (let u of data) {if (u.username==this.username) this.id=u.id}
-    })
+      for (let u of data) {if (u.username==this.username) {
+        this.id=u.id
+
+        this.tuS.list().subscribe(dataconfig=>{ 
+          for (let c of dataconfig)
+          {
+            if (c.usuario.id==this.id)
+            {
+          
+              this.tuS.updateColor(c.colorInterfaz)
+              this.tuS.updateIdioma(c.idioma.nombreIdioma)
+              
+            }
+          }
+
+        })
+
+        
+
+      }}})
     
     this.tuS.colorSubject.subscribe(color => {
       this.colorActivo = color;

@@ -9,26 +9,25 @@
 
 <body>
     <div class="container" style="text-align: center">
-        <h2>Registro de RESPUESTAS</h2>
+        <h2>{{"Registro de RESPUESTAS" | translate}}</h2>
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
             <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
-                <mat-label>ID</mat-label>
+                <mat-label>{{"ID" | translate}}</mat-label>
                 <input matInput placeholder="idRespuesta" formControlName="idRespuesta" readonly/>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <mat-label>Contenido</mat-label>
+                <mat-label>{{"Contenido" | translate}}</mat-label>
                 <input matInput placeholder="contenido" formControlName="contenido" maxlength="20" />
 
-                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">El contenido de la respuesta
-                    es obligatorio.
+                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">{{"The content of the response is required" | translate}}
                 </mat-error>
             </mat-form-field>
 
             <br>
             <mat-form-field>
-                <mat-label>Pregunta</mat-label>
+                <mat-label>{{"Pregunta" | translate}}</mat-label>
                 <mat-select formControlName="pregunta_Id">
                     <mat-option *ngFor="let d of listaPregunta" [value]="d.idPregunta"> <!--Se modifico la "t"-->
                         {{d.enunciado}}
@@ -41,8 +40,8 @@
             <br/>
 
 
-            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-            <button mat-raised-button color="warn" routerLink="/respuesta"> <mat-icon>close</mat-icon> Cancelar </button>
+            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> {{"Aceptar" | translate}}</button>
+            <button mat-raised-button color="warn" routerLink="/respuesta"> <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
             <p>{{ mensaje }}</p>
         </form>
     </div>

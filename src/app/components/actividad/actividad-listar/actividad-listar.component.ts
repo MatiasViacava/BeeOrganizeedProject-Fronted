@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Actividad } from 'src/app/models/actividad';
 import { ActividadService } from 'src/app/services/actividad.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -21,17 +23,26 @@ export class ActividadListarComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  idiomaActivo: any;
+
 
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
     private aS: ActividadService, 
     private loginService: LoginService, 
-    private uS: UsuariosService) {}
+    private uS: UsuariosService,
+    private tuS: ConfiguracionService,
+    public translate: TranslateService) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+
+
     if (this.role=='Estudiante')
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
@@ -47,6 +58,12 @@ export class ActividadListarComponent implements OnInit{
           this.dataSource.paginator = this.paginator;
         });
         }
+
+        this.tuS.idiomaSubject.subscribe(idioma => {
+          this.idiomaActivo = idioma;
+          this.translate.use(this.idiomaActivo);
+        });
+        this.translate.use(this.idiomaActivo);
       }
     })}
     else if (this.role=='Administrador')
