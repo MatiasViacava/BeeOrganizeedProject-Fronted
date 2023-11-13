@@ -64,13 +64,20 @@ export class RespuestaListarComponent implements OnInit{
   }
   eliminar(idRespuesta: number){
     this.rS.eliminar(idRespuesta).subscribe(() => {
-      this.rS.list().subscribe(data => {
-        this.rS.setList(data);
-      });
+      this.rS.list().subscribe((data) => {
+        if (this.role=='Administrador'){this.rS.setList(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute()}})
     });
   }
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/respuesta/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
  
 }

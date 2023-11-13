@@ -38,7 +38,6 @@ export class CursosCreaeditaComponent implements OnInit {
 
 
   constructor(
-    private uS: UsuariosService,
     private loginService: LoginService, 
     private cS: CursosService,
     private router: Router,
@@ -84,34 +83,14 @@ export class CursosCreaeditaComponent implements OnInit {
 
       if(this.edicion){
         this.cS.modificar(this.curso).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.cS.list().subscribe((data) => {
-                  this.cS.setList(data);
-                  });}
-              }
-            }
-          })
-        })
+          this.cS.list().subscribe((data) => {
+            if (this.role=='Administrador'){
+            this.cS.setList(data);}})})
       } else {
         this.cS.insert(this.curso).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.cS.list().subscribe((data) => {
-                  this.cS.setList(data);
-                  });}
-              }
-            }
-          })
-        })
+          this.cS.list().subscribe((data) => {
+            if (this.role=='Administrador'){
+            this.cS.setList(data);}})})
       }
 
       this.router.navigate(['/components/cursos/listar']);

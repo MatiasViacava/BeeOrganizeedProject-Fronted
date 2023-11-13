@@ -37,7 +37,6 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   id: number = 0;
   
   constructor(
-    private uS: UsuariosService,
     private loginService: LoginService, 
     private raS:ConfiguracionService,
     private trS:IdiomaService,
@@ -85,32 +84,14 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       this.configuracionarc.usuario.id=this.form.value.usuario;
       if(this.edicion){
         this.raS.modificar(this.configuracionarc).subscribe((data)=>{
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.raS.list().subscribe((data) => {
-                  this.raS.setList(data);
-                  });}
-              }
-            }
+          this.raS.list().subscribe((data) => {
+            if (this.role=='Administrador') {this.raS.setList(data);}
           })
         })
       }else {
         this.raS.insert(this.configuracionarc).subscribe((data)=>{
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.raS.list().subscribe((data) => {
-                  this.raS.setList(data);
-                  });}
-              }
-            }
+          this.raS.list().subscribe((data) => {
+            if (this.role=='Administrador') {this.raS.setList(data);}
           })
         })
       }
