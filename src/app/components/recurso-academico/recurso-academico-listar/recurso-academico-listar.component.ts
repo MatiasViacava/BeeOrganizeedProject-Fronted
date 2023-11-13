@@ -63,12 +63,19 @@ export class RecursoAcademicoListarComponent implements OnInit{
   }
   eliminar(iD: number){
     this.raS.eliminar(iD).subscribe(() => {
-      this.raS.list().subscribe(data => {
-        this.raS.setlist(data);
-      });
+      this.raS.list().subscribe((data) => {
+        if (this.role=='Administrador'){this.raS.setlist(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute()}})
     });
   }
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/recursoacademico/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

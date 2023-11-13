@@ -45,7 +45,6 @@ export class ActividadCreaeditaComponent implements OnInit{
     private aS: ActividadService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private uS: UsuariosService,
 
     //ACTUALIZAR
     private route: ActivatedRoute,
@@ -103,33 +102,13 @@ export class ActividadCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.aS.modificar(this.actividad).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.aS.list().subscribe((data) => {
-                  this.aS.setList(data);
-                  });}
-              }
-            }
-          })
+          this.aS.list().subscribe((data) => {
+            if (this.role=='Administrador'){this.aS.setList(data);}})
         });
       } else {
         this.aS.insert(this.actividad).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.aS.list().subscribe((data) => {
-                  this.aS.setList(data);
-                  });}
-              }
-            }
-          })
+          this.aS.list().subscribe((data) => {
+            if (this.role=='Administrador'){this.aS.setList(data);}})
         });
       }
       this.router.navigate(['/components/actividad/listar']);

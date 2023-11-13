@@ -36,7 +36,6 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   edicion:boolean=false;
   idRecurso:number=0
   constructor(
-    private uS: UsuariosService,
     private loginService: LoginService, 
     private raS:RecursoAcademicoService,
     private trS:TipoRecursoService,
@@ -47,6 +46,9 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   ) {
   }
   ngOnInit():void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+    
     this.form=this.formBuilder.group({
       iD:[''],
       enlaceRecurso:['',Validators.required],
@@ -77,33 +79,15 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
       this.recursoac.curso_IdCurso.idCurso=this.form.value.curso_IdCurso;
       if(this.edicion){
         this.raS.modificar(this.recursoac).subscribe((data)=>{
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.raS.list().subscribe((data) => {
-                  this.raS.setlist(data);
-                  });}
-              }
-            }
-          })
+          this.raS.list().subscribe((data) => {
+            if (this.role=='Administrador'){
+              this.raS.setlist(data);}
+            })
         })
       }else {
         this.raS.insert(this.recursoac).subscribe((data)=>{
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.raS.list().subscribe((data) => {
-                  this.raS.setlist(data);
-                  });}
-              }
-            }
-          })
+          this.raS.list().subscribe((data) => {
+            if (this.role=='Administrador'){this.raS.setlist(data);}})
         })
       }
       this.router.navigate(['/components/recursoacademico/listar']);

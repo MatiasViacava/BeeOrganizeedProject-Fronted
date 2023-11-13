@@ -28,7 +28,6 @@ export class RespuestaCreaeditaComponent implements OnInit{
   id: number = 0;
 
   constructor(
-    private uS: UsuariosService,
     private loginService: LoginService, 
     private rS: RespuestaService,
     private pS: PreguntaService,
@@ -67,33 +66,15 @@ export class RespuestaCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.rS.modificar(this.respuesta).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.rS.list().subscribe((data) => {
-                  this.rS.setList(data);
-                  });}
-              }
-            }
-          })
+          this.rS.list().subscribe((data) => {
+            if (this.role=='Administrador'){this.rS.setList(data);}
+            })
         })
       } else {
         this.rS.insert(this.respuesta).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.rS.list().subscribe((data) => {
-                  this.rS.setList(data);
-                  });}
-              }
-            }
-          })
+          this.rS.list().subscribe((data) => {
+            if (this.role=='Administrador'){this.rS.setList(data);}
+            })
         })
       }
       this.router.navigate(['/components/respuesta/listar']);

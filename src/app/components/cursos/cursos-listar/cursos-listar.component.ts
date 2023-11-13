@@ -44,6 +44,7 @@ export class CursosListarComponent implements OnInit{
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 
@@ -89,10 +90,11 @@ export class CursosListarComponent implements OnInit{
   }
   eliminar(idTipoAcitvidad: number){
     this.cS.eliminar(idTipoAcitvidad).subscribe(() => {
-      this.cS.list().subscribe(data => {
-        this.cS.setList(data);
-      });
-    });
+      this.cS.list().subscribe((data) => {
+        if (this.role=='Administrador'){this.cS.setList(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute()}})
+      })
+      
   }
 
   confirmar(id: number) {
@@ -102,5 +104,12 @@ export class CursosListarComponent implements OnInit{
 
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/cursos/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

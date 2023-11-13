@@ -33,6 +33,8 @@ export class ConfiguracionListarComponent {
     private uS: UsuariosService,
     public translate: TranslateService) {}
 
+  setId(id:number){this.id=id;}
+
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
@@ -43,6 +45,7 @@ export class ConfiguracionListarComponent {
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
         {this.id=u.id;
+          this.setId(this.id);
           
         this.tuS.listporusuarioid(this.id).subscribe((data)=>{
 
@@ -99,13 +102,21 @@ export class ConfiguracionListarComponent {
   }
   eliminar(idConfiguracion: number){
     this.tuS.eliminar(idConfiguracion).subscribe(() => {
-      this.tuS.list().subscribe(data => {
-        this.tuS.setList(data);
-      });
+      this.tuS.list().subscribe((data) => {
+        if (this.role=='Administrador') {this.tuS.setList(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute();}
+      })
     });
   }
   
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/configuracion/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

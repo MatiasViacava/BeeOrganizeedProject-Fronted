@@ -43,6 +43,7 @@ export class MenuComponent implements OnInit{
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 

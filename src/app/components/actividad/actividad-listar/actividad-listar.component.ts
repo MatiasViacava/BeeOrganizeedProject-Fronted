@@ -63,12 +63,19 @@ export class ActividadListarComponent implements OnInit{
   }
   eliminar(idActividad: number){
     this.aS.eliminar(idActividad).subscribe(() => {
-      this.aS.list().subscribe(data => {
-        this.aS.setList(data);
-      });
+      this.aS.list().subscribe((data) => {
+        if (this.role=='Administrador'){this.aS.setList(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute()}})
     });
   }
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/actividad/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

@@ -73,33 +73,17 @@ export class HorarioCreaeditaComponent implements OnInit{
 
       if (this.edicion) {
         this.hS.modificar(this.horario).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.hS.list().subscribe((data) => {
-                  this.hS.setList(data);
-                  });}
-              }
-            }
-          })
+            this.hS.list().subscribe((data) => {
+              if (this.role=='Administrador'){
+              this.hS.setList(data);
+              }});
         });
       } else {
         this.hS.insert(this.horario).subscribe((data) => {
-          this.uS.list().subscribe(usuarios=>{
-            for (let u of usuarios)
-            {
-              if (u.username == this.username)
-              {
-                if (this.role=='Administrador'){
-                this.hS.list().subscribe((data) => {
-                  this.hS.setList(data);
-                  });}
-              }
-            }
-          })
+          this.hS.list().subscribe((data) => {
+            if (this.role=='Administrador'){
+            this.hS.setList(data);
+            }});
         });
       }
       this.router.navigate(['/components/horario/listar']);

@@ -65,12 +65,19 @@ export class HorarioListarComponent implements OnInit {
   }
   eliminar(idHorario: number) {
     this.hS.eliminar(idHorario).subscribe(() => {
-      this.hS.list().subscribe(data => {
-        this.hS.setList(data);
-      });
+      this.hS.list().subscribe((data) => {
+        if (this.role=='Administrador'){this.hS.setList(data);}
+        else if (this.role=='Estudiante') {this.reloadCurrentRoute()}});
     });
   }
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/horario/',comp1, comp2]);
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }
