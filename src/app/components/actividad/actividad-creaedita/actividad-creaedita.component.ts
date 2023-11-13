@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { Actividad } from 'src/app/models/actividad';
 import { Curso } from 'src/app/models/curso';
 import { Horario } from 'src/app/models/horario';
 import { TipoActividad } from 'src/app/models/tipoactividad';
 import { ActividadService } from 'src/app/services/actividad.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { HorarioService } from 'src/app/services/horario.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -40,6 +42,9 @@ export class ActividadCreaeditaComponent implements OnInit{
   username: string = "";
   id: number = 0;
 
+  idiomaActivo: any;
+  
+
   constructor(
     private loginService: LoginService, 
     private aS: ActividadService,
@@ -53,11 +58,22 @@ export class ActividadCreaeditaComponent implements OnInit{
     private hS: HorarioService,
     private taS: TipoActividadService,
     private cS: CursosService,
+
+    private tuS: ConfiguracionService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
 
     this.form = this.formBuilder.group({
       idActividad: [''],

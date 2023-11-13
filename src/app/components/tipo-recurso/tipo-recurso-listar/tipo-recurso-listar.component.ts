@@ -15,12 +15,16 @@ export class TipoRecursoListarComponent {
   displayedColumns: string[] =
   ['codigo', 'nombre', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  idiomaActivo: any;
+
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
     private trS: TipoRecursoService) {}
 
   ngOnInit(): void {
+    
     this.trS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
