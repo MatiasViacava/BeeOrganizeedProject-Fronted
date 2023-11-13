@@ -79,7 +79,7 @@ export class UsuariosCreaeditaComponent implements OnInit {
 
         if (camposunicos) {
           if (this.edicion) {
-            this.uS.actualizarusuario(this.usuarios.id,this.usuarios.username,'true',this.usuarios.password,
+            this.uS.actualizarusuario(this.usuarios.id,this.usuarios.username,this.usuarios.password,'true',
               this.usuarios.nombres, this.usuarios.apellidos, this.usuarios.fechaNacimiento.toString(),
               this.usuarios.universidad, this.usuarios.email).subscribe((data) => {
               this.uS.list().subscribe(data => {
