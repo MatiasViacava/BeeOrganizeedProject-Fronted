@@ -10,133 +10,147 @@
 <body>
     <br>
     <div style=" text-align: center;"> 
-        <h2>{{"REGISTRAR ACTIVIDAD" | translate}}</h2> 
+        <h2>REGISTRAR ACTIVIDAD</h2> 
     </div>
 
     <div class="container" style=" text-align: center;">
         <form [formGroup]="form" (submit)="registrar()" class="example-form" >
+          <div class="contenedor-principal">
 
-            <mat-form-field class="example-full-width" *ngIf="edicion" hidden="true">
-                <mat-label>{{"ID" | translate}}</mat-label>
-                <input matInput placeholder="ID" formControlName="idActividad" readonly/>
-            </mat-form-field>
+            <div class="columna">
 
-            <br>
-            <mat-form-field class="example-full-width">
-                <mat-label>{{"Nombre de actividad" | translate}}</mat-label>
-                <input matInput placeholder="Nombre de actividad" formControlName="nombreActividad" maxlength="25"/>
-                
-                <mat-error
-                  *ngIf="obtenerControlCampo('nombreActividad')?.errors?.['required']"
-                  >{{"El nombre de la actividad es obligatorio" | translate}}
+              <mat-form-field class="example-full-width" *ngIf="edicion" hidden="true">
+                  <mat-label>ID</mat-label>
+                  <input matInput placeholder="ID" formControlName="idActividad" readonly/>
+              </mat-form-field>
+
+              <mat-label class="label">Ingrese el nombre de la actividad:</mat-label>
+              <mat-form-field class="example-full-width">
+                  <mat-label>Nombre de la actividad</mat-label>
+                  <input matInput placeholder="Nombre de actividad" formControlName="nombreActividad" maxlength="25" />
+                  <mat-icon matSuffix>layers</mat-icon>
+                  
+                  <mat-error
+                    *ngIf="obtenerControlCampo('nombreActividad')?.errors?.['required']"
+                    >El nombre de la actividad es obligatorio.
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-label class="label">Ingrese una descripción:</mat-label>
+              <mat-form-field class="example-full-width">
+                  <mat-label>Descripción</mat-label>
+                  <input matInput placeholder="Descripción" formControlName="descripcion" maxlength="35" />
+                  <mat-icon matSuffix>comment</mat-icon>
+                  
+                  <mat-error
+                    *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
+                    >La descripción es obligatoria.
+                  </mat-error>
+              </mat-form-field>
+
+              <!--HORARIO-->
+              <mat-label class="label">Selecione la fecha del cierre de ciclo:</mat-label>
+              <mat-form-field>
+                  <mat-label>Fecha horario</mat-label>
+                  <mat-select formControlName="horario">
+                    <mat-option *ngFor="let d of listaHorarios" [value]="d.idHorario">
+                      {{d.cierreCiclo}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                  *ngIf="obtenerControlCampo('horario')?.errors?.['required']"
+                  > El horario es obligatorio.
                 </mat-error>
-            </mat-form-field>
+              </mat-form-field>
 
-            <br>
-            <mat-form-field class="example-full-width">
-                <mat-label>{{"Descripción" | translate}}</mat-label>
-                <input matInput placeholder="Descripción" formControlName="descripcion" maxlength="35" />
-                
-                <mat-error
-                  *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
-                  >El descripcion es obligatorio.
+              <mat-label class="label" *ngIf="edicion">Selecione el estado de la actividad:</mat-label>
+              <mat-form-field class="example-full-width" *ngIf="edicion">
+                  <mat-label>Estado</mat-label>
+                  <mat-select formControlName="estado">
+                    <mat-option *ngFor="let t of tipos" [value]="t.value">
+                      {{ t.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="obtenerControlCampo('estado')?.errors?.['required']"
+                    >El estado es obligatorio.
+                  </mat-error>
+              </mat-form-field>
+    
+            </div>
+
+
+            <div class="columna">
+              <mat-label class="label">Ingrese la fecha para completar la actividad:</mat-label>
+              <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                  matInput
+                  placeholder="Ingrese la fecha"
+                  [matDatepicker]="picker"
+                  formControlName="fecha"
+                  [min]="minFecha"/>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker">
+                </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+                  <mat-error
+                  *ngIf="obtenerControlCampo('fecha')?.errors?.['required']"
+                      >La fecha es obligatoria.
+                  </mat-error>
+              </mat-form-field>
+
+              <!--Tipo actividad-->
+              <mat-label class="label">Selecione el tipo de actividad:</mat-label>
+              <mat-form-field>
+                  <mat-label>Tipo de actividad</mat-label>
+                  <mat-select formControlName="tipoActividad">
+                    <mat-option *ngFor="let d of listaTipoActividades" [value]="d.iDTipoActividad">
+                      {{d.nombreTipoActividad}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                  *ngIf="obtenerControlCampo('tipoActividad')?.errors?.['required']"
+                  > El nombre del tipo de actividad es obligatorio.
                 </mat-error>
-            </mat-form-field>
+              </mat-form-field>
 
-            <br>
-            <mat-form-field class="example-full-width" *ngIf="edicion">
-                <mat-label>{{"Estado" | translate}}</mat-label>
-                <mat-select formControlName="estado">
-                  <mat-option *ngFor="let t of tipos" [value]="t.value">
-                    {{ t.viewValue }}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                  *ngIf="obtenerControlCampo('estado')?.errors?.['required']"
-                  >El estado es obligatorio.
+              <!--Curso-->
+              <mat-label class="label">Selecione el nombre del curso:</mat-label>
+              <mat-form-field>
+                  <mat-label>Nombre de curso</mat-label>
+                  <mat-select formControlName="curso">
+                    <mat-option *ngFor="let d of listaCurso" [value]="d.idCurso">
+                      {{d.nombreCurso}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                  *ngIf="obtenerControlCampo('curso')?.errors?.['required']"
+                  > El nombre del curso es obligatorio.
                 </mat-error>
-            </mat-form-field>
-            
-            <br> 
-            <mat-form-field class="example-full-width" *ngIf="edicion">
-                <mat-label>{{"Calificación" | translate}}</mat-label>
-                <input matInput placeholder="Calificación" formControlName="calificacion"  type="number" min="0.0" max="20.0"/>
-                <mat-hint>0.0 al 20.0</mat-hint>
-                <mat-error
-                  *ngIf="obtenerControlCampo('calificacion')?.errors?.['required']"
-                  >{{"La calificación es obligatoria" | translate}}
-                </mat-error>
-            </mat-form-field>
+              </mat-form-field>
 
-            <br />
-            <mat-form-field appearance="fill" class="example-full-width">
-            <input
-                matInput
-                placeholder="Ingrese la fecha"
-                [matDatepicker]="picker"
-                formControlName="fecha"
-                [min]="minFecha"
-            />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-                <mat-error
-                *ngIf="obtenerControlCampo('fecha')?.errors?.['required']"
-                    >{{"La fecha es obligatoria" | translate}}.
-                </mat-error>
-            </mat-form-field>
+              <mat-label class="label" *ngIf="edicion">Ingrese la calificación:</mat-label>
+              <mat-form-field class="example-full-width" *ngIf="edicion">
+                  <mat-label>Calificación</mat-label>
+                  <input matInput placeholder="Calificación" formControlName="calificacion"  type="number" min="0.0" max="20.0"/>
+                  <mat-hint>Colocar de 0 a 20</mat-hint>
+                  <mat-error
+                    *ngIf="obtenerControlCampo('calificacion')?.errors?.['required']"
+                    >La calificación es obligatorio.
+                  </mat-error>
+              </mat-form-field>
 
-            <!--HORARIO-->
-            <br>
-            <mat-form-field>
-                <mat-label>{{"ID de Horario" | translate}}</mat-label>
-                <mat-select formControlName="horario">
-                  <mat-option *ngFor="let d of listaHorarios" [value]="d.idHorario">
-                    {{d.idHorario}}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                *ngIf="obtenerControlCampo('horario')?.errors?.['required']"
-                >{{"El horario es obligatorio" | translate}}.
-              </mat-error>
-            </mat-form-field>
-
-            <!--Tipo actividad-->
-            <br>
-            <mat-form-field>
-                <mat-label>{{"Tipo de actividad" | translate}}</mat-label>
-                <mat-select formControlName="tipoActividad">
-                  <mat-option *ngFor="let d of listaTipoActividades" [value]="d.iDTipoActividad">
-                    {{d.nombreTipoActividad}}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                *ngIf="obtenerControlCampo('tipoActividad')?.errors?.['required']"
-                > {{"El nombre del tipo actividad es obligatorio" | translate}}
-              </mat-error>
-            </mat-form-field>
-
-            <!--Curso-->
-            <br>
-            <mat-form-field>
-                <mat-label>{{"Nombre de curso" | translate}}</mat-label>
-                <mat-select formControlName="curso">
-                  <mat-option *ngFor="let d of listaCurso" [value]="d.idCurso">
-                    {{d.nombreCurso}}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                *ngIf="obtenerControlCampo('curso')?.errors?.['required']"
-                > {{"El nombre del curso es obligatorio" | translate}}
-              </mat-error>
-            </mat-form-field>
-
-            <br>
-            <button mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> {{"Registrar" | translate}}</button>
-            <button mat-raised-button color="warn" routerLink="/actividad/listar"> <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
+            </div>
+    
+          </div>
+          
+          <br>
+          <div class="button-container">
+            <button mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> Registrar</button>
+            <button mat-raised-button color="warn" routerLink="/components/actividad/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+          </div>
+          
         </form>
     </div>
 </body>
