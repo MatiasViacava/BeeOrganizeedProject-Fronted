@@ -38,6 +38,6 @@ export class EncuestaListarComponent implements OnInit{
     });
   }
   iralink(comp1:string, comp2:string){
-    this.router.navigate(['components/encuestas/',comp1, comp2]);
+    this.router.navigate(['/components/encuestas/',comp1, comp2]);
   }
 }

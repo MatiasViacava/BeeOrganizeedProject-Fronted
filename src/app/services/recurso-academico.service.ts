@@ -67,7 +67,7 @@ export class RecursoAcademicoService {
   listporusuarioid(idusuario: number) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<RecursoAcademico[]>(`${this.url}/${idusuario}`, {
+    return this.http.get<RecursoAcademico[]>(`${this.url}/listar/${idusuario}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
