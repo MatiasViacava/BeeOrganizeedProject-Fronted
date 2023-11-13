@@ -33,7 +33,13 @@
 
       <ng-container matColumnDef="estado">
         <th mat-header-cell *matHeaderCellDef> {{"Estado" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button 
+          [ngClass] ="element.estado == 'Completo' ? 'blue-button' : element.estado == 'Incompleto' ? 'yellow-button' : 'red-button'"
+          (click)="confirmar(element.idActividad)"
+          > {{element.estado}} 
+          </button> 
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="calificacion">
