@@ -151,8 +151,8 @@
   </mat-menu>
   
   <mat-menu #menuActividad="matMenu">
-    <button mat-menu-item (click)="iralink('actividad','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" | translate}}</button>
-    <button mat-menu-item (click)="iralink('actividad','listar')"><mat-icon>dns</mat-icon>{{"Listar" | translate}}</button>
+    <button mat-menu-item routerLink="/components/actividad/nuevo"><mat-icon>dns</mat-icon>{{"Registrar" | translate}}</button>
+    <button mat-menu-item routerLink="/components/actividad/listar"><mat-icon>dns</mat-icon>{{"Listar" | translate}}</button>
   </mat-menu>
     
 </mat-drawer-container>
