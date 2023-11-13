@@ -40,7 +40,7 @@ export class RecursoAcademicoService {
   listarid(id:number){
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<RecursoAcademico>(`${this.url}/listar/${id}`, {
+    return this.http.get<RecursoAcademico>(`${this.url}/${id}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
@@ -67,7 +67,7 @@ export class RecursoAcademicoService {
   listporusuarioid(idusuario: number) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<RecursoAcademico[]>(`${this.url}/${idusuario}`, {
+    return this.http.get<RecursoAcademico[]>(`${this.url}/listar/${idusuario}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
