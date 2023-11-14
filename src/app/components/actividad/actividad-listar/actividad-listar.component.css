@@ -55,14 +55,4 @@ td {
 }
 
 
-/* Botón azul para actualizar */
-.boton-actualizar {
- background-color: #8BC34A;
- color: white; /* Color del texto */
-}
- 
-/* Botón amarillo para modificar */
-.boton-eliminar {
- background-color: #f5be6c; /* Color amarillo */
- color: white; /* Color del texto */
-}
+mat-button { display: flex; justify-content: center; align-items: center; }

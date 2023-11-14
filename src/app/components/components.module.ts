@@ -71,7 +71,6 @@ import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
 import { ActividadEstadoComponent } from './actividad/actividad-listar/actividad-estado/actividad-estado.component';
 import { MatSortModule } from '@angular/material/sort';
-import { IonicModule } from '@ionic/angular';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -157,8 +156,7 @@ export function HttpLoaderFactory(http: HttpClient){
       }
     }),
 
-    MatSortModule,
-    IonicModule
+    MatSortModule
 
   ]
 })

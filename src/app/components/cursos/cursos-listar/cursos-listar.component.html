@@ -26,21 +26,20 @@
         <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
 
         <mat-card-actions class="card-actions">
-          <div class="button-container">
-            <button class="boton-actualizar"
+          <button class="card-actions-button"
             mat-raised-button
+            color="primary"
             (click)="iralink('edicion', element.idCurso.toString())"
             
           > <mat-icon>create</mat-icon>
           </button>
  
-          <button class="boton-eliminar"
+          <button class="card-actions-button"
             mat-raised-button
+            color="warn"
             (click)="confirmar(element.idCurso)"
           > <mat-icon>delete_forever</mat-icon>
           </button>
-          </div>
-         
         </mat-card-actions>
         
       </mat-card>

@@ -67,12 +67,15 @@
         <td mat-cell *matCellDef="let element"> {{element.curso.nombreCurso}} </td>
       </ng-container>
 
+      
+
       <!-- ACCIONES -->
       <ng-container matColumnDef="actualizar">
         <th mat-header-cell *matHeaderCellDef>{{"Actualizar" | translate}}</th>
         <td mat-cell *matCellDef="let element">
-          <button class="boton-actualizar"
+          <button
             mat-raised-button
+            color="primary"
             (click)="iralink('edicion', element.idActividad)"
             ><mat-icon>update</mat-icon>
           </button>
@@ -81,8 +84,9 @@
       <ng-container matColumnDef="eliminar">
         <th mat-header-cell *matHeaderCellDef>{{"Eliminar" | translate}}</th>
         <td mat-cell *matCellDef="let element">
-          <button class="boton-eliminar"
+          <button
             mat-raised-button
+            color="warn"
             (click)="eliminar(element.idActividad)"
             ><mat-icon>delete</mat-icon>
           </button>

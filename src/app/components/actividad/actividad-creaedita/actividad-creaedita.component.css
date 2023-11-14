@@ -9,7 +9,7 @@ body {
 .container {
   width: 100%; /* Ajusta este porcentaje según tus necesidades */
   background-color: #fff; /*COLOR DE LA TABLA*/
-  border: 50px solid #F0C481; /*Color del borde de la TABLA d8c382*/
+  border: 50px solid #ccc; /*Color del borde de la TABLA d8c382*/
   padding: 30px;    
 }
 
@@ -41,13 +41,4 @@ mat-form-field {
   text-align: left; /* Alinea el texto a la izquierda */
   width: 79%;
   margin-bottom: 10px; /* Esto añade un espacio de 10px debajo del mat-label */
-}
-
-.boton-agregar{
-  background-color: #6eb8db;
-  color: white; /* Color del texto */
-}
-.boton-cancelar{
-  background-color: #b8cd51;
-  color: white; /* Color del texto */
 }
