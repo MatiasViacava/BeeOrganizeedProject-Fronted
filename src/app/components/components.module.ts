@@ -69,9 +69,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
-import { ActividadEstadoComponent } from './actividad/actividad-listar/actividad-estado/actividad-estado.component';
-import { MatSortModule } from '@angular/material/sort';
-
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
@@ -122,8 +119,7 @@ export function HttpLoaderFactory(http: HttpClient){
     ConfiguracionCreaeditaComponent,
     ConfiguracionListarComponent,
     MenuComponent,
-    RecursoAcademicoBuscarfechaComponent,
-    ActividadEstadoComponent
+    RecursoAcademicoBuscarfechaComponent
   ],
   imports: [
     CommonModule,
@@ -154,9 +150,7 @@ export function HttpLoaderFactory(http: HttpClient){
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }),
-
-    MatSortModule
+    })
 
   ]
 })
