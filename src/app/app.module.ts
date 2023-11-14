@@ -26,6 +26,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -57,7 +58,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     MatCardModule,
     MatDialogModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

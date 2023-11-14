@@ -6,90 +6,107 @@
     <title>Document</title>
   </head>
   <body>
+    <br>
+    <h2>{{"Registro de cursos" | translate}}</h2>
+
     <div class="container" style="text-align: center">
-      <h2>{{"Registro de cursos" | translate}}</h2>
+      
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-        <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
-          <mat-label>{{"Código" | translate}}</mat-label>
-          <input matInput placeholder="Id" formControlName="idCurso" readonly/>
-        </mat-form-field>
 
+        <div class="contenedor-principal">
+          <div class="columna">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion" hidden="true">
+              <mat-label>{{"Código" | translate}}</mat-label>
+              <input matInput placeholder="Id" formControlName="idCurso" readonly/>
+            </mat-form-field>
+    
+            <mat-label class="label">Ingrese el nombre del curso:</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{"Nombre" | translate}}</mat-label>
+              <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" maxlength="18"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('nombreCurso')?.errors?.['required']"
+              >
+                {{"Obligatorio" | translate}}
+              </mat-error>
+            </mat-form-field>
+    
+            <br />
+            <mat-label class="label">Ingrese una descripción:</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{"Descripción" | translate}}</mat-label>
+              <input
+                matInput
+                placeholder="Descripción"
+                formControlName="descripcionCurso"
+                maxlength="30"
+              />
+              <mat-error
+                *ngIf="obtenerControlCampo('descripcionCurso')?.errors?.['required']"
+              >
+              {{"Obligatorio" | translate}}
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="columna">
+            <mat-label class="label">Agregue la fecha de inicio:</mat-label>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                matInput
+                placeholder="{{'Fecha de inicio de curso' | translate}}"
+                [matDatepicker]="picker"
+                formControlName="fechaInicioCurso"
+                [min]="minFecha"
+                [max]="maxFecha"
+                (dateChange)="onFechaInicioChange($event)"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="obtenerControlCampo('fechaInicioCurso')?.errors?.['required']"
+              >
+              {{"Obligatorio" | translate}}
+              </mat-error>
+            </mat-form-field>
+
+            <br />
+            <mat-label class="label">Agregue la fecha de finalización:</mat-label>
+            <mat-form-field appearance="fill" class="example-full-width">
+                <input
+                  matInput
+                  placeholder="{{'Fecha de fin de curso' | translate}}"
+                  [matDatepicker]="picker2"
+                  formControlName="fechaFinCurso"
+                  [min]="minFechaFin"
+                  [max]="maxFecha"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error
+                  *ngIf="obtenerControlCampo('fechaFinCurso')?.errors?.['required']"
+                >
+                {{"Obligatorio" | translate}}
+                </mat-error>
+              </mat-form-field>
+
+          </div>
+        </div>
+
+          
         <br />
-
-        <mat-form-field class="example-full-width">
-          <mat-label>{{"Nombre" | translate}}</mat-label>
-          <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" maxlength="18"/>
-          <mat-error
-            *ngIf="obtenerControlCampo('nombreCurso')?.errors?.['required']"
-          >
-            {{"Obligatorio" | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>{{"Descripción" | translate}}</mat-label>
-          <input
-            matInput
-            placeholder="Descripción"
-            formControlName="descripcionCurso"
-            maxlength="30"
-          />
-          <mat-error
-            *ngIf="obtenerControlCampo('descripcionCurso')?.errors?.['required']"
-          >
-          {{"Obligatorio" | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <br />
-        <mat-form-field appearance="fill" class="example-full-width">
-          <input
-            matInput
-            placeholder="{{'Fecha de inicio de curso' | translate}}"
-            [matDatepicker]="picker"
-            formControlName="fechaInicioCurso"
-            [min]="minFecha"
-            [max]="maxFecha"
-            (dateChange)="onFechaInicioChange($event)"
-          />
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error
-            *ngIf="obtenerControlCampo('fechaInicioCurso')?.errors?.['required']"
-          >
-          {{"Obligatorio" | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <br />
-        <mat-form-field appearance="fill" class="example-full-width">
-            <input
-              matInput
-              placeholder="{{'Fecha de fin de curso' | translate}}"
-              [matDatepicker]="picker2"
-              formControlName="fechaFinCurso"
-              [min]="minFechaFin"
-              [max]="maxFecha"
-            />
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker2"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-            <mat-error
-              *ngIf="obtenerControlCampo('fechaFinCurso')?.errors?.['required']"
-            >
-            {{"Obligatorio" | translate}}
-            </mat-error>
-          </mat-form-field>
-
-          <br />
-        <button mat-raised-button color="primary">{{"Aceptar" | translate}}</button>
-        <button mat-raised-button color="warn" routerLink="/cursos/listar">{{"Cancelar" | translate}}</button>
+        <div class="button-container">
+          <button class="boton-agregar" mat-raised-button>{{"Aceptar" | translate}}</button>
+          <button class="boton-cancelar" mat-raised-button  routerLink="/components/cursos/listar">{{"Cancelar" | translate}}</button>
+        </div>
         
         <p>{{ mensaje }}</p>
       </form>

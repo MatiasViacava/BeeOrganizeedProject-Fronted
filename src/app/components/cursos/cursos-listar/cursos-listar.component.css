@@ -37,12 +37,30 @@ body {
   margin: 20px; /* Margen de los cards */
 }
 
-.card-actions-button {
-  margin-right: 20px; /* Ajusta el espacio entre los botones */
-}
-
 img {
   position: relative; top: 20px; 
   left: 50%;
   transform: translateX(-50%);
 }
+
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Agrega un espacio entre los botones */
+}
+
+/* Botón azul para actualizar */
+.boton-actualizar {
+  background-color: #8BC34A;
+  color: white; /* Color del texto */
+ }
+  
+ /* Botón amarillo para modificar */
+ .boton-eliminar {
+  background-color: #f5be6c; /* Color amarillo */
+  color: white; /* Color del texto */
+ }
+
+
