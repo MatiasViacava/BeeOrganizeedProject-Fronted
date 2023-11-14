@@ -43,6 +43,8 @@ import { ActividadListarComponent } from './actividad/actividad-listar/actividad
 import { MenuComponent } from './menu/menu.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
+import { ReporteComponent } from './reporte/reporte.component';
+import { Reporte01Component } from './reporte/reporte01/reporte01.component';
 
 const routes: Routes = [
   {
@@ -146,6 +148,11 @@ const routes: Routes = [
   },
   {
     path: 'menu', component: MenuComponent
+  },
+  {
+    path: 'reportes', component: ReporteComponent, children: [
+      { path: 'reportejulio', component: Reporte01Component },
+    ]
   },
 ];
 

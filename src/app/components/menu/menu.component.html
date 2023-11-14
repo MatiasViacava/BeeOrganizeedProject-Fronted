@@ -78,7 +78,7 @@
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button *ngIf="role == 'Administrador'"><mat-icon>markunread_mailbox</mat-icon>{{"Reportes" | translate}}</button>
+        <button mat-button [matMenuTriggerFor]="menuReportes" *ngIf="role == 'Administrador'"><mat-icon>markunread_mailbox</mat-icon>{{"Reportes" | translate}}</button>
       </mat-list-item>
 
     </mat-nav-list>
@@ -153,6 +153,10 @@
   <mat-menu #menuActividad="matMenu">
     <button mat-menu-item routerLink="/components/actividad/nuevo"><mat-icon>dns</mat-icon>{{"Registrar" | translate}}</button>
     <button mat-menu-item routerLink="/components/actividad/listar"><mat-icon>dns</mat-icon>{{"Listar" | translate}}</button>
+  </mat-menu>
+
+  <mat-menu #menuReportes="matMenu">
+    <button mat-menu-item routerLink="/components/reportes/reportejulio"><mat-icon>dns</mat-icon>{{"Reporte01" | translate}}</button>
   </mat-menu>
     
 </mat-drawer-container>
