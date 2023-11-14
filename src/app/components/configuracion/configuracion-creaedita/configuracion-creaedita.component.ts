@@ -35,6 +35,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   role: string = "";
   username: string = "";
   id: number = 0;
+  boton:boolean=false
   
   constructor(
     private loginService: LoginService, 
@@ -51,6 +52,9 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   ngOnInit():void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    if (this.role=='Estudiante'){
+        this.boton=true
+    }
 
     this.form=this.formBuilder.group({
       idConfiguracion:[''],
@@ -66,6 +70,8 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
     
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
+
+
     this.tuS.idiomaSubject.subscribe(idioma => {
       this.idiomaActivo = idioma;
       this.translate.use(this.idiomaActivo);

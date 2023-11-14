@@ -2,7 +2,9 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { RecursoAcademico } from 'src/app/models/recurso-academico';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { RecursoAcademicoService } from 'src/app/services/recurso-academico.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -21,17 +23,24 @@ export class RecursoAcademicoListarComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  idiomaActivo: any;
+
 
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
     private raS:RecursoAcademicoService, 
     private loginService: LoginService, 
-    private uS: UsuariosService) {}
+    private uS: UsuariosService,
+    private tuS: ConfiguracionService,
+    public translate: TranslateService) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+
     if (this.role=='Estudiante')
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
@@ -46,6 +55,12 @@ export class RecursoAcademicoListarComponent implements OnInit{
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
         });
+
+        this.tuS.idiomaSubject.subscribe(idioma => {
+          this.idiomaActivo = idioma;
+          this.translate.use(this.idiomaActivo);
+        });
+        this.translate.use(this.idiomaActivo);
         }
       }
     })}

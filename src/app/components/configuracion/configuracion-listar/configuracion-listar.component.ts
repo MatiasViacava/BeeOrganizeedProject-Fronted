@@ -56,6 +56,10 @@ export class ConfiguracionListarComponent {
           if (data.length > 0) {
             this.tuS.updateIdioma(data[0].idioma.nombreIdioma)
           }
+
+          this.router.navigate(['components/configuracion/edicion',data[0].idConfiguracion])
+          console.log("Hola")
+
           
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;

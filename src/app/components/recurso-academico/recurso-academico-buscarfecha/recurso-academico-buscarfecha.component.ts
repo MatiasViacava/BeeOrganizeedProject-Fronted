@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { RecursoAcademico } from 'src/app/models/recurso-academico';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { RecursoAcademicoService } from 'src/app/services/recurso-academico.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -23,21 +25,34 @@ export class RecursoAcademicoBuscarfechaComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  idiomaActivo: any;
 
   constructor(
     private uS: UsuariosService,
     private loginService: LoginService, 
     private raS:RecursoAcademicoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private tuS: ConfiguracionService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
 
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+
     this.fechaForm = this.formBuilder.group({
       fecha: [null, Validators.required],
     });
+
+
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
   }
 
   buscar() {
