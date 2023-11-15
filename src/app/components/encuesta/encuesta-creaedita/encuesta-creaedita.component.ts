@@ -31,7 +31,7 @@ export class EncuestaCreaeditaComponent implements OnInit{
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       idEncuesta: [''],
-      valoracionFinal: ['', Validators.required],
+      nombreEncuesta: ['', Validators.required],
       comentario: ['', Validators.required],
       usuario: ['', Validators.required]
     });
@@ -47,7 +47,7 @@ export class EncuestaCreaeditaComponent implements OnInit{
   registrar() {
     if (this.form.valid) {
       this.encuesta.idEncuesta = this.form.value.idEncuesta,
-        this.encuesta.valoracionFinal = this.form.value.valoracionFinal,
+        this.encuesta.nombreEncuesta = this.form.value.nombreEncuesta,
         this.encuesta.comentario = this.form.value.comentario,
         this.encuesta.usuario.id = this.form.value.usuario
 
@@ -85,7 +85,7 @@ export class EncuestaCreaeditaComponent implements OnInit{
       this.eS.listarId(this.idEncuesta).subscribe((data) => {
         this.form = new FormGroup({
           idEncuesta: new FormControl(data.idEncuesta),
-          valoracionFinal: new FormControl(data.valoracionFinal),
+          nombreEncuesta: new FormControl(data.nombreEncuesta),
           comentario: new FormControl(data.comentario),
           usuario: new FormControl(data.usuario.id)
         });

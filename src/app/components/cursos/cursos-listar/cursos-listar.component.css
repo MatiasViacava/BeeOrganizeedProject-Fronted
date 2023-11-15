@@ -9,8 +9,8 @@ body {
 .container {
   width: 64%; /* Ajusta este porcentaje según tus necesidades */
   height: 560px;
-  background-color: #EBD481; /*COLOR DE LA TABLA*/
-  border: 1px solid #ccc; /*Color del borde de la TABLA*/
+  background-color: #FFF2E6; /*COLOR DE LA TABLA*/
+  border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
   padding: 30px;  
   
   /* Ajusta el diseño de la cuadrícula */
@@ -37,12 +37,28 @@ body {
   margin: 20px; /* Margen de los cards */
 }
 
-.card-actions-button {
-  margin-right: 20px; /* Ajusta el espacio entre los botones */
-}
-
 img {
   position: relative; top: 20px; 
   left: 50%;
   transform: translateX(-50%);
+}
+
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Agrega un espacio entre los botones */
+}
+
+/* Botón azul para actualizar */
+.boton-actualizar {
+  background-color: #8BC34A;
+  color: white; /* Color del texto */
+}
+  
+ /* Botón amarillo para modificar */
+.boton-eliminar {
+  background-color: #6eb8db; /* Color amarillo */
+  color: white; /* Color del texto */
 }

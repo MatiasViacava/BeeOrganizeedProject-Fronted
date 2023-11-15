@@ -45,6 +45,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { Reporte01Component } from './reporte/reporte01/reporte01.component';
+import { Reporte02Component } from './reporte/reporte02/reporte02.component';
+import { Reporte03Component } from './reporte/reporte03/reporte03.component';
+import { Reporte04Component } from './reporte/reporte04/reporte04.component';
 
 const routes: Routes = [
   {
@@ -152,6 +155,9 @@ const routes: Routes = [
   {
     path: 'reportes', component: ReporteComponent, children: [
       { path: 'reportejulio', component: Reporte01Component },
+      { path: 'reportefabian', component: Reporte02Component },
+      { path: 'reportesebastian', component: Reporte03Component },
+      { path: 'reportejuan', component: Reporte04Component },
     ]
   },
 ];

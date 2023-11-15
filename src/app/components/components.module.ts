@@ -71,6 +71,9 @@ import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { ReporteComponent } from './reporte/reporte.component';
 import { Reporte01Component } from './reporte/reporte01/reporte01.component';
 import { NgChartsModule } from 'ng2-charts';
+import { Reporte02Component } from './reporte/reporte02/reporte02.component';
+import { Reporte03Component } from './reporte/reporte03/reporte03.component';
+import { Reporte04Component } from './reporte/reporte04/reporte04.component';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -124,7 +127,10 @@ export function HttpLoaderFactory(http: HttpClient){
     MenuComponent,
     RecursoAcademicoBuscarfechaComponent,
     ReporteComponent,
-    Reporte01Component
+    Reporte01Component,
+    Reporte02Component,
+    Reporte03Component,
+    Reporte04Component
   ],
   imports: [
     CommonModule,
