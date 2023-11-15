@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Actividad } from '../models/actividad';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { QueryActividadMAX } from '../models/QueryActividadMAX';
 
 const base_url=environment.base
 
@@ -70,6 +71,17 @@ export class ActividadService {
     let token = sessionStorage.getItem('token');
 
     return this.http.get<Actividad[]>(`${this.url}/listar/${idusuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  //REPORTE SEBASTIAN
+  getReporteSebastian(){
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<QueryActividadMAX[]>(`${this.url}/actividadesmaximas`,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
