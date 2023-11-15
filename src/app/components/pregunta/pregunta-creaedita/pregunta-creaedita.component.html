@@ -17,21 +17,12 @@
                 <input matInput placeholder="idPregunta" formControlName="idPregunta" readonly/>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Enunciado</mat-label>
-                <input matInput placeholder="enunciado" formControlName="enunciado" maxlength="35"/>
-
-                <mat-error *ngIf="obtenerControlCampo('enunciado')?.errors?.['required']">El enunciado
-                    es obligatorio.
-                </mat-error>
-            </mat-form-field>
-
             <br>
             <mat-form-field>
-                <mat-label>ID de la encuesta</mat-label>
+                <mat-label>Nombre de la encuesta</mat-label>
                 <mat-select formControlName="encuesta_id">
                     <mat-option *ngFor="let d of listaEncuesta" [value]="d.idEncuesta"> <!--Se modifico la "t"-->
-                        {{d.idEncuesta}}
+                        {{d.nombreEncuesta}}
                     </mat-option>
 
                     <mat-error *ngIf="obtenerControlCampo('encuesta_id')?.errors?.['required']"> 
@@ -40,7 +31,17 @@
             </mat-form-field>
             <br/>
 
+            <mat-form-field class="example-full-width">
+                <mat-label>Enunciado</mat-label>
+                <input matInput placeholder="enunciado" formControlName="enunciado" maxlength="40"/>
 
+                <mat-error *ngIf="obtenerControlCampo('enunciado')?.errors?.['required']">El enunciado
+                    es obligatorio.
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            
             <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
             <button mat-raised-button color="warn" routerLink="/pregunta"> <mat-icon>close</mat-icon> Cancelar </button>
             <p>{{ mensaje }}</p>

@@ -18,19 +18,18 @@
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <mat-label>Valoración final</mat-label>
-                <input matInput placeholder="Valoración final" formControlName="valoracionFinal" type="number" min="0" max="10"/>
-                <mat-hint>0 a 10</mat-hint>
-                <mat-error *ngIf="obtenerControlCampo('valoracionFinal')?.errors?.['required']">Obligatorio
+                <mat-label>Nombre encuesta</mat-label>
+                <input matInput placeholder="Nombre encuesta" formControlName="nombreEncuesta" maxlength="60"/>
+                <mat-error *ngIf="obtenerControlCampo('nombreEncuesta')?.errors?.['required']">El nombre encuesta es obligatorio
                 </mat-error>
             </mat-form-field>
 
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Comentario</mat-label>
-                <input matInput placeholder="Comentario" formControlName="comentario" maxlength="25"/>
+                <input matInput placeholder="Comentario" formControlName="comentario" maxlength="140"/>
 
-                <mat-error *ngIf="obtenerControlCampo('comentario')?.errors?.['required']">Obligatorio
+                <mat-error *ngIf="obtenerControlCampo('comentario')?.errors?.['required']">El comentario es obligatorio
                 </mat-error>
             </mat-form-field>
 
@@ -42,7 +41,7 @@
                         {{u.username}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">Obligatorio
+                <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">Es usuario es obligatorio
                 </mat-error>
             </mat-form-field>
             <br/>
