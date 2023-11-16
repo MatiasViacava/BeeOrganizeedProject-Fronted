@@ -69,6 +69,7 @@ export class ActividadCreaeditaComponent implements OnInit{
 
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
+    
     this.tuS.idiomaSubject.subscribe(idioma => {
       this.idiomaActivo = idioma;
       this.translate.use(this.idiomaActivo);

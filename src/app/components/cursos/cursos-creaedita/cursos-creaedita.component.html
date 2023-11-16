@@ -9,7 +9,7 @@
     <br>
     <h2>{{"Registro de cursos" | translate}}</h2>
 
-    <div class="container" style="text-align: center">
+    <div class="container" style="text-align: center" >
       
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
@@ -21,7 +21,7 @@
               <input matInput placeholder="Id" formControlName="idCurso" readonly/>
             </mat-form-field>
     
-            <mat-label class="label">Ingrese el nombre del curso:</mat-label>
+            <mat-label class="label">{{"Ingrese el nombre del curso:" | translate}}</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>{{"Nombre curso" | translate}}</mat-label>
               <input matInput placeholder="Nombre de curso" formControlName="nombreCurso" maxlength="18"/>
@@ -33,7 +33,7 @@
             </mat-form-field>
     
             <br />
-            <mat-label class="label">Ingrese una descripción:</mat-label>
+            <mat-label class="label">{{"Ingrese una descripción:" | translate}}</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>{{"Descripción" | translate}}</mat-label>
               <input
@@ -52,7 +52,7 @@
           </div>
 
           <div class="columna">
-            <mat-label class="label">Seleccione la fecha de inicio</mat-label>
+            <mat-label class="label">{{"Seleccione la fecha de inicio" | translate}}</mat-label>
             <mat-form-field appearance="fill" class="example-full-width">
               <input
                 matInput
@@ -76,7 +76,7 @@
             </mat-form-field>
 
             <br />
-            <mat-label class="label">Seleccione la fecha de finalización</mat-label>
+            <mat-label class="label">{{"Seleccione la fecha de finalización" | translate}}</mat-label>
             <mat-form-field appearance="fill" class="example-full-width">
                 <input
                   matInput
