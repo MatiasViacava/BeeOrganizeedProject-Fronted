@@ -38,9 +38,8 @@
       <ng-container matColumnDef="actualizar">
         <th mat-header-cell *matHeaderCellDef>{{"Actualizar" | translate}}</th>
         <td mat-cell *matCellDef="let element">
-          <button
+          <button class="boton-actualizar"
             mat-raised-button
-            color="primary"
             (click)="iralink('edicion', element.idConfiguracion)"
             ><mat-icon>update</mat-icon>
           </button>
@@ -49,9 +48,8 @@
       <ng-container matColumnDef="eliminar">
         <th mat-header-cell *matHeaderCellDef>{{"Eliminar" | translate}}</th>
         <td mat-cell *matCellDef="let element">
-          <button
+          <button class="boton-eliminar"
             mat-raised-button
-            color="warn"
             (click)="eliminar(element.idConfiguracion)"
             ><mat-icon>delete</mat-icon>
           </button>

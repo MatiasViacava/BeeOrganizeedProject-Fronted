@@ -6,16 +6,19 @@
     <title>Document</title>
   </head>
   <body>
+    <br>
+    <h2>Registro de tipos de actividades</h2>
+
     <div class="container" style="text-align: center">
-      <h2>Registro de tipos de actividades</h2>
-      <br>
+
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         
         <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
           <mat-label>iDTipoActividad</mat-label>
           <input matInput placeholder="iDTipoActividad" formControlName="iDTipoActividad" />
         </mat-form-field>
-          
+        
+        <mat-label class="label">Ingrese el tipo de actividad:</mat-label>
         <mat-form-field class="example-full-width">
           <mat-label>Tipo de actividad</mat-label>
           <input matInput placeholder="nombreTipoActividad" formControlName="nombreTipoActividad" maxlength="25"/>
@@ -29,8 +32,8 @@
         <br>
         <br />
         <div class="button-container">
-          <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-          <button mat-raised-button color="warn" routerLink="/tipoactividad/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+          <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon> Aceptar</button>
+          <button class="boton-cancelar" mat-raised-button routerLink="/components/tipoactividad/listar"> <mat-icon>close</mat-icon> Cancelar </button>
         </div>
                  
         <p>{{ mensaje }}</p>

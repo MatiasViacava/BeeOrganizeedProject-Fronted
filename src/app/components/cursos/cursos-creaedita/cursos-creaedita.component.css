@@ -6,15 +6,6 @@ body {
   min-height: 100vh; /*Para que tenga color en toda la página*/
 }
   
-.center {
-  text-align: center;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
-}
-  
 .container {
   width: 50%; /* Ajusta este porcentaje según tus necesidades */
   background-color: #fff; /*COLOR DEL contenedor*/

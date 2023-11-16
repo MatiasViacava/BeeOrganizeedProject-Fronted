@@ -6,53 +6,72 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container" style="text-align: center">
+  <br>
   <h2>{{"Registro de Configuración General" | translate}}</h2>
-  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+  <div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
-    <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
-      <mat-label>id</mat-label>
-      <input matInput placeholder="ID" formControlName="idConfiguracion" readonly/>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>{{"Color de la Interfaz" | translate}}</mat-label>
-      <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15"/>
+      <div class="contenedor-principal">
 
-      <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El contenido de la respuesta
-        es obligatorio.
-      </mat-error>
-    </mat-form-field>
-    <div class="color1"><color-sketch color="#fff" (onChangeComplete)="colorF($event)"></color-sketch></div>
-    <br>
-    <mat-form-field>
-      <mat-label>{{"Idioma" | translate}}</mat-label>
-      <mat-select formControlName="idioma" [(value)]="idIDIoma">
-        <mat-option *ngFor="let t of listaID" [value]="t.idIdioma">
-          {{t.nombreIdioma}}
-        </mat-option>
+        <div class="columna">
+          <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
+            <mat-label>id</mat-label>
+            <input matInput placeholder="ID" formControlName="idConfiguracion" readonly/>
+          </mat-form-field>
+          <br *ngIf="edicion" >
 
-        <mat-error *ngIf="obtenerControlCampo('idioma')?.errors?.['required']">
-        </mat-error>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-      <mat-label>{{"Usuario" | translate}}</mat-label>
-      <mat-select formControlName="usuario" [(value)]="idUsuario">
-        <mat-option *ngFor="let c of listaUsuario" [value]="c.id">
-          {{c.nombres}}
-        </mat-option>
+          <mat-label class="label">Ingrese el color de la interfaz:</mat-label>
+          <mat-form-field class="example-full-width">
+            <mat-label>{{"Color de la Interfaz" | translate}}</mat-label>
+              <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15"/>
+              <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El color de la interfaz es obligatorio.
+              </mat-error>
+            </mat-form-field>
+          <div class="color1"><color-sketch color="#fff" (onChangeComplete)="colorF($event)"></color-sketch></div>
 
-        <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
-        </mat-error>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> {{"Aceptar" | translate}}</button>
-    <button mat-raised-button color="warn" routerLink="/configuracion" *ngIf="role == 'Administrador'">  <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
-    <p>{{ mensaje }}</p>
-  </form>
-</div>
+        </div>
+        <div class="columna">
+
+          <mat-label class="label">Ingrese el idioma de la interfaz:</mat-label>
+          <mat-form-field>
+            <mat-label>{{"Idioma" | translate}}</mat-label>
+            <mat-select formControlName="idioma" [(value)]="idIDIoma">
+              <mat-option *ngFor="let t of listaID" [value]="t.idIdioma">
+                {{t.nombreIdioma}}
+              </mat-option>
+              <mat-error *ngIf="obtenerControlCampo('idioma')?.errors?.['required']">El idoma de la interfaz es obligatorio.
+              </mat-error>
+            </mat-select>
+          </mat-form-field>
+
+          <br/>
+          <mat-label class="label">Ingrese el usuario:</mat-label>
+          <mat-form-field>
+            <mat-label>{{"Usuario" | translate}}</mat-label>
+            <mat-select formControlName="usuario" [(value)]="idUsuario">
+              <mat-option *ngFor="let c of listaUsuario" [value]="c.id">
+                {{c.nombres}}
+              </mat-option>
+      
+              <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">El usuario es obligatorio.
+              </mat-error>
+            </mat-select>
+          </mat-form-field>
+          <br>
+
+          <br>
+          <div class="button-container">
+            <button class="boton-agregar" mat-raised-button ><mat-icon>library_add</mat-icon> {{"Aceptar" | translate}}</button>
+            <button class="boton-cancelar" mat-raised-button routerLink="/components/configuracion/listar" *ngIf="role == 'Administrador'">  <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
+          </div>
+
+        </div>
+      </div>
+        
+      
+      
+      <p>{{ mensaje }}</p>
+    </form>
+  </div>
 </body>
 </html>

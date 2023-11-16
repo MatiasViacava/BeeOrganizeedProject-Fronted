@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <form [formGroup]="form" (submit)="registrar()" class="example-form" >
+            <h2  align="center">ESTADO</h2>
+            <br>
+            <mat-label class="label">Nombre de la actividad:</mat-label>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre de la actividad</mat-label>
+                <input matInput placeholder="Nombre de actividad" formControlName="nombreActividad" maxlength="25" readonly/>
+                
+                <mat-error
+                  *ngIf="obtenerControlCampo('nombreActividad')?.errors?.['required']"
+                  >El nombre de la actividad es obligatorio.
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-label class="label">Estado de la actividad:</mat-label>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('estado')?.errors?.['required']"
+                  >El estado es obligatorio.
+                </mat-error>
+            </mat-form-field>
+
+            <br *ngIf="form.get('estado')?.value === 'Completo'">
+            <mat-label class="label" *ngIf="form.get('estado')?.value === 'Completo'">Calificación:</mat-label>
+            
+            <br *ngIf="form.get('estado')?.value === 'Completo'">
+            <mat-form-field class="example-full-width" *ngIf="form.get('estado')?.value === 'Completo'">
+                <mat-label>Calificación</mat-label>
+                <input matInput placeholder="Calificación" formControlName="calificacion"  type="number" min="1.0" max="20.0"/>
+                <mat-hint>Colocar del 1 a 20</mat-hint>
+                <mat-error
+                  *ngIf="obtenerControlCampo('calificacion')?.errors?.['required']"
+                  >La calificación es obligatorio.
+                </mat-error>
+            </mat-form-field>
+          
+          <br>
+          <br>
+          <div class="button-container">
+            <button mat-raised-button class="boton-agregar"> <mat-icon>library_add</mat-icon></button>
+            <button mat-raised-button class="boton-cancelar" mat-dialog-close> <mat-icon>close</mat-icon></button>
+          </div>
+          
+        </form>
+    </div>
+</body>
+</html>

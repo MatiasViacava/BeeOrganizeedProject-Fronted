@@ -13,11 +13,13 @@
     </div>
     <div class="container">
 
+      <!--
       <br>
       <mat-form-field class="example-full-width">
         <input matInput type="text"  (keyup)="buscarNombre($event)" placeholder="Ingrese nombre">
       </mat-form-field>
       <br>
+      -->
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Name Column -->
@@ -67,14 +69,12 @@
               </ng-container>
               
               
-              
 
             <ng-container matColumnDef="actualizar">
                   <th mat-header-cell *matHeaderCellDef>Actualizar</th>
                   <td mat-cell *matCellDef="let element">
-                    <button
+                    <button class="boton-actualizar"
                       mat-raised-button
-                      color="primary"
                       (click)="iralink('edicion', element.id)"
                     >
                       <mat-icon>settings</mat-icon>
@@ -86,9 +86,8 @@
           <ng-container matColumnDef="eliminar">
               <th mat-header-cell *matHeaderCellDef [hidden]="role=='Estudiante'">Eliminar</th>
               <td mat-cell *matCellDef="let element">
-                <button
+                <button class="boton-eliminar"
                   mat-raised-button
-                  color="warn"
                   (click)="eliminar(element.id)"
                   [hidden]="role=='Estudiante'"
                 > <mat-icon>delete</mat-icon>

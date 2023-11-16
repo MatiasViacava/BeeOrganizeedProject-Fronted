@@ -30,9 +30,8 @@
       <ng-container matColumnDef="actualizar">
         <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let element">
-          <button
+          <button class="boton-actualizar"
             mat-raised-button
-            color="primary"
             (click)="iralink('edicion', element.iD)"
             ><mat-icon>update</mat-icon>
           </button>
@@ -41,9 +40,8 @@
       <ng-container matColumnDef="eliminar">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-          <button
+          <button class="boton-eliminar"
             mat-raised-button
-            color="warn"
             (click)="eliminar(element.iD)"
             ><mat-icon>delete</mat-icon>
           </button>
@@ -54,8 +52,6 @@
     </table>
 
     <br>
-    <button mat-button color="primary" routerLink="/tiporecurso/nuevo"> <mat-icon>library_add</mat-icon> Registrar</button>
-
     <mat-paginator 
     [pageSizeOptions]="[10, 30, 50]" 
     showFirstLastButtons aria-label="Páginas">
