@@ -7,11 +7,13 @@
 </head>
 <body>
   <br>
-  <div style=" text-align: center;"> 
+  <div style=" text-align: center;">
+    <br> 
     <h2>{{"BÚSQUEDA DE RECURSOS ACADÉMICOS" | translate}}</h2> 
+    <br>
   </div>
 
-    <div [formGroup]="fechaForm" class="container">
+    <div [formGroup]="fechaForm">
       <mat-form-field>
         <input
           matInput
@@ -23,7 +25,7 @@
         <mat-datepicker #picker></mat-datepicker>
        
       </mat-form-field>
-      <button (click)="buscar()" mat-raised-button color="primary">{{"Buscar" | translate}}</button>
+      <button (click)="buscar()" mat-raised-button class="boton-eliminar">{{"Buscar" | translate}}</button>
     </div>
 
   <div class="container">
@@ -70,10 +72,8 @@
     </table>
 
   </div>
-  <div class="container">
     <!-- ... tu código existente ... -->
     <div *ngIf="mensaje" style="color: red; margin-top: 10px;">{{ mensaje }}</div>
-  </div>
 
 </body>
 </html>

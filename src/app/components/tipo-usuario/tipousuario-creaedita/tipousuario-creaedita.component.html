@@ -8,8 +8,11 @@
 </head>
 
 <body>
+    <br>
+    <h2>Registro de Tipos Usuario</h2>
+
     <div class="container" style="text-align: center">
-        <h2>Registro de Tipos Usuario</h2>
+        
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
             <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
@@ -18,8 +21,10 @@
             </mat-form-field>
 
             <br>
+            <mat-label class="label">Ingrese el rol del usuario:</mat-label>
+            <br>
             <mat-form-field class="example-full-width">
-                <mat-label>Nombre del Usuario</mat-label>
+                <mat-label>Rol del Usuario</mat-label>
                 <input matInput placeholder="contenido" formControlName="nombreTipoUsuario" maxlength="18"/>
 
                 <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El contenido de la respuesta
@@ -28,10 +33,12 @@
             </mat-form-field>
 
             <br>
+            <mat-label class="label">Selecione el usuario:</mat-label>
+            <br>
             <mat-form-field>
                 <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuarios">
-                    <mat-option *ngFor="let d of listaUsuarios" [value]="d.id"> <!--Se modifico la "t"-->
+                    <mat-option *ngFor="let d of listaUsuarios" [value]="d.id">
                         {{d.username}}
                     </mat-option>
 
@@ -41,9 +48,12 @@
             </mat-form-field>
             <br/>
 
+            <br>
+            <div class="button-container">
+                <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon> Aceptar</button>
+                <button class="boton-cancelar" mat-raised-button routerLink="/components/tipousuario/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+            </div>
 
-            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-            <button mat-raised-button color="warn" routerLink="/tipousuario"> <mat-icon>close</mat-icon> Cancelar </button>
             <p>{{ mensaje }}</p>
         </form>
     </div>

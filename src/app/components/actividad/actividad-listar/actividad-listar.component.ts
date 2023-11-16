@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +9,7 @@ import { ActividadService } from 'src/app/services/actividad.service';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ActividadEstadoComponent } from './actividad-estado/actividad-estado.component';
 
 @Component({
   selector: 'app-actividad-listar',
@@ -25,6 +27,8 @@ export class ActividadListarComponent implements OnInit{
   id: number = 0;
   idiomaActivo: any;
 
+  //ESTADO - NUEVO
+  idSeleccionado: number = 0;
 
   constructor(
     public route: ActivatedRoute, 
@@ -33,7 +37,9 @@ export class ActividadListarComponent implements OnInit{
     private loginService: LoginService, 
     private uS: UsuariosService,
     private tuS: ConfiguracionService,
-    public translate: TranslateService) {}
+    public translate: TranslateService,
+    private dialog: MatDialog //ESTADO - NUEVO
+  ) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
@@ -94,5 +100,15 @@ export class ActividadListarComponent implements OnInit{
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });
+  }
+
+  //ESTADO-NUEVO 
+  confirmar(id: number) {
+    this.idSeleccionado = id;
+    // Pasamos el id del tipo de actividad al diálogo
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {idActividad: id};
+    // Usamos el componente de creación y edición como diálogo
+    this.dialog.open(ActividadEstadoComponent, dialogConfig);
   }
 }

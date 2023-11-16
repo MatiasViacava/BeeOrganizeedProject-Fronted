@@ -14,8 +14,8 @@
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
         <div class="contenedor-principal">
+          
           <div class="columna">
-
             <mat-form-field class="example-full-width" *ngIf="edicion" hidden="true">
               <mat-label>{{"Código" | translate}}</mat-label>
               <input matInput placeholder="Id" formControlName="idCurso" readonly/>
