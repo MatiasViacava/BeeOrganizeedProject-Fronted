@@ -96,7 +96,11 @@
     "Nombre curso":"Course name",
     "Ingrese el nombre del curso:":"Enter the course name:",
     "Seleccione la fecha de inicio":"Select start date",
-    "Seleccione la fecha de finalización":"Select the end date"
+    "Seleccione la fecha de finalización":"Select the end date",
+    "Perfil":"Profile",
+    "Editar":"Edit",
+    "Editar usuario":"Edit user",
+    "Editar configuración general":"Edit settings"
 
 
 }
