@@ -15,16 +15,16 @@
 
         <div class="columna">
           <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
-            <mat-label>id</mat-label>
+            <mat-label>{{"ID" | translate}}</mat-label>
             <input matInput placeholder="ID" formControlName="idConfiguracion" readonly/>
           </mat-form-field>
           <br *ngIf="edicion" >
 
-          <mat-label class="label">Ingrese el color de la interfaz:</mat-label>
+          <mat-label class="label">{{"Ingrese el color de la interfaz:" | translate}}</mat-label>
           <mat-form-field class="example-full-width">
             <mat-label>{{"Color de la Interfaz" | translate}}</mat-label>
               <input matInput placeholder="Color Inerfaz " formControlName="colorInterfaz" maxlength="15"/>
-              <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">El color de la interfaz es obligatorio.
+              <mat-error *ngIf="obtenerControlCampo('colorInterfaz')?.errors?.['required']">{{"El color de la interfaz es obligatorio." | translate}}
               </mat-error>
             </mat-form-field>
           <div class="color1"><color-sketch color="#fff" (onChangeComplete)="colorF($event)"></color-sketch></div>
@@ -32,20 +32,20 @@
         </div>
         <div class="columna">
 
-          <mat-label class="label">Ingrese el idioma de la interfaz:</mat-label>
+          <mat-label class="label">{{"Ingrese el idioma de la interfaz:" | translate}}</mat-label>
           <mat-form-field>
             <mat-label>{{"Idioma" | translate}}</mat-label>
             <mat-select formControlName="idioma" [(value)]="idIDIoma">
               <mat-option *ngFor="let t of listaID" [value]="t.idIdioma">
                 {{t.nombreIdioma}}
               </mat-option>
-              <mat-error *ngIf="obtenerControlCampo('idioma')?.errors?.['required']">El idoma de la interfaz es obligatorio.
+              <mat-error *ngIf="obtenerControlCampo('idioma')?.errors?.['required']">{{"El idioma de la interfaz es obligatorio." | translate}}
               </mat-error>
             </mat-select>
           </mat-form-field>
 
           <br/>
-          <mat-label class="label" *ngIf="role == 'Administrador'">Ingrese el usuario:</mat-label>
+          <mat-label class="label" *ngIf="role == 'Administrador'">{{"Ingrese el usuario:" | translate}}</mat-label>
           <mat-form-field *ngIf="role == 'Administrador'">
             <mat-label>{{"Usuario" | translate}}</mat-label>
             <mat-select formControlName="usuario" [(value)]="idUsuario">
@@ -53,7 +53,7 @@
                 {{c.username}}
               </mat-option>
       
-              <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">El usuario es obligatorio.
+              <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">{{"El usuario es obligatorio." | translate}}
               </mat-error>
             </mat-select>
           </mat-form-field>

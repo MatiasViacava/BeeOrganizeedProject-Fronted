@@ -48,7 +48,7 @@ export class CursosListarComponent implements OnInit{
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 
-    /*if (this.role=='')
+    if (this.role=='EstudianteSinUsar')
     {    this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
         {this.id=u.id;
@@ -71,7 +71,7 @@ export class CursosListarComponent implements OnInit{
         this.translate.use(this.idiomaActivo);
       }
     })}
-    else*/ if (this.role=='Administrador' || this.role=='Estudiante')
+    else if (this.role=='Administrador' || this.role=='Estudiante')
     {
       this.cS.list().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
