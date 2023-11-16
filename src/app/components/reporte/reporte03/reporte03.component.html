@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <div><h1>Actividad máxima por fecha</h1></div>
+    <br>
+    <div class="container">
+        
+        <div>
+            <canvas
+                baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabel"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [type]="barChartType"
+            >
+
+            </canvas>
+        </div>
+    </div>
+</body>
+</html>

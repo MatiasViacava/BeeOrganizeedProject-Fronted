@@ -6,18 +6,21 @@
     <title>Document</title>
   </head>
   <body>
+    <br>
+    <h2 class="titulo">Registro de idiomas</h2>
+
     <div class="container" style="text-align: center">
-      <h2>Registro de idiomas</h2>
+
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         
         <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
           <mat-label>idIdioma</mat-label>
           <input matInput placeholder="idIdioma" formControlName="idIdioma" readonly="true"/>
         </mat-form-field>
-          
+        
+        <mat-label class="label">Seleccione el idioma:</mat-label>
         <mat-form-field class="example-full-width">
           <mat-label>Nombre idioma</mat-label>
-          
           <mat-select formControlName="nombreIdioma">
             <mat-option *ngFor="let t of idiomasDis" [value]="t.value">
               {{ t.viewValue }}
@@ -30,9 +33,14 @@
           </mat-error>
         </mat-form-field>
 
+        <br>
         <br />
-        <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/idioma"> <mat-icon>close</mat-icon> Cancelar </button>
+        <div class="button-container">
+          <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon> Aceptar</button>
+          <button class="boton-cancelar" mat-raised-button routerLink="/components/idioma/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+        </div>
+
+        
         <p>{{ mensaje }}</p>
       </form>
     </div>

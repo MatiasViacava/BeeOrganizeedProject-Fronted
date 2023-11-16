@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TipoActividad } from '../models/tipoactividad';
 import { Subject } from 'rxjs';
+import { CantTipoActividadDTO } from '../models/CantTipoActividadDTO';
+import { QueryCantTipoactividadPorUsuarioDTO } from '../models/QueryCantTipoactividadDTO';
+
 
 const base_url=environment.base
 
@@ -74,5 +77,27 @@ export class TipoActividadService {
   }
   setConfirmDelete(estado:boolean){
     this.confirmarEliminacion.next(estado);
+  }
+
+  //REPORTE FABIAN
+  getReporteFabian(){
+    let token = sessionStorage.getItem('token');
+    
+    return this.http.get<CantTipoActividadDTO[]>(`${this.url}/cantidades`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  //REPORTE JUAN
+  getReporteJuan(){
+    let token = sessionStorage.getItem('token');
+    
+    return this.http.get<QueryCantTipoactividadPorUsuarioDTO[]>(`${this.url}/cantidadesporusuario`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

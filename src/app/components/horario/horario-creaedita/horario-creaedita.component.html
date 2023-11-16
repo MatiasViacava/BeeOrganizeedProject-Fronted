@@ -13,7 +13,7 @@
         <h2>REGISTRAR HORARIO</h2> 
     </div>
 
-    <div class="container" style=" text-align: center;">
+    <div class="container">
         <form [formGroup]="form" (submit)="registrar()" class="example-form" >
 
             <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
@@ -22,6 +22,9 @@
             </mat-form-field>
 
             <br />
+            <mat-label class="label">Seleccione la fecha de cierre de ciclo</mat-label>
+            <br>
+            <br>
             <mat-form-field appearance="fill" class="example-full-width">
             <input
                 matInput
@@ -43,6 +46,9 @@
 
             <!--Usuarios-->
             <br>
+            <mat-label class="label">Seleccione su usuario</mat-label>
+            <br>
+            <br>
             <mat-form-field>
                 <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuario">
@@ -58,8 +64,14 @@
             </mat-form-field>
 
             <br>
-            <button mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> Registrar</button>
-            <button mat-raised-button color="warn" routerLink="/horario/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+            <br>
+            <div class="button-container">
+
+            </div>
+            <div class="button-container">
+                <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon>{{"Aceptar" | translate}}</button>
+                <button class="boton-cancelar" mat-raised-button  routerLink="/components/horario/listar"><mat-icon>cancel</mat-icon>{{"Cancelar" | translate}}</button>
+            </div>
         </form>
     </div>
 </body>
