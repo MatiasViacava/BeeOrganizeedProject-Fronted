@@ -69,7 +69,12 @@
     "Fecha publicación":"Publication date",
     "Tipo de recurso":"Resource type",
     "BÚSQUEDA DE RECURSOS ACADÉMICOS":"SEARCH FOR ACADEMIC RESOURCES",
-    "Buscar":"Search"
+    "Buscar":"Search",
+    "Perfil":"Profile",
+    "Editar":"Edit",
+    "Editar usuario":"Edit user",
+    "Editar configuración general":"Edit settings"
+
 
 
 }

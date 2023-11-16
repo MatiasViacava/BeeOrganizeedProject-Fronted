@@ -24,7 +24,7 @@
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>people</mat-icon>{{"Usuarios" | translate}}</button>
+        <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="role == 'Estudiante' || role == 'Administrador'"><mat-icon>people</mat-icon>{{UsuarioAltTitulo | translate}}</button>
       </mat-list-item>
 
       <mat-list-item>
@@ -91,7 +91,7 @@
   </mat-drawer-content>
   <mat-menu #menuUsuarios="matMenu">
     <button mat-menu-item (click)="iralink('usuarios','nuevo')" *ngIf="role == 'Administrador'"><mat-icon>dns</mat-icon> {{"Registrar" | translate}}</button>
-    <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>{{"Listar" | translate}}</button>
+    <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>{{AltBoton | translate}}</button>
   </mat-menu>
   
   <mat-menu #menuTipoUsuario="matMenu">
@@ -101,7 +101,7 @@
   
   <mat-menu #menuConfiguracion="matMenu">
     <button mat-menu-item (click)="iralink('configuracion','nuevo')" *ngIf="role == 'Administrador'"><mat-icon>dns</mat-icon>{{"Registrar" | translate}}</button>
-    <button mat-menu-item (click)="iralink('configuracion','listar')"><mat-icon>dns</mat-icon>{{"Listar" | translate}}</button>
+    <button mat-menu-item (click)="iralink('configuracion','listar')"><mat-icon>dns</mat-icon>{{AltBoton | translate}}</button>
   </mat-menu>
   
   <mat-menu #menuTipoActividad="matMenu">

@@ -58,7 +58,7 @@ export class ConfiguracionListarComponent {
           }
 
           this.router.navigate(['components/configuracion/edicion',data[0].idConfiguracion])
-          console.log("Hola")
+          console.log("Los estudiantes solo pueden editar sus configuraciones")
 
           
           this.dataSource = new MatTableDataSource(data);

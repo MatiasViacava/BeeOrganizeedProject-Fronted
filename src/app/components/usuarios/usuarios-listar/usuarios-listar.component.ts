@@ -24,15 +24,31 @@ export class UsuariosListarComponent {
   ) {}
 
   role:string=""; //NUEVO
+  username: string="";
 
   ngOnInit(): void {
+    this.username=this.ls.showUsername();
     this.role=this.ls.showRole();
     console.log(this.role);
 
 
     this.uS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      for (let u of data)
+      {
+        if (u.username == this.username)
+        {
+          if (this.role=='Administrador')
+        {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        }
+        else if (this.role=='Estudiante')
+        {
+          this.router.navigate(['components/usuarios/edicion', u.id]);
+          console.log('Los estudiantes solo pueden editar su usuario.')
+        }
+        }
+      }
     });
     this.uS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
