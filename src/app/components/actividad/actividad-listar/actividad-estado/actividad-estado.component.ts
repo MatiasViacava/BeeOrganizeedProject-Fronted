@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Actividad } from 'src/app/models/actividad';
 import { Curso } from 'src/app/models/curso';
 import { Horario } from 'src/app/models/horario';
 import { TipoActividad } from 'src/app/models/tipoactividad';
 import { ActividadService } from 'src/app/services/actividad.service';
-import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { HorarioService } from 'src/app/services/horario.service';
-import { LoginService } from 'src/app/services/login.service';
 import { TipoActividadService } from 'src/app/services/tipo-actividad.service';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
-  selector: 'app-actividad-creaedita',
-  templateUrl: './actividad-creaedita.component.html',
-  styleUrls: ['./actividad-creaedita.component.css']
+  selector: 'app-actividad-estado',
+  templateUrl: './actividad-estado.component.html',
+  styleUrls: ['./actividad-estado.component.css']
 })
-export class ActividadCreaeditaComponent implements OnInit{
-  form: FormGroup = new FormGroup({});
+export class ActividadEstadoComponent implements OnInit{
+  form: FormGroup = new FormGroup({
+    nombreActividad: new FormControl('', [Validators.required]),
+    estado: new FormControl('', [Validators.required]),
+    calificacion: new FormControl({ value: '', disabled: true }),
+  });
+  
+  getForm() {
+    return this.form;
+  }
+
+
   actividad: Actividad = new Actividad();
   mensaje: string = '';
   minFecha: Date = moment().add('days').toDate();
@@ -38,15 +45,7 @@ export class ActividadCreaeditaComponent implements OnInit{
   listaTipoActividades: TipoActividad[] = [];
   listaCurso: Curso[] = [];
 
-  role: string = "";
-  username: string = "";
-  id: number = 0;
-
-  idiomaActivo: any;
-  
-
   constructor(
-    private loginService: LoginService, 
     private aS: ActividadService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -59,43 +58,30 @@ export class ActividadCreaeditaComponent implements OnInit{
     private taS: TipoActividadService,
     private cS: CursosService,
 
-    private tuS: ConfiguracionService,
-    public translate: TranslateService
+    //VENTANA (1): Recibimos el parámetro del diálogo
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    // Recibimos la referencia del diálogo
+    private dialogRef: MatDialogRef<ActividadEstadoComponent>
   ) {}
 
   ngOnInit(): void {
-    this.role=this.loginService.showRole();
-    this.username=this.loginService.showUsername();
-
-    this.translate.addLangs(['es', 'en']);
-    this.translate.setDefaultLang('es');
-    
-    this.tuS.idiomaSubject.subscribe(idioma => {
-      this.idiomaActivo = idioma;
-      this.translate.use(this.idiomaActivo);
-    });
-    this.translate.use(this.idiomaActivo);
-
     this.form = this.formBuilder.group({
       idActividad: [''],
       nombreActividad: ['', Validators.required],
       descripcion: ['', Validators.required],
-      //estado: ['', Validators.required],
-      estado: [this.edicion ? '' : 'Incompleto', Validators.required],
-      //calificacion: ['', Validators.required],
-      calificacion: [this.edicion ? '' : 0, Validators.required],
+      estado: ['', Validators.required],
+      calificacion: ['', Validators.required],
       fecha: ['', Validators.required],
       horario: ['', Validators.required],
       tipoActividad: ['', Validators.required],
       curso: ['', Validators.required],
     });
 
-    //ACTUALIZAR
-    this.route.params.subscribe((data: Params) => {
-      this.idActividad = data['idActividad'];
-      this.edicion = data['idActividad'] != null;
-      this.init();
-    });
+    //VENTANA (2): ACTUALIZAR
+    this.idActividad = this.data.idActividad;
+    this.edicion = this.data.idActividad != null;
+    this.init();
+
 
     //DEPENDIENTES
     this.hS.list().subscribe(data => { this.listaHorarios = data });
@@ -115,20 +101,13 @@ export class ActividadCreaeditaComponent implements OnInit{
       this.actividad.tipoActividad.iDTipoActividad = this.form.value.tipoActividad;
       this.actividad.curso.idCurso = this.form.value.curso;
 
-      
-
-      if (this.edicion) {
-        this.aS.modificar(this.actividad).subscribe((data) => {
-          this.aS.list().subscribe((data) => {
-            if (this.role=='Administrador'){this.aS.setList(data);}})
-        });
-      } else {
-        this.aS.insert(this.actividad).subscribe((data) => {
-          this.aS.list().subscribe((data) => {
-            if (this.role=='Administrador'){this.aS.setList(data);}})
-        });
-      }
-      this.router.navigate(['/components/actividad/listar']);
+      this.aS.modificar(this.actividad).subscribe((data) => {
+        this.aS.list().subscribe((data) => {
+        this.aS.setList(data);
+       });
+      });
+      // VENTANA (3): Cerramos el diálogo y devolvemos la actividad modificada        
+      this.dialogRef.close(this.actividad);
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -160,4 +139,5 @@ export class ActividadCreaeditaComponent implements OnInit{
       });
     }
   }
+
 }

@@ -20,6 +20,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   configuracionarc:Configuracion=new Configuracion();
   mensaje:string='';
+  titulo:string='Registro de Configuracion general';
 
   idIDIoma:number=0;
   listaID:Idioma[]=[];
@@ -65,6 +66,9 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
     this.route.params.subscribe((data:Params)=>{
       this.idCOnfiguracion=data['idConfiguracion'];
       this.edicion=data['idConfiguracion']!=null;
+
+      if (this.edicion) {this.titulo="Editar configuración general"}
+
       this.init();
     })
     
@@ -101,7 +105,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
           })
         })
       }
-      this.router.navigate(['/components/configuracion/listar']);
+      this.aplicarcambios();
     }else{
       this.mensaje="Falta completar campos"
     }
@@ -130,6 +134,14 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   colorF(event: any) {
     this.colorSeleccionado = event.color.hex; // Actualiza el color seleccionado
     this.form.get('colorInterfaz')?.setValue(this.colorSeleccionado); // Actualiza el valor en el formulario
+  }
+
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/configuracion/listar']);
+    });
   }
 
 

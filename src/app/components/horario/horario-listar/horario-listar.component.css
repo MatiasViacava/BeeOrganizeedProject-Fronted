@@ -17,10 +17,9 @@ body {
   .container {
     width: 50%; /* Ajusta este porcentaje según tus necesidades */
     background-color: #fff; /*COLOR DE LA TABLA*/
-    border: 1px solid #ccc; /*Color del borde de la TABLA*/
+    border: 30px solid #F0C481; /*Color del borde de la TABLA*/
     padding: 30px;
 
-    
   }
   
   
@@ -40,6 +39,17 @@ body {
   td {
     background-color: #f2f2f2; /*Contenido de la tabla*/
     color: #333;
-    text-align: center; /*Contenido de la tabla*/
-    
+    text-align: center; /*Contenido de la tabla*/  
  }
+
+/* Botón azul para actualizar */
+.boton-actualizar {
+  background-color: #6eb8db;
+  color: white; /* Color del texto */
+}
+  
+ /* Botón amarillo para modificar */
+.boton-eliminar {
+  background-color: #8BC34A; /* Color amarillo */
+  color: white; /* Color del texto */
+}

@@ -8,8 +8,12 @@
 </head>
 
 <body>
-    <div class="container" style="text-align: center">
-        <h2>{{"Registro de RESPUESTAS" | translate}}</h2>
+    <br>
+    <h2>{{"Registrar respuesta" | translate}}</h2>
+    <br>
+
+    <div class="container">
+        
         <form [formGroup]="form" (submit)="registrar()" class="example-form">
 
             <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
@@ -17,14 +21,8 @@
                 <input matInput placeholder="idRespuesta" formControlName="idRespuesta" readonly/>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-                <mat-label>{{"Contenido" | translate}}</mat-label>
-                <input matInput placeholder="contenido" formControlName="contenido" maxlength="20" />
-
-                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">{{"The content of the response is required" | translate}}
-                </mat-error>
-            </mat-form-field>
-
+            <br>
+            <mat-label class="label">{{"Seleccione la pregunta:" | translate}}</mat-label>
             <br>
             <mat-form-field>
                 <mat-label>{{"Pregunta" | translate}}</mat-label>
@@ -32,16 +30,29 @@
                     <mat-option *ngFor="let d of listaPregunta" [value]="d.idPregunta"> <!--Se modifico la "t"-->
                         {{d.enunciado}}
                     </mat-option>
-
-                    <mat-error *ngIf="obtenerControlCampo('pregunta_Id')?.errors?.['required']"> 
+                    <mat-error *ngIf="obtenerControlCampo('pregunta_Id')?.errors?.['required']">
                     </mat-error>
                 </mat-select>
             </mat-form-field>
-            <br/>
 
+            <br>
+            <mat-label class="label">{{"Ingrese una respuesta:" | translate}}</mat-label>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>{{"Contenido" | translate}}</mat-label>
+                <input matInput placeholder="contenido" formControlName="contenido" maxlength="60" />
 
-            <button mat-raised-button color="primary"><mat-icon>library_add</mat-icon> {{"Aceptar" | translate}}</button>
-            <button mat-raised-button color="warn" routerLink="/respuesta"> <mat-icon>close</mat-icon> {{"Cancelar" | translate}} </button>
+                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">{{"The content of the response is required" | translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <br />
+            <div class="button-container">
+            <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon>{{"Aceptar" | translate}}</button>
+            <button class="boton-cancelar" mat-raised-button  routerLink="/components/respuesta/listar"><mat-icon>cancel</mat-icon>{{"Cancelar" | translate}}</button>
+            </div>
+            
             <p>{{ mensaje }}</p>
         </form>
     </div>

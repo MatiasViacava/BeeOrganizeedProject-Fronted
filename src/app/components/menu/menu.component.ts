@@ -26,6 +26,9 @@ export class MenuComponent implements OnInit{
   colorActivo: any;
   idiomaActivo: any;
 
+  UsuarioAltTitulo:string="Usuarios"
+  AltBoton:string="Listar"
+
 
   cerrar() {
     sessionStorage.clear();
@@ -46,6 +49,10 @@ export class MenuComponent implements OnInit{
     
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
+
+    if (this.role=='Estudiante') {
+      this.AltBoton="Editar";
+      this.UsuarioAltTitulo="Perfil";}
 
     this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) {

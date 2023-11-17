@@ -50,6 +50,12 @@ export class RespuestaCreaeditaComponent implements OnInit{
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 
+    this.tuS.idiomaSubject.subscribe(idioma => {
+      this.idiomaActivo = idioma;
+      this.translate.use(this.idiomaActivo);
+    });
+    this.translate.use(this.idiomaActivo);
+
     this.form = this.formBuilder.group({
       idRespuesta: [''],
       contenido: ['', Validators.required],
@@ -62,11 +68,7 @@ export class RespuestaCreaeditaComponent implements OnInit{
       this.init();
     });
 
-    this.tuS.idiomaSubject.subscribe(idioma => {
-      this.idiomaActivo = idioma;
-      this.translate.use(this.idiomaActivo);
-    });
-    this.translate.use(this.idiomaActivo);
+    
 
     this.pS.list().subscribe(data => { this.listaPregunta = data });
 
