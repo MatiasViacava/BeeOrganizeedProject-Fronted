@@ -1,54 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /*Para que tenga color en toda la página*/
-  }
-  .center {
-    text-align: center;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /*Para que tenga color en toda la página*/
+}
+
+.container {
+  width: 64%; /* Ajusta este porcentaje según tus necesidades */
+  height: 560px;
+  background-color: #FFF2E6; /*COLOR DE LA TABLA*/
+  border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
+  padding: 30px;  
   
-  .container {
-    width: 100%; /* Ajusta este porcentaje según tus necesidades */
-    background-color: #fff; /*COLOR DE LA TABLA*/
-    border: 30px solid #F0C481; /*Color del borde de la TABLA*/
-    padding: 30px;
-  }
-  
-  
-  .custom-table {
-    width: 100%;
-    display: flex; /* Habilita el diseño Flexbox para las filas */
-    flex-direction: column; /* Las filas se ajustarán verticalmente */
-   }
-  
-  th {
-    background-color: #cf1010;
-    color: rgb(75, 72, 72);
-    text-align: center; /*TITULO de las columnas*/
-    
-  }
-  
-  td {
-    background-color: #f2f2f2; /*Contenido de la tabla*/
-    color: #333;
-    text-align: center; /*Contenido de la tabla*/ 
- }
+  /* Ajusta el diseño de la cuadrícula */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 20px;
+  overflow: auto;
+}
+
+.card {
+  width: 280px; /* Ancho de los cards */
+  margin: 10px; /* Margen de los cards */
+}
+
+.card-actions {
+  margin: 20px; /* Margen de las acciones */
+  display: flex; /* Habilita el diseño Flexbox para las acciones */
+  justify-content: center; /* Alinea las acciones al centro */
+  align-items: center; /* Alinea las acciones verticalmente al centro */
+}
+
+.card-container {
+  display: flex; /* Habilita el diseño Flexbox para los cards */
+  margin: 20px; /* Margen de los cards */
+}
+
+img {
+  position: relative; top: 20px; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Agrega un espacio entre los botones */
+}
 
 /* Botón azul para actualizar */
 .boton-actualizar {
-  background-color: #6eb8db;
+  background-color: #8BC34A;
   color: white; /* Color del texto */
 }
   
  /* Botón amarillo para modificar */
 .boton-eliminar {
-  background-color: #8BC34A; /* Color amarillo */
+  background-color: #6eb8db; /* Color amarillo */
   color: white; /* Color del texto */
 }
