@@ -12,74 +12,38 @@
   </div>
 
   <div class="container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> {{"Código" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.iD}} </td>
-      </ng-container>
-      <ng-container matColumnDef="enlace">
-        <th mat-header-cell *matHeaderCellDef>  {{"Enlace" | translate}}</th>
-        <td mat-cell *matCellDef="let element"> {{element.enlaceRecurso}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> {{"Nombre" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreRecurso}} </td>
-      </ng-container>
+    <div class="card-container" *ngFor="let element of dataSource.data">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{element.nombreRecurso}}</mat-card-title>
+          <mat-card-subtitle>{{"Código" | translate}}: {{element.iD}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Nombre del Autor" | translate}}: {{element.autor}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Enlace: " | translate}}: {{element.enlaceRecurso}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Fin de Publicacion" | translate}}: {{element.fechaPublicacion | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+        </mat-card-header>
 
-      <ng-container matColumnDef="autor">
-        <th mat-header-cell *matHeaderCellDef> {{"Autor" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
-      </ng-container>
+        <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
 
-      <ng-container matColumnDef="fecha Publicacion">
-        <th mat-header-cell *matHeaderCellDef> {{"Fecha publicación" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaPublicacion | date:"dd/MM/yyyy"}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="descripcion">
-        <th mat-header-cell *matHeaderCellDef hidden> {{"Descripción" | translate}} </th>
-        <td mat-cell *matCellDef="let element" hidden> {{element.descripcion}} </td>
-      </ng-container>
-      <ng-container matColumnDef="tipo de recurso">
-        <th mat-header-cell *matHeaderCellDef> {{"Tipo de recurso" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.tipoRecurso_ID.nombreTipo}} </td>
-      </ng-container>
-      <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef> {{"Curso" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.curso_IdCurso.nombreCurso}} </td>
-      </ng-container>
-
-      <!-- ACCIONES -->
-      <ng-container matColumnDef="actualizar">
-        <th mat-header-cell *matHeaderCellDef>{{"Actualizar" | translate}}</th>
-        <td mat-cell *matCellDef="let element">
-          <button class="boton-actualizar"
+        <mat-card-actions class="card-actions">
+          <div class="button-container">
+            <button class="boton-actualizar"
+              mat-raised-button
+              (click)="iralink('edicion', element.iD.toString())"
+            > <mat-icon>create</mat-icon>
+            </button>
+            <button class="boton-eliminar"
             mat-raised-button
-            (click)="iralink('edicion', element.iD)"
-            ><mat-icon>create</mat-icon>
+            (click)="confirmar(element.iD)"
+          > <mat-icon>delete_forever</mat-icon>
           </button>
-      </td></ng-container>
-
-      <ng-container matColumnDef="eliminar">
-        <th mat-header-cell *matHeaderCellDef>{{"Eliminar" | translate}}</th>
-        <td mat-cell *matCellDef="let element">
-          <button class="boton-eliminar"
-            mat-raised-button
-            (click)="eliminar(element.iD)"
-            ><mat-icon>delete</mat-icon>
-          </button>
-      </td></ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
+            
+          </div>
+         
+        </mat-card-actions>
+        
+      </mat-card>
+    </div> 
     <br>
-    <mat-paginator 
-    [pageSizeOptions]="[10, 30, 50]" 
-    showFirstLastButtons aria-label="Select page">
-  </mat-paginator>
   </div>
 </body>
 </html>

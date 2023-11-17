@@ -11,16 +11,14 @@
       <h2>{{titulo}}</h2>
       <br />
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
+        <div class ="center">
+          <img src="../assets/images/3135715.png" alt="Logo">
+        </div>
+        <br>
 
         <div class="contenedor-principal">
 
           <div class="columna">
-
-            <mat-form-field class="example-full-width" *ngIf="edicion">
-              <mat-label>ID</mat-label>
-              <input matInput placeholder="id" formControlName="id" readonly/>
-          </mat-form-field>
-
           <br>
 
             <mat-form-field class="example-full-width">
@@ -33,10 +31,9 @@
               </mat-error>
             </mat-form-field>
             
-            <br />
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width"  *ngIf="edicion">
               <mat-label>Contraseña</mat-label>
-              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
+              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5" readonly />
               <mat-hint class="caracterminimo">Ingrese 5 caracteres como mínimo</mat-hint>
               <mat-error
                 *ngIf="obtenerControlCampo('password')?.errors?.['required']"
@@ -44,19 +41,21 @@
                 Complete el campo
               </mat-error>
             </mat-form-field>
-
-            <br>
-            <img src="../assets/images/logo_amarillo.png" alt="Logo">
-            <br>
-            <div class="button-container">
-              <button mat-button color="primary"> Registrar </button>
-              <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
-              <p>{{ mensaje }}</p>
-            </div>
-            
+            <mat-form-field class="example-full-width">
+              <mat-label>Universidad</mat-label>
+              <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+           <br>
+           <br>
           </div>
 
           <div class="columna">
+            <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombres</mat-label>
                 <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
@@ -66,7 +65,6 @@
                   Complete el campo
                 </mat-error>
               </mat-form-field>
-              <br />
               <mat-form-field class="example-full-width">
                 <mat-label>Apellidos</mat-label>
                 <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*" />
@@ -76,8 +74,6 @@
                   Complete el campo
                 </mat-error>
               </mat-form-field>
-
-            <br />
             <mat-form-field hidden="true">
               <mat-label>Fecha de registro</mat-label>
               <input
@@ -98,18 +94,6 @@
               </mat-error>
             </mat-form-field>
 
-            <br />
-            <mat-form-field class="example-full-width">
-                <mat-label>Universidad</mat-label>
-                <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
-                <mat-error
-                  *ngIf="obtenerControlCampo('universidad')?.errors?.['required']"
-                >
-                  Complete el campo
-                </mat-error>
-              </mat-form-field>
-
-            <br />
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Email" formControlName="email" />
@@ -119,10 +103,15 @@
                   Complete el campo
                 </mat-error>
             </mat-form-field>
+            
           </div><!--Columna end-->
-          
-        </div> <!--Columna Principal end-->
         
+        </div> <!--Columna Principal end-->
+        <div class="button-container">
+          <button mat-button color="primary"> Registrar </button>
+          <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
+          <p>{{ mensaje }}</p>
+        </div>
       </form>
     </div>
   </body>

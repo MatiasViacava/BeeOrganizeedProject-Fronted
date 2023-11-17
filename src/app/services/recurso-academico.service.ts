@@ -13,6 +13,7 @@ export class RecursoAcademicoService {
   private url =`${base_url}/recursosacademicos`
   private listaCambio=new Subject<RecursoAcademico[]>();
   constructor(private http:HttpClient) { }
+  private confirmarEliminacion = new Subject<Boolean>()
   list(){
     let token = sessionStorage.getItem('token');
 
@@ -72,6 +73,12 @@ export class RecursoAcademicoService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+  }
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:boolean){
+    this.confirmarEliminacion.next(estado);
   }
   //BUSCAR POR FECHA
   buscar(fecha: string): Observable<RecursoAcademico[]> {
