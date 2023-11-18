@@ -41,6 +41,7 @@
                 Complete el campo
               </mat-error>
             </mat-form-field>
+
             <mat-form-field class="example-full-width">
               <mat-label>Universidad</mat-label>
               <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
@@ -110,9 +111,11 @@
         <div class="button-container">
           <button mat-button color="primary"> Registrar </button>
           <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
-          <p>{{ mensaje }}</p>
+            <br>
+            <p>{{ mensaje }}</p>
+  
         </div>
       </form>
     </div>
-  </body>
+  </body>
 </html>

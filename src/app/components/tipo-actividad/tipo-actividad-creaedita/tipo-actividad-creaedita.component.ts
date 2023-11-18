@@ -58,7 +58,7 @@ export class TipoActividadCreaeditaComponent implements OnInit{
         this.router.navigate(['/components/tipoactividad/listar']);
 
     } else {
-      this.mensaje="Complete todos los campos!!!!"
+      this.mensaje="Por favor complete todos los campos obligatorios"
     }
   }
 
