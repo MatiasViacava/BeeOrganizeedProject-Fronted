@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <h2>ㅤ</h2>
     <div class="container" style="text-align: center">
       <h2>{{titulo}}</h2>
       <br />
@@ -20,7 +21,6 @@
 
           <div class="columna">
           <br>
-
             <mat-form-field class="example-full-width">
               <mat-label>Usuario</mat-label>
               <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
@@ -107,11 +107,13 @@
           </div><!--Columna end-->
         
         </div> <!--Columna Principal end-->
+        <br>
         <div class="button-container">
-          <button mat-button color="primary"> Registrar </button>
-          <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
-          <p>{{ mensaje }}</p>
+          <button mat-button class="boton-agregar"><mat-icon>library_add</mat-icon> Registrar </button>
+          <button mat-button class="boton-cancelar" routerLink="/components/usuarios/listar"><mat-icon>close</mat-icon>Cancelar</button>
         </div>
+
+        <p>{{ mensaje }}</p>
       </form>
     </div>
   </body>

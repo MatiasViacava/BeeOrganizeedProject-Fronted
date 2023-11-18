@@ -6,58 +6,16 @@ body {
   min-height: 100vh; /*Para que tenga color en toda la página*/
 }
 
-.caracterminimo{
- font-size: 15px; /* Ajusta el tamaño del texto */
+.container {
+  width: 60%; /* Ajusta este porcentaje según tus necesidades */
+  background-color: #fff; /*COLOR DE LA TABLA*/
+  border: 30px solid #F0C481; /*Color del borde de la TABLA*/
+  padding: 5px;
+  margin: 20px auto; /*Espacio entre el menu y el contenedor*/
 }
 
 mat-form-field {
-  width: 80%;
-}
-
-.contenedor-principal {
-  display: flex;
-  justify-content: space-around;
-}
- 
-.columna {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-}
-.columna img {
-  width: 1px;
-  height: 1px;
-}
-.center {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(1); /* Ten en cuenta la altura del menú */
-}
-/* Estilos para los botones */
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Agrega un espacio entre los botones */
-}
-
- 
-.button-container button {
-  padding: 10px 10px; /* Ajusta el espacio dentro del botón */
-  font-size: 17px; /* Cambia el tamaño de la fuente del botón */
-  background-color: #d1ab22;
-  color: white;
-}
-
-.caracterminimo{
-  font-size: 15px; /* Ajusta el tamaño del texto */
- }
-
-mat-form-field {
-  width: 80%;
+  width: 70%;
 }
 .contenedor-principal {
   display: flex;
@@ -70,13 +28,37 @@ mat-form-field {
   align-items: center;
   width: 60%;
 }
-.columna img {
+.center img {
   width: 200px;
   height: 200px;
 }
 
+.caracterminimo{
+  font-size: 15px; /* Ajusta el tamaño del texto */ 
+}
 
 
+/* Estilos para los botones */
+.button-container {
+  display: block; /* Cambiado de flex a block */
+  justify-content: center;
+  gap: 20px; /* Agrega un espacio entre los botones */
+}
+
+.boton-agregar{
+  background-color: #6eb8db;
+  color: white; /* Color del texto */
+  width: 20%; /* Cambiado de 80% a auto */
+  margin-bottom: 20px; /* Agregado */
+  margin-right: 20px;
+}
+.boton-cancelar{
+  background-color: #b8cd51;
+  color: white; /* Color del texto */
+  width: 20%; /* Cambiado de 80% a auto */
+  margin-bottom: 20px; /* Agregado */
+  margin-left: 20px;
+}
 
 /* Cambios en el tamaño y color del texto de los errores */
 mat-error {
@@ -85,13 +67,5 @@ mat-error {
  }
  .mat-form-field {
   margin-bottom: 20px;
-}
-
-.container {
-  width: 100%; /* Ajusta este porcentaje según tus necesidades */
-  background-color: #fff; /*COLOR DE LA TABLA*/
-  border: 1px solid #ccc; /*Color del borde de la TABLA*/
-  padding: 30px;
-  margin: 20px auto; /*Espacio entre el menu y el contenedor*/
 }
  
