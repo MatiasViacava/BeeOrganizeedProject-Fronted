@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <div><h1>Candidad de actividades entre intervalo</h1></div>
+    <br>
+    
+    <div class="container">
+        <div>
+            <mat-label class="label">{{"Seleccione la fecha de inicio"}}</mat-label>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                matInput
+                placeholder="{{'Fecha de inicio'}}"
+                [matDatepicker]="picker"
+                formControlName="fechaInicio"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="label">{{"Seleccione la fecha de inicio"}}</mat-label>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                matInput
+                placeholder="{{'Fecha de fin'}}"
+                [matDatepicker]="picker"
+                formControlName="fechaFin"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              
+            </mat-form-field>
+        </div>
+        <div>
+            <canvas
+                baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabel"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [type]="barChartType"
+            >
+
+            </canvas>
+        </div>
+    </div>
+</body>
+</html>

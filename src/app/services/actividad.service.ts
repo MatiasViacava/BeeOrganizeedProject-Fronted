@@ -1,9 +1,10 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Actividad } from '../models/actividad';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { QueryActividadMAX } from '../models/QueryActividadMAX';
+import { CantActividadesIntervaloDTO } from '../models/CantActividadesIntervaloDTO';
 
 const base_url=environment.base
 
@@ -82,6 +83,19 @@ export class ActividadService {
     let token = sessionStorage.getItem('token');
 
     return this.http.get<QueryActividadMAX[]>(`${this.url}/actividadesmaximas`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  //REPORTE RAFAEL
+
+  getReporteRafael(fechaInicio:Date|null,fechaFin:Date|null){
+    let token = sessionStorage.getItem('token');
+    
+    const body={fechainicio:fechaInicio,fechafin:fechaFin};
+    return this.http.post<number[]>(`${this.url}/CantActividadesEntreIntervalos`,body,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
