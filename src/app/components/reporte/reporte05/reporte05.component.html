@@ -18,31 +18,39 @@
                 matInput
                 placeholder="{{'Fecha de inicio'}}"
                 [matDatepicker]="picker"
-                formControlName="fechaInicio"
+                formControlName="fechaInicioFM"
               />
               <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-              
+              <mat-error
+                *ngIf="obtenerControlCampo('fechaInicioFM')?.errors?.['required']"
+              >
+                {{"Obligatorio"}}
+              </mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-label class="label">{{"Seleccione la fecha de inicio"}}</mat-label>
+            <mat-label class="label">{{"Seleccione la fecha de fin"}}</mat-label>
             <mat-form-field appearance="fill" class="example-full-width">
               <input
                 matInput
                 placeholder="{{'Fecha de fin'}}"
                 [matDatepicker]="picker"
-                formControlName="fechaFin"
+                formControlName="fechaFinFM"
               />
               <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-              
+              <mat-error
+                *ngIf="obtenerControlCampo('fechaFinFM')?.errors?.['required']"
+              >
+                {{"Obligatorio"}}
+              </mat-error>
             </mat-form-field>
         </div>
         <div>

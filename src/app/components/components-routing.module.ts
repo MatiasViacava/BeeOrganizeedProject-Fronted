@@ -48,6 +48,7 @@ import { Reporte01Component } from './reporte/reporte01/reporte01.component';
 import { Reporte02Component } from './reporte/reporte02/reporte02.component';
 import { Reporte03Component } from './reporte/reporte03/reporte03.component';
 import { Reporte04Component } from './reporte/reporte04/reporte04.component';
+import { Reporte05Component } from './reporte/reporte05/reporte05.component';
 
 const routes: Routes = [
   {
@@ -158,6 +159,7 @@ const routes: Routes = [
       { path: 'reportefabian', component: Reporte02Component },
       { path: 'reportesebastian', component: Reporte03Component },
       { path: 'reportejuan', component: Reporte04Component },
+      {path:'reporterafael',component:Reporte05Component}
     ]
   },
 ];
