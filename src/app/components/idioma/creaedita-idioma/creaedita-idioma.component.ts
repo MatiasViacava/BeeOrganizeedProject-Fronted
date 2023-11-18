@@ -62,7 +62,7 @@ export class CreaeditaIdiomaComponent implements OnInit {
       this.router.navigate(['/components/idioma/listar']);
 
     } else {
-      this.mensaje = "Complete todos los campos!!!!"
+      this.mensaje = "Por favor complete todos los campos obligatorios"
     }
   }
 

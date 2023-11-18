@@ -132,7 +132,7 @@ export class UsuariosCreaeditaComponent implements OnInit {
         }
       })
     } else {
-      this.mensaje = "Complete todos los campos!!!!"
+      this.mensaje = "Por favor complete todos los campos obligatorios."
     }
   }
 
