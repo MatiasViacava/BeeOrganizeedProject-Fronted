@@ -66,6 +66,11 @@ export class RecursoAcademicoListarComponent implements OnInit{
         this.translate.use(this.idiomaActivo);
         }
       }
+          //ELIMINAR - NUEVO
+    this.raS.getConfirmDelete().subscribe(data => {
+      data == true ? this.eliminar(this.idSeleccionado) : false;
+      this.ngOnInit()
+    }); 
     })}
     else if (this.role=='Administrador')
     {
@@ -77,6 +82,11 @@ export class RecursoAcademicoListarComponent implements OnInit{
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
       }); 
+          //ELIMINAR - NUEVO
+    this.raS.getConfirmDelete().subscribe(data => {
+      data == true ? this.eliminar(this.idSeleccionado) : false;
+      this.ngOnInit()
+    }); 
     }
   }
   confirmar(id: number) {
