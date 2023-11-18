@@ -98,7 +98,7 @@ export class RespuestaCreaeditaComponent implements OnInit{
       this.router.navigate(['/components/respuesta/listar']);
 
     } else {
-      this.mensaje = "Complete todos los campos!!!!"
+      this.mensaje = "Por favor complete todos los campos obligatorios."
     }
   }
 

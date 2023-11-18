@@ -107,7 +107,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       }
       this.aplicarcambios();
     }else{
-      this.mensaje="Falta completar campos"
+      this.mensaje="Por favor complete todos los campos obligatorios."
     }
 
   }
