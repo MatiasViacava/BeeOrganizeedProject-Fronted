@@ -26,19 +26,27 @@ mat-form-field {
   width: 60%;
 }
 .columna img {
-  width: 200px;
-  height: 200px;
+  width: 1px;
+  height: 1px;
 }
-
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(1); /* Ten en cuenta la altura del menú */
+}
 /* Estilos para los botones */
 .button-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px; /* Agrega un espacio entre los botones */
 }
+
  
 .button-container button {
-  padding: 10px 20px; /* Ajusta el espacio dentro del botón */
+  padding: 10px 10px; /* Ajusta el espacio dentro del botón */
   font-size: 17px; /* Cambia el tamaño de la fuente del botón */
   background-color: #d1ab22;
   color: white;
@@ -67,19 +75,7 @@ mat-form-field {
   height: 200px;
 }
 
-/* Estilos para los botones */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px; /* Agrega un espacio entre los botones */
-}
- 
-.button-container button {
-  padding: 10px 20px; /* Ajusta el espacio dentro del botón */
-  font-size: 17px; /* Cambia el tamaño de la fuente del botón */
-  background-color: #d1ab22;
-  color: white;
-}
+
 
 
 /* Cambios en el tamaño y color del texto de los errores */

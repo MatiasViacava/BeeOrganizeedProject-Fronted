@@ -8,6 +8,8 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { RecursoAcademicoService } from 'src/app/services/recurso-academico.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ConfirmarComponent } from './confirmar/confirmar.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-recurso-academico-listar',
@@ -25,12 +27,13 @@ export class RecursoAcademicoListarComponent implements OnInit{
   id: number = 0;
   idiomaActivo: any;
 
-
+  idSeleccionado: number = 0;
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
     private raS:RecursoAcademicoService, 
     private loginService: LoginService, 
+    private dialog: MatDialog,
     private uS: UsuariosService,
     private tuS: ConfiguracionService,
     public translate: TranslateService) {}
@@ -63,6 +66,11 @@ export class RecursoAcademicoListarComponent implements OnInit{
         this.translate.use(this.idiomaActivo);
         }
       }
+          //ELIMINAR - NUEVO
+    this.raS.getConfirmDelete().subscribe(data => {
+      data == true ? this.eliminar(this.idSeleccionado) : false;
+      this.ngOnInit()
+    }); 
     })}
     else if (this.role=='Administrador')
     {
@@ -74,7 +82,16 @@ export class RecursoAcademicoListarComponent implements OnInit{
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
       }); 
+          //ELIMINAR - NUEVO
+    this.raS.getConfirmDelete().subscribe(data => {
+      data == true ? this.eliminar(this.idSeleccionado) : false;
+      this.ngOnInit()
+    }); 
     }
+  }
+  confirmar(id: number) {
+    this.idSeleccionado = id;
+    this.dialog.open(ConfirmarComponent);
   }
   eliminar(iD: number){
     this.raS.eliminar(iD).subscribe(() => {

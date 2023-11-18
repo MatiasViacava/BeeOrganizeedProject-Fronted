@@ -75,6 +75,7 @@ import { Reporte02Component } from './reporte/reporte02/reporte02.component';
 import { Reporte03Component } from './reporte/reporte03/reporte03.component';
 import { Reporte04Component } from './reporte/reporte04/reporte04.component';
 import { ActividadEstadoComponent } from './actividad/actividad-listar/actividad-estado/actividad-estado.component';
+import { ConfirmarComponent } from './recurso-academico/recurso-academico-listar/confirmar/confirmar.component';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -132,7 +133,8 @@ export function HttpLoaderFactory(http: HttpClient){
     Reporte02Component,
     Reporte03Component,
     Reporte04Component,
-    ActividadEstadoComponent
+    ActividadEstadoComponent,
+    ConfirmarComponent,
   ],
   imports: [
     CommonModule,
