@@ -42,7 +42,7 @@
                 <mat-label>{{"Contenido" | translate}}</mat-label>
                 <input matInput placeholder="contenido" formControlName="contenido" maxlength="60" />
 
-                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">{{"The content of the response is required" | translate}}
+                <mat-error *ngIf="obtenerControlCampo('contenido')?.errors?.['required']">{{"El contenido de la respuesta es obligatorio" | translate}}
                 </mat-error>
             </mat-form-field>
 
