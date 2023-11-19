@@ -9,7 +9,7 @@
 
 <body>
     <br>
-    <h2>Registro de Tipos Usuario</h2>
+    <h2>{{titulo | translate}}</h2>
 
     <div class="container" style="text-align: center">
         
@@ -25,9 +25,13 @@
             <br>
             <mat-form-field class="example-full-width">
                 <mat-label>Rol del Usuario</mat-label>
-                <input matInput placeholder="contenido" formControlName="nombreTipoUsuario" maxlength="18"/>
+                <mat-select formControlName="nombreTipoUsuario">
+                    <mat-option *ngFor="let t of tipos" [value]="t.value">
+                      {{ t.viewValue }}
+                    </mat-option>
+                  </mat-select>
 
-                <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El contenido de la respuesta
+                <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El tipo de usuario
                     es obligatorio.
                 </mat-error>
             </mat-form-field>

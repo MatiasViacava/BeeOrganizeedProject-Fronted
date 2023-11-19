@@ -44,7 +44,7 @@ export class RecursoAcademicoListarComponent implements OnInit{
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 
-    if (this.role=='Estudiante'){
+    /*if (this.role=='Estudiante'){
       this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
         {this.id=u.id;
@@ -75,8 +75,9 @@ export class RecursoAcademicoListarComponent implements OnInit{
 
       }
     })
-   }
-    else if (this.role=='Administrador')
+   }*/
+   
+    if (this.role=='Administrador' || this.role=='Estudiante')
     {
       this.raS.list().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);

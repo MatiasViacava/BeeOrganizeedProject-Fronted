@@ -99,8 +99,51 @@
     "Seleccione la fecha de finalización":"Select the end date",
     "Perfil":"Profile",
     "Editar":"Edit",
+    "Reporte 1":"Report 1",
+    "Reporte 2":"Report 2",
+    "Reporte 3":"Report 3",
+    "Reporte 4":"Report 4",
+    "Reporte 5":"Report 5",
+    
+    "LISTA DE TIPOS DE RECURSOS ACADEMICOS": "LIST OF ACADEMIC RESOURCE TYPES",
+    "LISTA DE TIPOS DE USUARIO": "LIST OF TYPES OF USERS",
+    "LISTA DE TIPOS DE ACTIVIDAD":"LIST OF ACTIVITY TYPES",
+    "LISTA DE IDIOMAS":"LANGUAGE LIST",
+    "LISTA DE ENCUESTAS":"SURVEY LIST",
+    "LISTA DE PREGUNTAS":"QUESTION LIST",
+
+    "Registro de usuario":"User register",
+    "Registro de actividad": "Activity register",
+    "Registro de horario": "Schedule register",
+    "Registro de curso": "Course register",
+    "Registro de respuesta": "Response register",
+    "Registro de recurso académico":"Academic resource register",
+    "Registro de tipo de recurso académico":"Academic resource type register",
+    "Registro de tipo de usuario":"User type register",
+    "Registro de tipo de actividad":"Activity type register",
+    "Registro de idioma":"Language register",
+    "Registro de encuesta":"Survey register",
+    "Registro de pregunta":"Question register",
+    "Registro de configuración":"Settings register",
+
+    "Editar horario": "Edit Schedule",
     "Editar usuario":"Edit user",
-    "Editar configuración general":"Edit settings"
+    "Editar actividad":"Edit activity",
+    "Editar curso":"Edit course",
+    "Editar respuesta":"Edit response",
+    "Editar recurso académico":"Edit academic resource",
+    "Editar tipo de recurso académico":"Edit Academic resource type",
+    "Editar tipo de usuario":"Edit user type",
+    "Editar tipo de actividad":"Edit activity type",
+    "Editar idioma":"Edit language",
+    "Editar encuesta":"Edit survey",
+    "Editar pregunta":"Edit question",
+    "Editar configuración":"Edit settings",
+
+    "Cantidad de recursos académicos por cada tipo":"Amount of academic resources for each type",
+    "Cantidad de tipos de actividades afiliadas":"Number of types of affiliated activities",
+    "Cantidad de actividades extraacadémicas por usuario":"Number of extracurricular activities per user",
+    "Actividades académicas realizadas con mayor frecuencia":"Academic activities carried out most frequently"
 
 
 }

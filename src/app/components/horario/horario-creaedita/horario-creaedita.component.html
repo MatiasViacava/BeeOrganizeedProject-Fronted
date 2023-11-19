@@ -11,7 +11,7 @@
     <br>
     <div style=" text-align: center;">
         <br> 
-        <h2>Registrar horario</h2>
+        <h2>{{titulo | translate}}</h2>
     </div>
 
     <div class="container">
@@ -47,10 +47,10 @@
 
             <!--Usuarios-->
             <br>
-            <mat-label class="label">Seleccione su usuario</mat-label>
+            <mat-label class="label" *ngIf="role == 'Administrador'">Seleccione su usuario</mat-label>
             <br>
             <br>
-            <mat-form-field>
+            <mat-form-field  *ngIf="role == 'Administrador'">
                 <mat-label>Usuario</mat-label>
                 <mat-select formControlName="usuario">
                   <mat-option *ngFor="let d of listaUsuarios" [value]="d.id">
