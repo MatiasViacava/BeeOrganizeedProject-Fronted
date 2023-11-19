@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <mat-dialog-content style="text-align: center;">
+            <p>¿Está seguro que desea eliminar esta actividad?</p>
+            <div class="button-container">
+                <button mat-raised-button class="boton-aceptar" (click)="confirmar(true)"> <mat-icon>check</mat-icon> </button>
+                <button mat-raised-button class="boton-cancelar" (click)="confirmar(false)"> 	<mat-icon>clear</mat-icon> </button>
+            </div>
+            
+        </mat-dialog-content>
+    </div>
+</body>
+</html>

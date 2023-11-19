@@ -24,7 +24,7 @@ export class Reporte01Component implements OnInit{
       this.barChartData = [{
         data: data.map(item => item.cantRecursos),
         label:'Recursos académicos',
-        backgroundColor: ['#c799a0','#c799a0','#c799a0','#99c7c7','#c7bf99','#99a2c7','#ba99c7']
+        backgroundColor: ['#c799a0','#99c7c7','#c7bf99','#99a2c7','#ba99c7']
       }]
     });
   }

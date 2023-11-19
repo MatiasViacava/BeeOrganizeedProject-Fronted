@@ -6,39 +6,76 @@ body {
   min-height: 100vh; /*Para que tenga color en toda la página*/
 }
 
-.center {
+.container {
+  width: 70%; /* Ajusta este porcentaje según tus necesidades */
+  height: 620px;
+  background-color: #FFF2E6; /*COLOR DE LA TABLA*/
+  border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
+  padding: 30px;  
+  
+  /* Ajusta el diseño de la cuadrícula */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 36px;
+  overflow: auto;
+}
+
+.card-container {
+  display: flex; /* Habilita el diseño Flexbox para los cards */
+  margin: 20px; /* Margen de los cards */
+  /*width: 80%; /* Ajusta este porcentaje según tus necesidades */
+  /*border: 5px solid #d9d2ca; /*Color del borde de la TABLA*/
+}
+
+.titulo{
   text-align: center;
-  color: #333;
+  justify-content: center;
+
+}
+
+.contenido {
+  width: 280px; /* Ancho de los cards */
+  margin: 10px; /* Margen de los cards */
+  border: 0px; /*Color del borde de la TABLA*/
+  text-align: left;
+}
+
+img {
+  position: relative; top: 10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+}
+
+
+/*BOTONES*/
+.card-actions {
+  margin: 5px; /* Margen de las acciones */
+  display: flex; /* Habilita el diseño Flexbox para las acciones */
+  justify-content: center; /* Alinea las acciones al centro */
+  align-items: center; /* Alinea las acciones verticalmente al centro */
+}
+
+/* Estilos para los botones */
+.button-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
+  gap: 20px; /* Agrega un espacio entre los botones */
+}
+
+/* Botón azul para actualizar */
+.boton-actualizar {
+  background-color: #8BC34A;
+  color: white; /* Color del texto */
 }
   
-.container {
-  width: 100%; /* Ajusta este porcentaje según tus necesidades */
-  background-color: #fff; /*COLOR DE LA TABLA*/
-  border: 30px solid #F0C481; /*Color del borde de la TABLA*/
-  padding: 30px;    
+ /* Botón amarillo para modificar */
+.boton-eliminar {
+  background-color: #6eb8db; /* Color amarillo */
+  color: white; /* Color del texto */
 }
-  
-.custom-table {
-  width: 100%;
-  display: flex; /* Habilita el diseño Flexbox para las filas */
-  flex-direction: column; /* Las filas se ajustarán verticalmente */
-}
-  
-th {
-  background-color: white !important;
-  color: rgb(75, 72, 72);
-  text-align: center; /*TITULO de las columnas*/  
-}
-  
-td {
-  background-color: #f2f2f2; /*Contenido de la tabla*/
-  color: #333;
-  text-align: center; /*Contenido de la tabla*/
-}
+
 
 /*Completo -- Incompleto -- Cancelado*/
 .blue-button { 
@@ -54,15 +91,10 @@ td {
   color: white; 
 }
 
-
-/* Botón azul para actualizar */
-.boton-actualizar {
-  background-color: #6eb8db;
-  color: white; /* Color del texto */
-}
-  
- /* Botón amarillo para modificar */
-.boton-eliminar {
-  background-color: #8BC34A; /* Color amarillo */
-  color: white; /* Color del texto */
+.estado{
+  margin: 5px; /* Margen de las acciones */
+  display: flex; /* Habilita el diseño Flexbox para las acciones */
+  justify-content: center; /* Alinea las acciones al centro */
+  align-items: center; /* Alinea las acciones verticalmente al centro */
+  width: 95%;
 }

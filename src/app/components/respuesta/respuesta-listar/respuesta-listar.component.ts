@@ -8,6 +8,8 @@ import { RespuestaService } from 'src/app/services/respuesta.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RespuestaConfirmarComponent } from './respuesta-confirmar/respuesta-confirmar.component';
 
 
 @Component({
@@ -27,6 +29,8 @@ export class RespuestaListarComponent implements OnInit{
   id: number = 0;
   idiomaActivo: any;
 
+  idSeleccionado: number = 0;
+
   constructor(
     public route: ActivatedRoute, 
     private router: Router, 
@@ -34,7 +38,9 @@ export class RespuestaListarComponent implements OnInit{
      private loginService: LoginService, 
      private uS: UsuariosService,
      private tuS: ConfiguracionService,
-    public translate: TranslateService) {}
+    public translate: TranslateService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.role=this.loginService.showRole();
@@ -55,6 +61,11 @@ export class RespuestaListarComponent implements OnInit{
         this.rS.getList().subscribe((data) => {
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
+        });
+        //ELIMINAR - NUEVO
+        this.rS.getConfirmDelete().subscribe(data => {
+          data == true ? this.eliminar(this.idSeleccionado) : false;
+          this.ngOnInit()
         });
 
         this.tuS.idiomaSubject.subscribe(idioma => {
@@ -84,6 +95,10 @@ export class RespuestaListarComponent implements OnInit{
         if (this.role=='Administrador'){this.rS.setList(data);}
         else if (this.role=='Estudiante') {this.reloadCurrentRoute()}})
     });
+  }
+  confirmar(id: number) {
+    this.idSeleccionado = id;
+    this.dialog.open(RespuestaConfirmarComponent);
   }
   iralink(comp1:string, comp2:string){
     this.router.navigate(['components/respuesta/',comp1, comp2]);

@@ -16,6 +16,8 @@ export class ActividadService {
   private listaCambio = new Subject<Actividad[]>();
   constructor(private http: HttpClient) {}
 
+  private confirmarEliminacion = new Subject<Boolean>()
+
   list() {
     let token = sessionStorage.getItem('token');
 
@@ -77,6 +79,12 @@ export class ActividadService {
         .set('Content-Type', 'application/json'),
     });
   }
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:boolean){
+    this.confirmarEliminacion.next(estado);
+  }
 
   //REPORTE SEBASTIAN
   getReporteSebastian(){
@@ -99,4 +107,5 @@ export class ActividadService {
         .set('Content-Type', 'application/json'),
     });
   }
+
 }

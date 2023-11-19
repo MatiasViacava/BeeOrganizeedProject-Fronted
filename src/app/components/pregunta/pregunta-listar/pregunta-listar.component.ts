@@ -13,7 +13,7 @@ import { PreguntaService } from 'src/app/services/pregunta.service';
 export class PreguntaListarComponent implements OnInit{
   dataSource: MatTableDataSource<Pregunta> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['idPregunta', 'enunciado','encuesta_id', 'actualizar','eliminar']
+  ['idPregunta', 'encuesta_id','enunciado', 'actualizar','eliminar']
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     public route: ActivatedRoute, 

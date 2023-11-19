@@ -28,7 +28,6 @@
               <mat-form-field class="example-full-width">
                   <mat-label>{{"Nombre de actividad" | translate}}</mat-label>
                   <input matInput placeholder="Nombre de actividad" formControlName="nombreActividad" maxlength="25" />
-                  <mat-icon matSuffix>layers</mat-icon>
                   
                   <mat-error
                     *ngIf="obtenerControlCampo('nombreActividad')?.errors?.['required']"
@@ -40,7 +39,6 @@
               <mat-form-field class="example-full-width">
                   <mat-label>{{"Descripción" | translate}}</mat-label>
                   <input matInput placeholder="Descripción" formControlName="descripcion" maxlength="35" />
-                  <mat-icon matSuffix>comment</mat-icon>
                   
                   <mat-error
                     *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"

@@ -10,6 +10,7 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { ActividadEstadoComponent } from './actividad-estado/actividad-estado.component';
+import { ActividadConfirmarComponent } from './actividad-confirmar/actividad-confirmar.component';
 
 @Component({
   selector: 'app-actividad-listar',
@@ -63,6 +64,11 @@ export class ActividadListarComponent implements OnInit{
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
         });
+        //ELIMINAR - NUEVO
+        this.aS.getConfirmDelete().subscribe(data => {
+          data == true ? this.eliminar(this.idSeleccionado) : false;
+          this.ngOnInit()
+        }); 
         }
 
         this.tuS.idiomaSubject.subscribe(idioma => {
@@ -81,6 +87,11 @@ export class ActividadListarComponent implements OnInit{
       this.aS.getList().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
+      });
+      //ELIMINAR - NUEVO
+      this.aS.getConfirmDelete().subscribe(data => {
+        data == true ? this.eliminar(this.idSeleccionado) : false;
+        this.ngOnInit()
       }); 
     }
   }
@@ -103,7 +114,7 @@ export class ActividadListarComponent implements OnInit{
   }
 
   //ESTADO-NUEVO 
-  confirmar(id: number) {
+  estado(id: number) {
     this.idSeleccionado = id;
     // Pasamos el id del tipo de actividad al diálogo
     const dialogConfig = new MatDialogConfig();
@@ -111,4 +122,9 @@ export class ActividadListarComponent implements OnInit{
     // Usamos el componente de creación y edición como diálogo
     this.dialog.open(ActividadEstadoComponent, dialogConfig);
   }
+  confirmar(id: number) {
+    this.idSeleccionado = id;
+    this.dialog.open(ActividadConfirmarComponent);
+  }
+
 }
