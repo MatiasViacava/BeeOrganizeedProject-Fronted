@@ -18,6 +18,8 @@ export class CreaeditaIdiomaComponent implements OnInit {
   idIdioma: number = 0; //xd
   edicion: boolean = false;
 
+  titulo:string = "Registro de idioma"
+
   idiomasDis: { value: string, viewValue: string }[] = [{ value: 'es', viewValue: 'Español' },
   { value: 'en', viewValue: 'Ingles' }]
 
@@ -37,6 +39,7 @@ export class CreaeditaIdiomaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.idIdioma = data['idIdioma']; //xd
       this.edicion = data['idIdioma'] != null;
+      if (this.edicion) {this.titulo="Editar idioma"}
       this.init();
     });
   }
@@ -62,7 +65,7 @@ export class CreaeditaIdiomaComponent implements OnInit {
       this.router.navigate(['/components/idioma/listar']);
 
     } else {
-      this.mensaje = "Complete todos los campos!!!!"
+      this.mensaje = "Por favor complete todos los campos obligatorios"
     }
   }
 

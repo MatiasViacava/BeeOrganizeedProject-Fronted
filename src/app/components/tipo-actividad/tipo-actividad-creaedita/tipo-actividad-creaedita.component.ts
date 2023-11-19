@@ -17,6 +17,8 @@ export class TipoActividadCreaeditaComponent implements OnInit{
   iDTipoActividad: number = 0; //xd
   edicion: boolean = false;
 
+  titulo:string="Registro de tipo de actividad"
+
   constructor(
     private taS: TipoActividadService,
     private router: Router,
@@ -33,6 +35,7 @@ export class TipoActividadCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.iDTipoActividad= data['iDTipoActividad']; //xd
       this.edicion = data['iDTipoActividad'] != null;
+      if (this.edicion) {this.titulo="Editar tipo de actividad"}
       this.init();
     });
   }
@@ -58,7 +61,7 @@ export class TipoActividadCreaeditaComponent implements OnInit{
         this.router.navigate(['/components/tipoactividad/listar']);
 
     } else {
-      this.mensaje="Complete todos los campos!!!!"
+      this.mensaje="Por favor complete todos los campos obligatorios"
     }
   }
 

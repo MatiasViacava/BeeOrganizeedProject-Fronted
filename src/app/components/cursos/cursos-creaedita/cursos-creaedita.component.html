@@ -7,7 +7,7 @@
   </head>
   <body>
     <br>
-    <h2>{{"Registro de cursos" | translate}}</h2>
+    <h2>{{titulo | translate}}</h2>
 
     <div class="container" style="text-align: center" >
       
@@ -105,7 +105,7 @@
         <br />
         <div class="button-container">
           <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon>{{"Aceptar" | translate}}</button>
-          <button class="boton-cancelar" mat-raised-button  routerLink="/components/cursos/listar"><mat-icon>cancel</mat-icon>{{"Cancelar" | translate}}</button>
+          <button class="boton-cancelar" mat-raised-button  routerLink="/components/cursos/listar" ><mat-icon>cancel</mat-icon>{{"Cancelar" | translate}}</button>
         </div>
         
         <p>{{ mensaje }}</p>

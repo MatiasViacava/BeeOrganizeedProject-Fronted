@@ -31,7 +31,7 @@ export class TipoActividadService {
   insert(de: TipoActividad) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, de, {
+    return this.http.post(`${this.url}`, de, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

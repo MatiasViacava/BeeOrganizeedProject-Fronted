@@ -44,8 +44,8 @@ export class RecursoAcademicoListarComponent implements OnInit{
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
 
-    if (this.role=='Estudiante')
-    {    this.uS.list().subscribe(data=>{
+    /*if (this.role=='Estudiante'){
+      this.uS.list().subscribe(data=>{
       for (let u of data) {if (u.username==this.username) 
         {this.id=u.id;
           
@@ -65,14 +65,19 @@ export class RecursoAcademicoListarComponent implements OnInit{
         });
         this.translate.use(this.idiomaActivo);
         }
+
+        //ELIMINAR - NUEVO
+        this.raS.getConfirmDelete().subscribe(data => {
+          data == true ? this.eliminar(this.idSeleccionado) : false;
+          this.ngOnInit()
+        }); 
+
+
       }
-          //ELIMINAR - NUEVO
-    this.raS.getConfirmDelete().subscribe(data => {
-      data == true ? this.eliminar(this.idSeleccionado) : false;
-      this.ngOnInit()
-    }); 
-    })}
-    else if (this.role=='Administrador')
+    })
+   }*/
+   
+    if (this.role=='Administrador' || this.role=='Estudiante')
     {
       this.raS.list().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
@@ -82,13 +87,15 @@ export class RecursoAcademicoListarComponent implements OnInit{
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
       }); 
-          //ELIMINAR - NUEVO
-    this.raS.getConfirmDelete().subscribe(data => {
-      data == true ? this.eliminar(this.idSeleccionado) : false;
-      this.ngOnInit()
-    }); 
+
+      //ELIMINAR - NUEVO
+      this.raS.getConfirmDelete().subscribe(data => {
+        data == true ? this.eliminar(this.idSeleccionado) : false;
+        this.ngOnInit()
+      }); 
     }
   }
+
   confirmar(id: number) {
     this.idSeleccionado = id;
     this.dialog.open(ConfirmarComponent);
@@ -110,4 +117,6 @@ export class RecursoAcademicoListarComponent implements OnInit{
       this.router.navigate([currentUrl]);
     });
   }
+
+  
 }

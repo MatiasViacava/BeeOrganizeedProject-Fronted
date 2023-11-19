@@ -25,9 +25,13 @@ export class ActividadCreaeditaComponent implements OnInit{
   actividad: Actividad = new Actividad();
   mensaje: string = '';
   minFecha: Date = moment().add('days').toDate();
+  maxFecha: Date = moment().toDate();
+
   cierreCiclo = new FormControl(new Date());
   tipos: { value: string, viewValue: string }[] = [{ value: 'Completo', viewValue: 'Completo' },
   { value: 'Incompleto', viewValue: 'Incompleto' },{ value: 'Cancelado', viewValue: 'Cancelado' }]
+
+  titulo:string = "Registro de actividad"
 
   //ACTUALIZAR
   idActividad: number = 0;
@@ -41,9 +45,9 @@ export class ActividadCreaeditaComponent implements OnInit{
   role: string = "";
   username: string = "";
   id: number = 0;
+  bloqueado:boolean = true;
 
-  idiomaActivo: any;
-  
+  idiomaActivo: any;  
 
   constructor(
     private loginService: LoginService, 
@@ -58,6 +62,7 @@ export class ActividadCreaeditaComponent implements OnInit{
     private hS: HorarioService,
     private taS: TipoActividadService,
     private cS: CursosService,
+    private uS: UsuariosService,
 
     private tuS: ConfiguracionService,
     public translate: TranslateService
@@ -94,13 +99,31 @@ export class ActividadCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.idActividad = data['idActividad'];
       this.edicion = data['idActividad'] != null;
+      if (this.edicion) {this.titulo="Editar actividad"}
       this.init();
     });
 
-    //DEPENDIENTES
-    this.hS.list().subscribe(data => { this.listaHorarios = data });
-    this.taS.list().subscribe(data => { this.listaTipoActividades = data });
-    this.cS.list().subscribe(data => { this.listaCurso = data });
+    this.uS.list().subscribe(usuarios=>{
+      for (let u of usuarios)
+      {
+        if (u.username==this.username)
+        {
+          if (this.role=="Estudiante")
+          {
+            this.hS.listporusuarioid(u.id).subscribe(data => { this.listaHorarios = data });
+            this.taS.list().subscribe(data => { this.listaTipoActividades = data });
+            this.cS.list().subscribe(data => { this.listaCurso = data });
+          }
+          else if (this.role=="Administrador")
+          {
+          //DEPENDIENTES
+          this.hS.list().subscribe(data => { this.listaHorarios = data });
+          this.taS.list().subscribe(data => { this.listaTipoActividades = data });
+          this.cS.list().subscribe(data => { this.listaCurso = data });
+          }
+        }
+      }
+    })
   }
 
   registrar(): void {
@@ -128,7 +151,7 @@ export class ActividadCreaeditaComponent implements OnInit{
             if (this.role=='Administrador'){this.aS.setList(data);}})
         });
       }
-      this.router.navigate(['/components/actividad/listar']);
+      this.aplicarcambios();
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -159,5 +182,20 @@ export class ActividadCreaeditaComponent implements OnInit{
         });
       });
     }
+  }
+
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/actividad/listar']);
+    });
+  }
+
+  definirfechamaxima(event: any) {
+    let fechamaxima = new Date(event);
+    fechamaxima.setDate(fechamaxima.getDate() + 1);
+    this.maxFecha = fechamaxima;
+    this.bloqueado=false;
   }
 }

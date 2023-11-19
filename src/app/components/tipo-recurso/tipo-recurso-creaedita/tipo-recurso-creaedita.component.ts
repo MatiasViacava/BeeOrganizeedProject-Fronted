@@ -15,6 +15,7 @@ export class TipoRecursoCreaeditaComponent implements OnInit {
   mensaje: string = '';
   iDTipoRecurso: number = 0; //xd
   edicion: boolean = false;
+  titulo:string = "Registro de tipo de recurso académico"
   constructor(
     private taS: TipoRecursoService,
     private router: Router,
@@ -30,6 +31,7 @@ export class TipoRecursoCreaeditaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.iDTipoRecurso= data['iD']; //xd
       this.edicion = data['iD'] != null;
+      if (this.edicion) {this.titulo="Editar tipo de recurso académico"}
       this.init();
     });
   }
@@ -53,7 +55,7 @@ export class TipoRecursoCreaeditaComponent implements OnInit {
         }
         this.router.navigate(['/components/tiporecurso/listar']);
     } else {
-      this.mensaje="Complete todos los campos!!!!"
+      this.mensaje="Por favor complete todos los campos obligatorios"
     }
   }
   obtenerControlCampo(nombreCampo: string): AbstractControl {

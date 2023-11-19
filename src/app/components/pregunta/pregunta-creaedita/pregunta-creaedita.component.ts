@@ -20,6 +20,7 @@ export class PreguntaCreaeditaComponent implements OnInit{
 
   idPregunta: number = 0;
   edicion: boolean = false;
+  titulo: string = "Registro de pregunta"
 
   constructor(
     private pS: PreguntaService,
@@ -39,6 +40,7 @@ export class PreguntaCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.idPregunta = data['idPregunta']; //xd
       this.edicion = data['idPregunta'] != null;
+      if (this.edicion) {this.titulo = "Editar pregunta"}
       this.init();
     });
 
@@ -69,7 +71,7 @@ export class PreguntaCreaeditaComponent implements OnInit{
       this.router.navigate(['/components/pregunta/listar']);
 
     } else {
-      this.mensaje = "Complete todos los campos!!!!"
+      this.mensaje = "Por favor complete todos los campos obligatorios."
     }
   }
 

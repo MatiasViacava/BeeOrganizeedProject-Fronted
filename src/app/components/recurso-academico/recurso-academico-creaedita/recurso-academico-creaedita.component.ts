@@ -33,6 +33,8 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
   username: string = "";
   id: number = 0;
 
+  titulo:string = "Registro de recurso académico"
+
   edicion:boolean=false;
   idRecurso:number=0
   constructor(
@@ -62,6 +64,7 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data:Params)=>{
       this.idRecurso=data['iD'];
       this.edicion=data['iD']!=null;
+      if (this.edicion) {this.titulo="Editar recurso académico"}
       this.init();
     })
     this.cS.list().subscribe(data => { this.listaCursos = data });
@@ -90,9 +93,9 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
             if (this.role=='Administrador'){this.raS.setlist(data);}})
         })
       }
-      this.router.navigate(['/components/recursoacademico/listar']);
+      this.aplicarcambios();
     }else{
-      this.mensaje="Falta completar campos"
+      this.mensaje="Por favor complete todos los campos obligatorios."
     }
 
   }
@@ -118,5 +121,13 @@ export class RecursoAcademicoCreaeditaComponent implements OnInit{
         })
       })
     }
+  }
+
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/recursoacademico/listar']);
+    });
   }
 }

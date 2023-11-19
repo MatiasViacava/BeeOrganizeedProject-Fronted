@@ -18,14 +18,14 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{element.nombreCurso}}</mat-card-title>
-          <mat-card-subtitle>{{"Código" | translate}}: {{element.idCurso}}</mat-card-subtitle>
+          <mat-card-subtitle hidden>{{"Código" | translate}}: {{element.idCurso}}</mat-card-subtitle>
           <mat-card-subtitle>{{"Inicio del curso" | translate}}: {{element.fechaInicioCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
-          <mat-card-subtitle>{{"Fin del curso" | translate}}: {{element.fechaFinCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+          <mat-card-subtitle hidden>{{"Fin del curso" | translate}}: {{element.fechaFinCurso | date:"dd/MM/yyyy"}}</mat-card-subtitle>
         </mat-card-header>
 
         <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
 
-        <mat-card-actions class="card-actions">
+        <mat-card-actions class="card-actions" *ngIf="role=='Administrador'">
           <div class="button-container">
             <button class="boton-actualizar"
               mat-raised-button

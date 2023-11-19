@@ -36,6 +36,8 @@ export class CursosCreaeditaComponent implements OnInit {
   username: string = "";
   id: number = 0;
 
+  titulo:string = "Registro de curso";
+
 
   constructor(
     private loginService: LoginService, 
@@ -70,6 +72,7 @@ export class CursosCreaeditaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.idCurso = data['idCurso'];
       this.edicion = data['idCurso'] != null;
+      if (this.edicion) {this.titulo="Editar curso"}
       this.init();
     });
   }
@@ -93,7 +96,7 @@ export class CursosCreaeditaComponent implements OnInit {
             this.cS.setList(data);}})})
       }
 
-      this.router.navigate(['/components/cursos/listar']);
+      this.aplicarcambios()
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -127,7 +130,13 @@ export class CursosCreaeditaComponent implements OnInit {
     this.minFechaFin = fechaInicio;
   }
 
-
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/cursos/listar']);
+    });
+  }
   
 }
 

@@ -26,7 +26,7 @@ export class RecursoAcademicoService {
   insert(ra:RecursoAcademico){
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url,ra, {
+    return this.http.post(`${this.url}`,ra, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

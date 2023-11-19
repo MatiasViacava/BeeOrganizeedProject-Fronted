@@ -20,7 +20,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   configuracionarc:Configuracion=new Configuracion();
   mensaje:string='';
-  titulo:string='Registro de Configuracion general';
+  titulo:string='Registro de configuración';
 
   idIDIoma:number=0;
   listaID:Idioma[]=[];
@@ -67,7 +67,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       this.idCOnfiguracion=data['idConfiguracion'];
       this.edicion=data['idConfiguracion']!=null;
 
-      if (this.edicion) {this.titulo="Editar configuración general"}
+      if (this.edicion) {this.titulo="Editar configuración"}
 
       this.init();
     })
@@ -107,7 +107,7 @@ export class ConfiguracionCreaeditaComponent implements OnInit {
       }
       this.aplicarcambios();
     }else{
-      this.mensaje="Falta completar campos"
+      this.mensaje="Por favor complete todos los campos obligatorios."
     }
 
   }

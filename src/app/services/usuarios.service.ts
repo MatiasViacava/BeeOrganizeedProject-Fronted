@@ -15,20 +15,20 @@ export class UsuariosService {
   list() {
     let token = sessionStorage.getItem('token');
 
-    return this.smvohttp.get<Usuarios[]>(this.url, {
+    return this.smvohttp.get<Usuarios[]>(this.url/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   insert(smvoIn: Usuarios) {
     let token = sessionStorage.getItem('token');
 
-    return this.smvohttp.post(this.url, smvoIn, {
+    return this.smvohttp.post(`${this.url}`, smvoIn/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   setList(ListaNueva: Usuarios[]) {
 
@@ -84,11 +84,11 @@ export class UsuariosService {
   ultimousuariocreado() {
       let token = sessionStorage.getItem('token');
   
-        return this.smvohttp.get<number>(`${this.url}/ultimousuariocreado`, {
+        return this.smvohttp.get<number>(`${this.url}/ultimousuariocreado`/*, {
           headers: new HttpHeaders()
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
 
   //Actualiza el usuario sin crear conflictos en la tabla de tipo usuario
@@ -101,6 +101,16 @@ export class UsuariosService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
 });
+  }
+
+  listarporid(id:number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.smvohttp.get<Usuarios[]>(`${this.url}/listar/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   

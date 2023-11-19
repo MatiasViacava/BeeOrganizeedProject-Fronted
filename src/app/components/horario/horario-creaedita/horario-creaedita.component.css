@@ -5,20 +5,13 @@ body {
   padding: 0;
   min-height: 100vh; /*Para que tenga color en toda la página*/
 }
-.center {
-  text-align: center;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
-}
   
 .container {
   width: 30%; /* Ajusta este porcentaje según tus necesidades */
-  background-color: #FFF2E6; /*COLOR DE LA TABLA*/
+  background-color: #fff; /*COLOR DE LA TABLA*/
   border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
-  padding: 30px;    
+  padding: 30px;
+  margin: 20px auto; /*Espacio entre el menu y el contenedor*/    
 }
 
 .label{
@@ -26,6 +19,7 @@ body {
   text-align: left; /* Alinea el texto a la izquierda */
   width: 79%;
   margin-bottom: 10px; /* Esto añade un espacio de 10px debajo del mat-label */
+  display:inline-block; /* Para alinearlo al mat form field */
 }
 
 mat-form-field {

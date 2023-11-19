@@ -14,8 +14,8 @@
     <div class="card-container" *ngFor="let element of dataSource.data">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{element.idRespuesta}}</mat-card-title>
-          <mat-card-subtitle>{{"Código" | translate}}: {{element.contenido}}</mat-card-subtitle>
+          <mat-card-title>Respuesta #{{element.idRespuesta}}</mat-card-title>
+          <mat-card-subtitle>{{"" | translate}} {{element.contenido}}</mat-card-subtitle>
         </mat-card-header>
 
         <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
@@ -23,6 +23,7 @@
         <mat-card-actions class="card-actions">
           <div class="button-container">
             <button class="boton-actualizar"
+              *ngIf="role=='Estudiante'"
               mat-raised-button
               (click)="iralink('edicion', element.idRespuesta.toString())"
             > <mat-icon>create</mat-icon>

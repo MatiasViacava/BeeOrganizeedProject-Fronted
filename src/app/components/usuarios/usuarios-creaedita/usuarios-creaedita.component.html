@@ -7,8 +7,9 @@
   </head>
 
   <body>
+    <h2>ㅤ</h2>
     <div class="container" style="text-align: center">
-      <h2>{{titulo}}</h2>
+      <h2>{{titulo | translate}}</h2>
       <br />
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         <div class ="center">
@@ -20,7 +21,6 @@
 
           <div class="columna">
           <br>
-
             <mat-form-field class="example-full-width">
               <mat-label>Usuario</mat-label>
               <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
@@ -31,9 +31,9 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-form-field class="example-full-width"  *ngIf="edicion">
+            <mat-form-field class="example-full-width" *ngIf="edicion==false">
               <mat-label>Contraseña</mat-label>
-              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5" readonly />
+              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
               <mat-hint class="caracterminimo">Ingrese 5 caracteres como mínimo</mat-hint>
               <mat-error
                 *ngIf="obtenerControlCampo('password')?.errors?.['required']"
@@ -41,6 +41,9 @@
                 Complete el campo
               </mat-error>
             </mat-form-field>
+
+            <br *ngIf="edicion==false"><br *ngIf="edicion==false">
+
             <mat-form-field class="example-full-width">
               <mat-label>Universidad</mat-label>
               <input matInput placeholder="Universidad" formControlName="universidad" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
@@ -107,12 +110,16 @@
           </div><!--Columna end-->
         
         </div> <!--Columna Principal end-->
+        <br>
         <div class="button-container">
           <button mat-button color="primary"> Registrar </button>
-          <button mat-button color="warn" routerLink="/components/usuarios/listar">Cancelar</button>
-          <p>{{ mensaje }}</p>
+          <button mat-button color="warn" *ngIf="role=='Administrador' || role=='Estudiante'" routerLink="/components/usuarios/listar">Cancelar</button>
+          <button mat-button color="warn" *ngIf="role!='Administrador' && role!='Estudiante'" routerLink="/landingpage">Regresar a inicio</button>
+          <br>
         </div>
+        <br>
+        <p>{{ mensaje }}</p>
       </form>
     </div>
-  </body>
+  </body>
 </html>
