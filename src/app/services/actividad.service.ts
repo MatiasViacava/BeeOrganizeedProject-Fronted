@@ -91,11 +91,9 @@ export class ActividadService {
 
   //REPORTE RAFAEL
 
-  getReporteRafael(fechaInicio:Date|null,fechaFin:Date|null){
+  getReporteRafael(intervalo:CantActividadesIntervaloDTO){
     let token = sessionStorage.getItem('token');
-    
-    const body={fechainicio:fechaInicio,fechafin:fechaFin};
-    return this.http.post<number[]>(`${this.url}/CantActividadesEntreIntervalos`,body,{
+    return this.http.post<number>(`${this.url}/CantActividadesEntreIntervalos`,intervalo,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

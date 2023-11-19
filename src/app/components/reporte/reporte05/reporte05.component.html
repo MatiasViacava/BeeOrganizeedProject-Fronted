@@ -6,68 +6,46 @@
     <title>Document</title>
 </head>
 <body>
-    <br>
-    <div><h1>Candidad de actividades entre intervalo</h1></div>
-    <br>
-    
-    <div class="container">
-        <div>
-            <mat-label class="label">{{"Seleccione la fecha de inicio"}}</mat-label>
-            <mat-form-field appearance="fill" class="example-full-width">
-              <input
-                matInput
-                placeholder="{{'Fecha de inicio'}}"
-                [matDatepicker]="picker"
-                formControlName="fechaInicioFM"
-              />
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error
-                *ngIf="obtenerControlCampo('fechaInicioFM')?.errors?.['required']"
-              >
-                {{"Obligatorio"}}
-              </mat-error>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-label class="label">{{"Seleccione la fecha de fin"}}</mat-label>
-            <mat-form-field appearance="fill" class="example-full-width">
-              <input
-                matInput
-                placeholder="{{'Fecha de fin'}}"
-                [matDatepicker]="picker"
-                formControlName="fechaFinFM"
-              />
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error
-                *ngIf="obtenerControlCampo('fechaFinFM')?.errors?.['required']"
-              >
-                {{"Obligatorio"}}
-              </mat-error>
-            </mat-form-field>
-        </div>
-        <div>
-            <canvas
-                baseChart
-                [datasets]="barChartData"
-                [labels]="barChartLabel"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [type]="barChartType"
-            >
-
-            </canvas>
-        </div>
+    <h2>Contar Actividades</h2>
+    <div>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="pickerInicio"
+        placeholder="Fecha de Inicio"
+        [(ngModel)]="intervalo.fechainicio"
+        (dateChange)="actualizafechainicio($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="pickerFin"
+        placeholder="Fecha de Fin"
+        [(ngModel)]="intervalo.fechafin"
+        [min]="minFechaFin"
+        (dateChange)="actualizafechafin($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field>
     </div>
     <div class="button-container">
-      <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon>{{"Aceptar"}}</button>
+      <button class="boton-agregar" mat-raised-button (click)="ejecutar()"><mat-icon>library_add</mat-icon>{{"Ejecutar"}}</button>
+    </div>
+  <div>
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabel"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    >
+    
+    </canvas>
   </div>
 </body>
 </html>
