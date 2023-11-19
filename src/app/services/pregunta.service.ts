@@ -19,20 +19,20 @@ export class PreguntaService {
   list() {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Pregunta[]>(this.url, {
+    return this.http.get<Pregunta[]>(this.url/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   insert(de: Pregunta) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, de, {
+    return this.http.post(`${this.url}`, de/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   setList(listaNueva: Pregunta[]) {
     this.listaCambio.next(listaNueva);
@@ -62,6 +62,15 @@ export class PreguntaService {
     let token = sessionStorage.getItem('token');
 
     return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  listarporid(id:number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Pregunta[]>(`${this.url}/listar/${id}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

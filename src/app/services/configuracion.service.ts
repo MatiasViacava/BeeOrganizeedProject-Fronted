@@ -28,20 +28,20 @@ export class ConfiguracionService {
   list() {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Configuracion[]>(this.url, {
+    return this.http.get<Configuracion[]>(this.url/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   insert(de: Configuracion) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, de, {
+    return this.http.post(`${this.url}`, de/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   setList(listaNueva: Configuracion[]) {
     this.listaCambio.next(listaNueva);

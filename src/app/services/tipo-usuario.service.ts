@@ -15,20 +15,20 @@ export class TipoUsuarioService {
   list() {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<TipoUsuario[]>(this.url, {
+    return this.http.get<TipoUsuario[]>(this.url/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   insert(de: TipoUsuario) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, de, {
+    return this.http.post(`${this.url}`, de /*,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   setList(listaNueva: TipoUsuario[]) {
     this.listaCambio.next(listaNueva);

@@ -101,13 +101,14 @@ export class ActividadEstadoComponent implements OnInit{
       this.actividad.tipoActividad.iDTipoActividad = this.form.value.tipoActividad;
       this.actividad.curso.idCurso = this.form.value.curso;
 
-      this.aS.modificar(this.actividad).subscribe((data) => {
+      this.aS.modificar(this.actividad).subscribe(/*(data) => {
         this.aS.list().subscribe((data) => {
         this.aS.setList(data);
        });
-      });
+      }*/);
       // VENTANA (3): Cerramos el diálogo y devolvemos la actividad modificada        
       this.dialogRef.close(this.actividad);
+      this.aplicarcambios();
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -138,6 +139,14 @@ export class ActividadEstadoComponent implements OnInit{
         });
       });
     }
+  }
+
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/actividad/listar']);
+    });
   }
 
 }

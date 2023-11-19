@@ -20,6 +20,8 @@ export class EncuestaCreaeditaComponent implements OnInit{
 
   idEncuesta: number = 0;
   edicion: boolean = false;
+
+  titulo:string = "Registro de encuesta"
   constructor(
     private eS: EncuestaService,
     private uS: UsuariosService,
@@ -39,6 +41,7 @@ export class EncuestaCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.idEncuesta = data['idEncuesta'];
       this.edicion = data['idEncuesta'] != null;
+      if (this.edicion) {this.titulo="Editar encuesta"}
       this.init();
     });
 

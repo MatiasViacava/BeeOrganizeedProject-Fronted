@@ -31,6 +31,8 @@ export class HorarioCreaeditaComponent implements OnInit{
   username: string = "";
   id: number = 0;
 
+  titulo:string = "Registro de horario";
+
   constructor(
     private loginService: LoginService, 
     private hS: HorarioService,
@@ -44,22 +46,50 @@ export class HorarioCreaeditaComponent implements OnInit{
     private uS: UsuariosService
   ) {}
 
+  setIdUsuario(id:number){
+    this.id=id;
+  }
+
   ngOnInit(): void {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
     
-    this.form = this.formBuilder.group({
-      idHorario: [''],
-      cierreCiclo: ['', Validators.required],
-      usuario: ['', Validators.required],
-    });
+    if (this.role=="Estudiante")
+    {
+      this.form = this.formBuilder.group({
+        idHorario: [''],
+        cierreCiclo: ['', Validators.required],
+        usuario: [''],
+      });
+    }
+    else if (this.role=="Administrador")
+    {
+      this.form = this.formBuilder.group({
+        idHorario: [''],
+        cierreCiclo: ['', Validators.required],
+        usuario: ['', Validators.required],
+      });
+    }
+
 
     //ACTUALIZAR
     this.route.params.subscribe((data: Params) => {
       this.idHorario = data['idHorario'];
       this.edicion = data['idHorario'] != null;
+      if (this.edicion) {this.titulo="Editar horario"}
       this.init();
     });
+
+    this.uS.list().subscribe(usuarios =>
+      {
+        for (let u of usuarios)
+        {
+          if (u.username == this.username)
+          {
+            this.setIdUsuario(u.id);
+          }
+        }
+      })
 
     //DEPENDIENTES
     this.uS.list().subscribe(data => { this.listaUsuarios = data });
@@ -69,7 +99,10 @@ export class HorarioCreaeditaComponent implements OnInit{
     if (this.form.valid) {
       this.horario.idHorario = this.form.value.idHorario;
       this.horario.cierreCiclo = this.form.value.cierreCiclo;
-      this.horario.usuario.id = this.form.value.usuario;
+
+      if (this.role=="Administrador") { this.horario.usuario.id = this.form.value.usuario;}
+      else if (this.role == "Estudiante") {this.horario.usuario.id=this.id}
+     
 
       if (this.edicion) {
         this.hS.modificar(this.horario).subscribe((data) => {
@@ -86,7 +119,7 @@ export class HorarioCreaeditaComponent implements OnInit{
             }});
         });
       }
-      this.router.navigate(['/components/horario/listar']);
+      this.aplicarcambios();
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -113,4 +146,11 @@ export class HorarioCreaeditaComponent implements OnInit{
     }
   }
 
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/horario/listar']);
+    });
+  }
 }

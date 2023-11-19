@@ -9,7 +9,7 @@
 
   <br>
   <div style=" text-align: center;"> 
-    <h2>LISTA DEL PREGUNTAS</h2> 
+    <h2>{{"LISTA DE PREGUNTAS" | translate}}</h2> 
   </div>
 
   <div class="container">
@@ -17,8 +17,8 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="idPregunta">
-        <th mat-header-cell *matHeaderCellDef> Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.idPregunta}} </td>
+        <th mat-header-cell *matHeaderCellDef hidden> Código </th>
+        <td mat-cell *matCellDef="let element" hidden> {{element.idPregunta}} </td>
       </ng-container>
     
       <ng-container matColumnDef="enunciado">

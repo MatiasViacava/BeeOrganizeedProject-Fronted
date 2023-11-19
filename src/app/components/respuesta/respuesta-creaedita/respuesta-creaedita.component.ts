@@ -28,11 +28,14 @@ export class RespuestaCreaeditaComponent implements OnInit{
 
   role: string = "";
   username: string = "";
-  id: number = 0;
+  idUsuario: number = 0;
   idiomaActivo: any;
+
+  titulo:string = "Registro de respuesta"
 
 
   constructor(
+    private uS: UsuariosService,
     private loginService: LoginService, 
     private rS: RespuestaService,
     private pS: PreguntaService,
@@ -65,13 +68,19 @@ export class RespuestaCreaeditaComponent implements OnInit{
     this.route.params.subscribe((data: Params) => {
       this.idRespuesta = data['idRespuesta']; //xd
       this.edicion = data['idRespuesta'] != null;
+      if (this.edicion) {this.titulo = "Editar respuesta"}
       this.init();
     });
 
-    
-
-    this.pS.list().subscribe(data => { this.listaPregunta = data });
-
+    this.uS.list().subscribe(usuarios=>{
+      for (let u of usuarios)
+      {
+        if (u.username == this.username)
+        {
+          this.pS.listarporid(u.id).subscribe(data => { this.listaPregunta = data });
+        }
+      }
+    })
   }
 
   registrar() {
@@ -95,7 +104,7 @@ export class RespuestaCreaeditaComponent implements OnInit{
             })
         })
       }
-      this.router.navigate(['/components/respuesta/listar']);
+      this.aplicarcambios()
 
     } else {
       this.mensaje = "Por favor complete todos los campos obligatorios."
@@ -121,5 +130,13 @@ export class RespuestaCreaeditaComponent implements OnInit{
         });
       });
     }
+  }
+
+  aplicarcambios() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      this.router.navigate(['/components/respuesta/listar']);
+    });
   }
 }

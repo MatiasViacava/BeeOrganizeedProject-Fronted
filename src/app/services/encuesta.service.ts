@@ -19,20 +19,20 @@ export class EncuestaService {
   list() {
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Encuesta[]>(this.url, {
+    return this.http.get<Encuesta[]>(this.url/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   insert(de: Encuesta) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, de, {
+    return this.http.post(this.url, de/*, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
-    });
+    }*/);
   }
   setList(listaNueva: Encuesta[]) {
     this.listaCambio.next(listaNueva);
@@ -66,5 +66,16 @@ export class EncuestaService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+  }
+
+  //Devolver última encuesta creada
+  ultimaencuestacreada(){
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<number>(`${this.url}/ultimaencuestacreada`/*, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    }*/);
   }
 }

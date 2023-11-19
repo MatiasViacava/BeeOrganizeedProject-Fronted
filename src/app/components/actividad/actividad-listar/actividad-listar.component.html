@@ -17,8 +17,8 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="idActividad">
-        <th mat-header-cell *matHeaderCellDef>  {{"Código" | translate}}</th>
-        <td mat-cell *matCellDef="let element"> {{element.idActividad}} </td>
+        <th mat-header-cell *matHeaderCellDef hidden>  {{"Código" | translate}}</th>
+        <td mat-cell *matCellDef="let element" hidden> {{element.idActividad}} </td>
       </ng-container>
     
       <ng-container matColumnDef="nombreActividad">
@@ -52,9 +52,9 @@
         <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="horario">
-        <th mat-header-cell *matHeaderCellDef> {{"Id de Horario" | translate}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.horario.idHorario}} </td>
+      <ng-container matColumnDef="horario" hidden>
+        <th mat-header-cell *matHeaderCellDef  hidden> {{"Id de Horario" | translate}} </th>
+        <td mat-cell *matCellDef="let element" hidden> {{element.horario.idHorario}} </td>
       </ng-container>
 
       <ng-container matColumnDef="tipoActividad">
