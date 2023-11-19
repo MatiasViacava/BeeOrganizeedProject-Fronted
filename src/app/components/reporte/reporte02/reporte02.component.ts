@@ -11,7 +11,7 @@ import { TipoRecursoService } from 'src/app/services/tipo-recurso.service';
 export class Reporte02Component implements OnInit{
   barChartOptions:ChartOptions={ responsive:true, }
   barChartLabel:string[] = [];
-  barChartType:ChartType = 'pie'
+  barChartType:ChartType = 'bar'
   barChartLegend=true;
   barChartData:ChartDataset[] = [];
   
@@ -23,7 +23,8 @@ export class Reporte02Component implements OnInit{
       this.barChartData = [{
         data: data.map(item => item.cantidad),
         label:'Tipo actividad',
-        backgroundColor: ['#b4c799','#99afc7','#a199c7','#c7c299','#c79e99','#9cc799']
+        backgroundColor: ['#b4c799','#99afc7','#a199c7','#c7c299','#c79e99','#9cc799'],
+        barThickness:150
       }]
     });
   }

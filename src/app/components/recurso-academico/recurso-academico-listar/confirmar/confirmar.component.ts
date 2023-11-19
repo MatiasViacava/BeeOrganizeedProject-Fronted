@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RecursoAcademicoService } from 'src/app/services/recurso-academico.service';
 
@@ -7,7 +7,7 @@ import { RecursoAcademicoService } from 'src/app/services/recurso-academico.serv
   templateUrl: './confirmar.component.html',
   styleUrls: ['./confirmar.component.css']
 })
-export class ConfirmarComponent {
+export class ConfirmarComponent implements OnInit{
   constructor(
     private cS: RecursoAcademicoService,
     private dialogRef: MatDialogRef<ConfirmarComponent>

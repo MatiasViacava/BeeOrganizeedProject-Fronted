@@ -19,7 +19,6 @@ body {
   text-align: left; /* Alinea el texto a la izquierda */
   width: 79%;
   margin-bottom: 10px; /* Esto añade un espacio de 10px debajo del mat-label */
-  display:inline-block; /* Para alinearlo al mat form field */
 }
 
 mat-form-field {

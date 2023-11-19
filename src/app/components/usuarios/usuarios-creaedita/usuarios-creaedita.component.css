@@ -59,6 +59,13 @@ mat-form-field {
   margin-bottom: 20px; /* Agregado */
   margin-left: 20px;
 }
+.boton-regresar{
+  background-color: #ceab24;
+  color: white; /* Color del texto */
+  width: 20%; /* Cambiado de 80% a auto */
+  margin-bottom: 20px; /* Agregado */
+  margin-left: 20px;
+}
 
 /* Cambios en el tamaño y color del texto de los errores */
 mat-error {
@@ -68,4 +75,5 @@ mat-error {
  .mat-form-field {
   margin-bottom: 20px;
 }
+
  

@@ -74,7 +74,7 @@ button{
     cursor: pointer;
     margin-top: 20px;
     border-radius:5px;
-    background: #dbc167;
+    background: #ceab24;
 }
 .inputuser{
     width: 100%;
@@ -90,13 +90,13 @@ button{
     border-radius:5px;
 }
 input{
-
-
     border: none;
     outline: none;
     padding: 8px;
     border-radius: 5px;
-
-
+}
+.boton-regresar{
+    background-color: #A5A5FF;
+    color: white; /* Color del texto */
 }
 

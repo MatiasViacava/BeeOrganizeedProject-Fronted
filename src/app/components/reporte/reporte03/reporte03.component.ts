@@ -10,7 +10,7 @@ import { ActividadService } from 'src/app/services/actividad.service';
 export class Reporte03Component implements OnInit{
   barChartOptions:ChartOptions={ responsive:true, }
   barChartLabel:string[] = [];
-  barChartType:ChartType = 'line'
+  barChartType:ChartType = 'bar'
   barChartLegend=true;
   barChartData:ChartDataset[] = [];
   
@@ -22,7 +22,8 @@ export class Reporte03Component implements OnInit{
       this.barChartData = [{
         data: data.map(item => item.maxActivity),
         label:'Actividades',
-        backgroundColor: ['#99c7c2','#c79999','#bd99c7']
+        backgroundColor: ['#99c7c2','#c79999','#bd99c7'],
+        barThickness:150
       }]
     });
   }

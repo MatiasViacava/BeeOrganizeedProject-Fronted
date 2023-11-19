@@ -22,7 +22,7 @@ export class Reporte04Component implements OnInit{
       this.barChartData = [{
         data: data.map(item => item.cantTipoactividadPorUsuarioDTO),
         label:'Actividad',
-        backgroundColor: ['blue','yellow','red']
+        backgroundColor: ['#A5FFA5','#A5A5FF','#00A5FF','#FFA5FF']
       }]
     });
   }

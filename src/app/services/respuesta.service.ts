@@ -11,9 +11,10 @@ const base_url=environment.base
   providedIn: 'root'
 })
 export class RespuestaService {
-
   private url = `${base_url}/respuestas`;
   private listaCambio = new Subject<Respuesta[]>();
+  private confirmarEliminacion = new Subject<Boolean>()
+
   constructor(private http: HttpClient) {}
 
   list() {
@@ -75,5 +76,11 @@ export class RespuestaService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+  }
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:boolean){
+    this.confirmarEliminacion.next(estado);
   }
 }

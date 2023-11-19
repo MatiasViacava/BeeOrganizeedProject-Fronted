@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+ }
+ 
+ .container {
+    width: 100%;
+    background-color: #fff;
+    border: 20px solid #F0C481;
+    padding: 5px;
+ }
+   
+ 
+ /* Estilos para los botones */
+ .button-container {
+   display: block; /* Cambiado de flex a block */
+   justify-content: center;
+ }
+ 
+ .boton-aceptar{
+   background-color: #6eb8db;
+   color: white; /* Color del texto */
+   width: 20%; /* Cambiado de 80% a auto */
+   margin-bottom: 20px; /* Agregado */
+   margin-right: 20px;
+ }
+ .boton-cancelar{
+   background-color: #b8cd51;
+   color: white; /* Color del texto */
+   width: 20%; /* Cambiado de 80% a auto */
+   margin-bottom: 20px; /* Agregado */
+   margin-left: 20px;
+ }

@@ -8,7 +8,7 @@ body {
 
 .container {
   width: 64%; /* Ajusta este porcentaje según tus necesidades */
-  height: 560px;
+  height: 500px;
   background-color: #FFF2E6; /*COLOR DE LA TABLA*/
   border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
   padding: 30px;  
@@ -16,8 +16,9 @@ body {
   /* Ajusta el diseño de la cuadrícula */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
   grid-gap: 20px;
+  overflow: auto;
 }
 
 .card {

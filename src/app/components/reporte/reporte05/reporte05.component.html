@@ -6,46 +6,49 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Contar Actividades</h2>
-    <div>
-    <mat-form-field>
-      <input
-        matInput
-        [matDatepicker]="pickerInicio"
-        placeholder="Fecha de Inicio"
-        [(ngModel)]="intervalo.fechainicio"
-        (dateChange)="actualizafechainicio($event)"
-      />
-      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-      <mat-datepicker #pickerInicio></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        [matDatepicker]="pickerFin"
-        placeholder="Fecha de Fin"
-        [(ngModel)]="intervalo.fechafin"
-        [min]="minFechaFin"
-        (dateChange)="actualizafechafin($event)"
-      />
-      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
-      <mat-datepicker #pickerFin></mat-datepicker>
-    </mat-form-field>
+    <br>
+    <h2>Contar actividades entre un intervalo de tiempo</h2>
+    <br>
+    <div class="container">
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="pickerInicio"
+          placeholder="Fecha de Inicio"
+          [(ngModel)]="intervalo.fechainicio"
+          (dateChange)="actualizafechainicio($event)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="pickerFin"
+          placeholder="Fecha de Fin"
+          [(ngModel)]="intervalo.fechafin"
+          [min]="minFechaFin"
+          (dateChange)="actualizafechafin($event)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button class="boton-agregar" mat-raised-button (click)="ejecutar()"><mat-icon>library_add</mat-icon>{{"Ejecutar"}}</button>
+      </div>
+      <div>
+        <canvas
+          baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabel"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [type]="barChartType"
+        >
+        </canvas>
+      </div>
     </div>
-    <div class="button-container">
-      <button class="boton-agregar" mat-raised-button (click)="ejecutar()"><mat-icon>library_add</mat-icon>{{"Ejecutar"}}</button>
-    </div>
-  <div>
-    <canvas
-      baseChart
-      [datasets]="barChartData"
-      [labels]="barChartLabel"
-      [options]="barChartOptions"
-      [legend]="barChartLegend"
-      [type]="barChartType"
-    >
     
-    </canvas>
-  </div>
 </body>
 </html>

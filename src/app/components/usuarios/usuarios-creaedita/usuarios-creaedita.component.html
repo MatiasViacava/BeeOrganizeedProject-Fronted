@@ -112,9 +112,9 @@
         </div> <!--Columna Principal end-->
         <br>
         <div class="button-container">
-          <button mat-button color="primary"> Registrar </button>
-          <button mat-button color="warn" *ngIf="role=='Administrador' || role=='Estudiante'" routerLink="/components/usuarios/listar">Cancelar</button>
-          <button mat-button color="warn" *ngIf="role!='Administrador' && role!='Estudiante'" routerLink="/landingpage">Regresar a inicio</button>
+          <button mat-button class="boton-agregar"><mat-icon>person_pin</mat-icon> Registrar </button>
+          <button mat-button class="boton-cancelar" *ngIf="role=='Administrador' || role=='Estudiante'" routerLink="/components/usuarios/listar"> <mat-icon>close</mat-icon>Cancelar</button>
+          <button mat-button class="boton-regresar" *ngIf="role!='Administrador' && role!='Estudiante'" routerLink="/landingpage"><mat-icon>keyboard_return</mat-icon>Regresar al inicio</button>
           <br>
         </div>
         <br>

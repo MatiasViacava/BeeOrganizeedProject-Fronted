@@ -14,28 +14,32 @@
   <div class="container">
     <div class="card-container" *ngFor="let element of dataSource.data">
       <mat-card>
-        <mat-card-header>
+        <mat-card-header class="titulo">
           <mat-card-title>{{element.nombreRecurso}}</mat-card-title>
-          <mat-card-subtitle hidden>{{"Código" | translate}}: {{element.iD}}</mat-card-subtitle>
-          <mat-card-subtitle>{{"Autor:" | translate}} {{element.autor}}</mat-card-subtitle>
-          <mat-card-subtitle>{{" " | translate}} {{element.enlaceRecurso}}</mat-card-subtitle>
-          <mat-card-subtitle>{{"Publicacion" | translate}}: {{element.fechaPublicacion | date:"dd/MM/yyyy"}}</mat-card-subtitle>
         </mat-card-header>
 
-        <img mat-card-lg-image src="../assets/images/TipoActividad2.jpg"/>
+        <img mat-card-lg-image src="../assets/images/proyecto/recurso3.jpg"/>
+        <br>
+          
+        <mat-card-content class="contenido">
+          <mat-card-subtitle>{{"Código" | translate}}: {{element.iD}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Nombre del Recurso"}}: {{element.nombreRecurso}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Nombre del Autor"}}: {{element.autor}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Fecha de Publicacion"}}: {{element.fechaPublicacion | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+          <mat-card-subtitle>{{"Enlace" | translate}}: {{element.enlaceRecurso}}</mat-card-subtitle>
+        </mat-card-content>
 
-        <mat-card-actions class="card-actions" *NgIf="role==Administrador">
+        <mat-card-actions class="card-actions" *ngIf="role == 'Administrador'">
           <div class="button-container">
             <button class="boton-actualizar"
               mat-raised-button
-              (click)="iralink('edicion', element.iD.toString())"
-            > <mat-icon>create</mat-icon>
+              (click)="iralink('edicion', element.iD.toString())"> <mat-icon>create</mat-icon>
             </button>
+
             <button class="boton-eliminar"
-            mat-raised-button
-            (click)="confirmar(element.iD)"
-          > <mat-icon>delete_forever</mat-icon>
-          </button>
+              mat-raised-button
+              (click)="confirmar(element.iD)"> <mat-icon>delete_forever</mat-icon>
+            </button>
             
           </div>
          

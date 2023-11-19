@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  width: 64%; /* Ajusta este porcentaje según tus necesidades */
+  width: 70%; /* Ajusta este porcentaje según tus necesidades */
   height: 560px;
   background-color: #FFF2E6; /*COLOR DE LA TABLA*/
   border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
@@ -17,33 +17,45 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 20px;
+  grid-gap: 36px;
   overflow: auto;
-}
-
-.card {
-  width: 280px; /* Ancho de los cards */
-  margin: 10px; /* Margen de los cards */
-}
-
-.card-actions {
-  margin: 20px; /* Margen de las acciones */
-  display: flex; /* Habilita el diseño Flexbox para las acciones */
-  justify-content: center; /* Alinea las acciones al centro */
-  align-items: center; /* Alinea las acciones verticalmente al centro */
 }
 
 .card-container {
   display: flex; /* Habilita el diseño Flexbox para los cards */
   margin: 20px; /* Margen de los cards */
+  /*width: 80%; /* Ajusta este porcentaje según tus necesidades */
+  /*border: 5px solid #d9d2ca; /*Color del borde de la TABLA*/
+}
+
+.titulo{
+  text-align: center;
+  justify-content: center;
+
+}
+
+.contenido {
+  width: 280px; /* Ancho de los cards */
+  margin: 10px; /* Margen de los cards */
+  border: 0px; /*Color del borde de la TABLA*/
+  text-align: left;
 }
 
 img {
-  position: relative; top: 20px; 
+  position: relative; top: 10px; 
   left: 50%;
   transform: translateX(-50%);
+  width: 50%;
 }
 
+
+/*BOTONES*/
+.card-actions {
+  margin: 5px; /* Margen de las acciones */
+  display: flex; /* Habilita el diseño Flexbox para las acciones */
+  justify-content: center; /* Alinea las acciones al centro */
+  align-items: center; /* Alinea las acciones verticalmente al centro */
+}
 
 /* Estilos para los botones */
 .button-container {

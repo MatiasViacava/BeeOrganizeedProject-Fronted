@@ -38,7 +38,9 @@ export class Reporte05Component implements OnInit{
     this.barChartData=[{
       data:[this.resultado],
       label:'Actividades',
-      backgroundColor:['lime']
+      backgroundColor:['#00A5A5','#FFA5A5'],
+      barThickness:150
+      
     }]
   }
   actualizafechainicio(event:any):void{
