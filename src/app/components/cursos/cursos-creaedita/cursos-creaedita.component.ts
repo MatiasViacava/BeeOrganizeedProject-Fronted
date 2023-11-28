@@ -57,8 +57,8 @@ export class CursosCreaeditaComponent implements OnInit {
       idCurso: [''],
       nombreCurso: ['', Validators.required],
       descripcionCurso: ['', Validators.required],
-      fechaInicioCurso: ['', [Validators.required]],
-      fechaFinCurso: ['', Validators.required],
+      fechaInicioCurso: [''],
+      fechaFinCurso: [''],
     });
 
     this.translate.addLangs(['es', 'en']);
@@ -85,11 +85,14 @@ export class CursosCreaeditaComponent implements OnInit {
       this.curso.fechaFinCurso = this.form.value.fechaFinCurso;
 
       if(this.edicion){
+        this.curso.fechaFinCurso=moment().add('days').toDate()
         this.cS.modificar(this.curso).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             if (this.role=='Administrador'){
             this.cS.setList(data);}})})
       } else {
+        this.curso.fechaInicioCurso=moment().add('days').toDate()
+        this.curso.fechaFinCurso=moment().add('days').toDate()
         this.cS.insert(this.curso).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             if (this.role=='Administrador'){

@@ -143,7 +143,11 @@
     "Cantidad de recursos académicos por cada tipo":"Amount of academic resources for each type",
     "Cantidad de tipos de actividades afiliadas":"Number of types of affiliated activities",
     "Cantidad de actividades extraacadémicas por usuario":"Number of extracurricular activities per user",
-    "Actividades académicas realizadas con mayor frecuencia":"Academic activities carried out most frequently"
+    "Actividades académicas realizadas con mayor frecuencia":"Academic activities carried out most frequently",
+
+    "Fecha de registro":"Register date", 
+    "Última edición":"Last edit",
+    "Fecha de cierre de ciclo": "Ending date"
 
 
 }

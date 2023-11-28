@@ -8,7 +8,7 @@ body {
 
 .container {
   width: 64%; /* Ajusta este porcentaje según tus necesidades */
-  height: 560px;
+  height: 460px;
   background-color: #FFF2E6; /*COLOR DE LA TABLA*/
   border: 30px solid #f1bc87; /*Color del borde de la TABLA*/
   padding: 30px;  
@@ -20,6 +20,7 @@ body {
   grid-gap: 20px;
   overflow: auto;
 }
+
 
 .card {
   width: 280px; /* Ancho de los cards */
