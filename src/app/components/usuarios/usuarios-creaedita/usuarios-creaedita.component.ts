@@ -62,13 +62,13 @@ export class UsuariosCreaeditaComponent implements OnInit {
     
     this.form = this.formBuilder.group({
       id: [''],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      nombres: ['', [Validators.required]],
-      apellidos: ['', Validators.required],
-      fechaNacimiento: ['', Validators.required],
-      universidad: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      username: ['',],
+      password: ['',],
+      nombres: ['',],
+      apellidos: ['',],
+      fechaNacimiento: ['',],
+      universidad: ['',],
+      email: ['', ],
     });
 
     this.route.params.subscribe((data: Params) => {
@@ -243,13 +243,13 @@ export class UsuariosCreaeditaComponent implements OnInit {
     } else {
       this.form = this.formBuilder.group({
         id: [''],
-        username: ['', Validators.required],
-        password: ['', Validators.required],
-        nombres: ['', [Validators.required]],
-        apellidos: ['', Validators.required],
+        username: ['',],
+        password: ['',],
+        nombres: ['',],
+        apellidos: ['', ],
         fechaNacimiento: [new Date()], // establece la fecha de hoy
-        universidad: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
+        universidad: ['',],
+        email: ['',],
       });
     }
   }
